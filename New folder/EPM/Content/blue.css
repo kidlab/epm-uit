@@ -1,0 +1,18 @@
+/****
+ * Theme: Deep Blue
+ * Author : Nguyen Minh Toan
+ *
+ */
+
+body{
+	background: url(blue/main-bg.jpg) repeat-x fixed;
+	color: #082343;
+}
+
+#header-wrapper{
+	background-color: #072342;
+}
+
+#body-right{
+	background-color: #072342;
+}

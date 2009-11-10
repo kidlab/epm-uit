@@ -1,0 +1,5 @@
+F:\Project\ASPX\EPM\EPM\bin\EPM.dll
+F:\Project\ASPX\EPM\EPM\bin\EPM.pdb
+F:\Project\ASPX\EPM\EPM\obj\Debug\ResolveAssemblyReference.cache
+F:\Project\ASPX\EPM\EPM\obj\Debug\EPM.dll
+F:\Project\ASPX\EPM\EPM\obj\Debug\EPM.pdb
