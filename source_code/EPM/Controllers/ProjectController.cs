@@ -11,7 +11,6 @@ namespace EPM.Controllers
 {
     public class ProjectFormViewModel
     {
-
         // Properties
         public Project Project { get; private set; }
 
