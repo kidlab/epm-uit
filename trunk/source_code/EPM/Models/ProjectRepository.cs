@@ -14,7 +14,7 @@ namespace EPM.Models
 {
     public class ProjectRepository : IProjectRepository
     {
-        epmDataContext db = new epmDataContext();
+        EpmDataContext db = new EpmDataContext();
 
         //
         // Query Methods

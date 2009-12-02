@@ -77,10 +77,10 @@
     <Compile Include="Helpers\ControllerHelpers.cs" />
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\PhoneValidator.cs" />
-    <Compile Include="Models\epm.designer.cs">
+    <Compile Include="Models\Epm.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>epm.dbml</DependentUpon>
+      <DependentUpon>Epm.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\IProjectRepository.cs" />
     <Compile Include="Models\Project.cs" />
@@ -89,10 +89,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\epm.mdf">
+    <Content Include="App_Data\Epm.mdf">
     </Content>
-    <Content Include="App_Data\epm_log.ldf">
-      <DependentUpon>epm.mdf</DependentUpon>
+    <Content Include="App_Data\Epm_log.ldf">
+      <DependentUpon>Epm.mdf</DependentUpon>
     </Content>
     <Content Include="Content\blue.css" />
     <Content Include="Content\blue\main-bg.jpg" />
@@ -143,18 +143,18 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\epm.dbml">
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Epm.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>epm.designer.cs</LastGenOutput>
+      <LastGenOutput>Epm.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Models\epm.dbml.layout">
-      <DependentUpon>epm.dbml</DependentUpon>
+    <None Include="Models\Epm.dbml.layout">
+      <DependentUpon>Epm.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

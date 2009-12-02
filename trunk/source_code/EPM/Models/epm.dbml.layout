@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="epm">
-  <DataContextMoniker Name="/epmDataContext" />
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Epm">
+  <DataContextMoniker Name="/EpmDataContext" />
   <nestedChildShapes>
-    <classShape Id="506d0d37-8215-4b3d-a11e-4d0bcdf37fb8" absoluteBounds="4.5, 1.25, 2, 1.9631982421875">
-      <DataClassMoniker Name="/epmDataContext/Project" />
+    <classShape Id="6a273bd9-9979-4a36-b7c0-ff7d6f6e8c1c" absoluteBounds="1.75, 1.875, 2, 1.75354248046875">
+      <DataClassMoniker Name="/EpmDataContext/Project" />
       <nestedChildShapes>
-        <elementListCompartment Id="1bdbfa40-6238-47b1-b71c-0989f92ef80e" absoluteBounds="4.515, 1.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="fdc6004d-9312-4c52-98a9-41042d206c34" absoluteBounds="1.7650000000000001, 2.335, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
