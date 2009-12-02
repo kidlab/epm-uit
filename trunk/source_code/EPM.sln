@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPM", "MvcApplication1\EPM.csproj", "{F7510E89-02C3-4AC8-80B5-714533CFAB97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPM", "EPM\EPM.csproj", "{F7510E89-02C3-4AC8-80B5-714533CFAB97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
