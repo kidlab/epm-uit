@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/style.css" type="text/css" rel="stylesheet">
+<link href="css/blue.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#statuswrapper .edit").toggle(function(){
+			$("#formedit").slideDown("normal");
+		}, 
+		function(){
+			$("#formedit").slideUp("normal");
+		});
+	$("#statuswrapper .desc").toggle(function(){
+		$("#statuswrapper .desc").addClass("desc-active");
+		$("#project-desc").slideDown("normal");
+	}, 
+	function(){
+		$("#statuswrapper .desc").removeClass("desc-active");
+		$("#project-desc").slideUp("normal");
+	});
+});
+</script>
+<title>Projects</title>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header-wrapper"> 
+			<div id="header">
+				<div id="header-left">
+					<img id="logo" src="img/logo-b.png" alt="logo" title="HTM Project">
+					<span id="header-title">HTM Project</span>
+				</div>
+				<div id="header-right">
+					<ul id="header-menu">
+						<li><a id="desktop-menu" class="top-menu" href="desktop.html"><span>Desktop</span></a></li>
+						<li><a id="account-menu" class="top-menu"><span>Accounts</span></a></li>
+						<li><a id="setting-menu" class="top-menu"><span>Settings</span></a></li>
+						<li><a id="logout-menu" class="top-menu"><span>Logout</span></a></li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="body">
+			<div id="tab-wrapper">
+				<ul id="tabs">
+					<li><a id="projects-info" href="projectinfo.html" class="tab-menu"> <span> Project </span> </a></li>
+					<li><a id="milestones" href="milestones.html" class="tab-menu"> <span> Milestones </span> </a></li>
+					<li><a id="tasks" href="tasklists.html" class="tab-menu"> <span> Task List </span> </a></li>
+					<li><a id="messages" href="/" class="tab-menu"> <span> Message </span> </a></li>
+				</ul>
+			</div>
+			<div id="body-left">
+				<h2 id="body-title">My Projects</h2>
+				
+				<div class="list2">
+				
+				<div class="headline">
+					<div class="list-icon"></div>
+					<span>Milestones</span>
+				</div>
+								
+				<div id="project-list" class="table-list">
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr class="list-title">
+							<th width="6%"></th>
+							<th width="30%">Milestone</th>
+							<th width="26%">Due</th>
+							<th width="26%">Days left</th>
+							<th width="12%" class="last"></th>
+						</tr>
+						
+						<tr class="project-title">
+							<td></td>
+							<td>
+							<div class="toggle-in">
+								<span class="view-toggle" onclick="toggleView('project1')"></span>
+								<a href="/">miletone 1</a>
+							</div>
+								
+							</td>
+							<td>
+								28/12/2009
+							</td>
+							<td>
+								20 days
+							</td>
+							<td>
+								<a class="project-edit icon" id="1"> <span>Edit</span> </a>
+								<a class="project-del icon" id="2"> <span>Delete</span> </a>
+							</td>
+						</tr>
+						
+						<tr class="project-title">
+							<td></td>
+							<td>
+							<div class="toggle-in">
+								<span class="view-toggle" onclick="toggleView('project1')"></span>
+								<a href="/">miletone 2</a>
+							</div>
+								
+							</td>
+							<td>
+								10/1/2010
+							</td>
+							<td>
+								33 days
+							</td>
+							<td>
+								<a class="project-edit icon" id="1"> <span>Edit</span> </a>
+								<a class="project-del icon" id="2"> <span>Delete</span> </a>
+							</td>
+						</tr>	
+										
+					</table>
+					<div class="list-action">
+						<a href="/" class="list-action-button">Add milestone</a>
+						<a href="/" class="list-action-button">Finish milestone</a>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+							
+			</div>
+			<div id="body-right">
+				<div id="search" class="sidebar-module">
+					<h2 class="title">Search</h2>
+					<input class="search-input" type="text" value="Search here" />
+					<button class="search-confirm"></button>
+				</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+</body>
+</html>
