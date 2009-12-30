@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/curvycorners.js"></script>
+<script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.tab').removeClass('active');
+		$('#tab-task').addClass('active');
+
+		$('#tool-add').toggle(function(){
+			$('#form-add').slideDown('fast');
+		}, function(){
+			$('#form-add').slideUp('fast');
+		});
+	});
+
+	
+	tinyMCE.init({
+		mode : "textareas",
+		theme : "advanced",
+		width : "100%",
+		theme_advanced_toolbar_location: 'top',
+		theme_advanced_toolbar_align: 'left',
+		theme_advanced_resizing : true,
+	});	
+</script>
+<title>EPM - Tasklist</title>
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="header-left">
+				<a class="logo" href="/"> <img src="img/logo-b.png"></img></a>
+				<h2 class="header-title">EPM</h2>
+			</div>
+			<div id="header-right">
+				<div id="menu-bar-left">
+					<div id="menu-bar-right">
+						<div id="menu-bar">
+							<ul class="header-menu">
+								<li>
+									<a href="desktop.html" class="active">Desktop</a>
+								</li>
+								<li>
+									<a href="#">My account</a>
+								</li>
+								<li>
+									<a href="#">Setting</a>
+								</li>
+								<li class="last">
+									<a href="/">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div id="body-wrapper">
+		<div id="body">
+			<ul id="body-tab">
+				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
+				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
+				<li class="tab" id="tab-task"> <a href="#"> Taskslist</a> </li>
+				<li class="tab" id="tab-user"> <a href="#"> User</a> </li>
+				<li class="tab" id="tab-msg"> <a href="#"> Timetracker</a> </li>					
+			</ul>
+			<div class="clear"></div>
+			<div id="body-left">
+				<h1 class="content-title"> Project / Tasklist </h1>				
+				<div class="table-content">
+					<div class="table-cover">
+						<div class="cover-buttons-list">
+							<a href="/" class="cover-btn tool-add" id="tool-add">
+								<span>Add</span>
+							</a>
+							<a href="/" class="cover-btn tool-edit">
+								<span>Edit</span>
+							</a>
+							<a href="/" class="cover-btn tool-del">
+								<span>Del</span>
+							</a>
+							<a href="/" class="cover-btn tool-check">
+								<span>Check</span>
+							</a>
+						</div>	
+						Tasklist
+					</div>
+<!--				******************** FORM ADD ******************* 	-->
+					<div class="form-ajax" id="form-add" style="display: none;">
+					<h1>Add Task</h1>
+					<div class="add-project-form">
+						<form action="" method="POST">
+						<table cellpadding="1" cellspacing="5" border="0" width="100%">
+							<tr>
+								<td width="10%">
+									Title:
+								</td>
+								<td width="90%">
+									<input class="form-text" id="input-name" type="text" name="name" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Text:
+								</td>
+								<td>
+									<textarea class="form-text" id="input-desc" name="text" style="width: 70%" cols="20" rows="5"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Due:
+								</td>
+								<td>
+									<input class="form-text" id="input-due" type="text" name="due" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Assign:
+								</td>
+								<td>
+									<select class="form-text" id="input-due" name="due" style="width: 70%">
+										<option value="0">All</option>
+										<option value="1">Admin</option>
+									</select>									
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<input type="button" name="submit" value="Save">
+									<input type="button" name="submit" value="Cancel">
+								</td>
+							</tr>
+						</table>
+						</form>
+					</div>
+				</div>
+				<!-- ******************** END FORM ADD ******************* 	-->
+				<div class="table-list-wrapper">
+					<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
+						<tr>
+							<th width="5%"></th>
+							<th width="35%">Names</th>
+							<th width="30%">Done</th>
+							<th width="15%">Day left</th>
+							<th width="10%">Edit</th>
+						</tr>
+						<tr>
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="taskinfo.html">Tasklist</a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>	
+						<tr class="odd">
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="/">Tasklist 2 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>				
+					</table>
+					<!-- ******************** HIDDEN TABLE LIST ********** -->
+					<div class="hidden-table-list" id="finish-milestone1" style="display: none">
+						<table class="table-list" width="100%" cellpadding="1" cellspacing="1" >
+							<tr>
+								<th colspan="5"> Finished Taskslist</th>
+							</tr>
+							<tr>
+								<td width="5%">
+									<a class="button btn-check" href="#">
+										<span>check</span>
+									</a>
+								</td>
+								<td width="35%"> <a href="#">Tasklist </a></td>
+								<td width="30%"> 50% </td>
+								<td width="15%"> 50 days</td>
+								<td width="10%">
+									<a class="button btn-edit" href="#">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="#">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>								
+							<tr>
+								<td>
+									<a class="button btn-check" href="/">
+										<span>check</span>
+									</a>
+								</td>
+								<td> <a href="/">Tasklist </a></td>
+								<td> 50% </td>
+								<td> 50 days</td>
+								<td>
+									<a class="button btn-edit" href="/">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="/">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>	
+							<tr class="odd">
+								<td>
+									<a class="button btn-check" href="/">
+										<span>check</span>
+									</a>
+								</td>
+								<td> <a href="/">Tasklist </a></td>
+								<td> 50% </td>
+								<td> 50 days</td>
+								<td>
+									<a class="button btn-edit" href="/">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="/">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>		
+						</table>
+					</div>
+				</div>
+				<div class="table-bottom-tab">
+					<a href="/" id="ft-toggle-1" onclick="toggleSlide(this.id,'finish-milestone1','activated','up')">Finished tasks</a>
+				</div>		
+			</div>
+				
+				
+			</div>
+			<div id="body-right">
+				<div class="module">
+					<h1>Search</h1>
+					<div class="module-content">
+						<input class="text-search" type="text"/>
+						<input type="button" class="btn-search" value="Go!"/>
+					</div>
+				</div>
+				<div class="module">
+					<h1>User Online</h1>
+					<div class="module-content">
+						<ul class="list">
+							<li><a href="/">Admin</a></li>
+							<li><a href="/">User</a></li>
+							<li><a href="/">Mod</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="footer-wrapper">
+		<div id="footer">
+			<p>copyright by EPM 2009</p>
+		</div>
+	</div>
+</body>
+</html>
