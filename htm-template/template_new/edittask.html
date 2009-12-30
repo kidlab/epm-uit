@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/curvycorners.js"></script>
+<script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/mce_advanced.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.tab').removeClass('active');
+		$('#tab-task').addClass('active');
+
+		$('#tool-add').toggle(function(){
+			$('#form-add').slideDown('fast');
+		}, function(){
+			$('#form-add').slideUp('fast');
+		});
+	});
+</script>
+<title>EPM</title>
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="header-left">
+				<a class="logo" href="/"> <img src="img/logo-b.png"></img></a>
+				<h2 class="header-title">EPM</h2>
+			</div>
+			<div id="header-right">
+				<div id="menu-bar-left">
+					<div id="menu-bar-right">
+						<div id="menu-bar">
+							<ul class="header-menu">
+								<li>
+									<a href="desktop.html" class="active">Desktop</a>
+								</li>
+								<li>
+									<a href="myproject.html">Project</a>
+								</li>
+								<li>
+									<a href="/">Setting</a>
+								</li>
+								<li class="last">
+									<a href="/">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div id="body-wrapper">
+		<div id="body">
+			<ul id="body-tab">
+				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
+				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
+				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
+				<li class="tab" id="tab-user"> <a href="#"> User</a> </li>
+				<li class="tab" id="tab-msg"> <a href="#"> Timetracker</a> </li>					
+			</ul>
+			<div class="clear"></div>
+			<div id="body-left">
+				<h1 class="content-title"> My Projects </h1>				
+				<div class="table-content">
+					<div class="form-ajax" id="form-edit">
+					<h1>Edit Project</h1>
+					<div class="add-poject-form">
+						<form action="" method="POST">
+						<table cellpadding="1" cellspacing="5" border="0" width="100%">
+							<tr>
+								<td width="10%">
+									Name:
+								</td>
+								<td width="90%">
+									<input class="form-text" id="input-name" type="text" name="name" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Text:
+								</td>
+								<td>
+									<textarea class="form-text" id="input-desc" name="desc" style="width: 70%" cols="20" rows="5"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									End:
+								</td>
+								<td>
+									<input class="form-text" id="input-due" type="text" name="due" style="width: 70%">
+								</td>
+							</tr>	
+							<tr>
+								<td>
+									Tasklist:
+								</td>
+								<td>
+									<select  class="form-text" id="input-tasklist" name="tasklist" style="width: 70%">
+										<option value="1"> Tasklist 1</option>
+									</select>
+								</td>
+							</tr>	
+							<tr>
+								<td>
+									Assign:
+								</td>
+								<td>
+									<select  class="form-text" id="input-assign" name="assign" style="width: 70%">
+										<option value="1"> All</option>
+										<option value="2"> admin</option>
+									</select>
+								</td>
+							</tr>							
+							<tr>
+								<td colspan="2" align="center">
+									<input type="button" name="submit" value="Save">
+									<input type="button" name="submit" value="Cancel">
+								</td>
+							</tr>
+						</table>
+						</form>
+					</div>
+				</div>
+				
+				</div>
+			</div>
+			<div id="body-right">
+				<div class="module">
+					<h1>Search</h1>
+					<div class="module-content">
+						<input class="text-search" type="text"/>
+						<input type="button" class="btn-search" value="Go!"/>
+					</div>
+				</div>
+				<div class="module">
+					<h1>User Online</h1>
+					<div class="module-content">
+						<ul class="list">
+							<li><a href="/">Admin</a></li>
+							<li><a href="/">User</a></li>
+							<li><a href="/">Mod</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="footer-wrapper">
+		<div id="footer">
+			<p>copyright by EPM 2009</p>
+		</div>
+	</div>
+</body>
+</html>

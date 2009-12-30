@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/curvycorners.js"></script>
+<script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.tab').removeClass('active');
+		$('#tab-task').addClass('active');
+		$('.table-info tr:even > td').addClass('row-odd');
+
+		$('.grid-item').hover(function(){
+				$(this).addClass('grip-content-hover');
+			},function(){
+				$(this).removeClass('grip-content-hover');
+			});
+	});
+	
+	tinyMCE.init({
+		mode : "textareas",
+		theme : "advanced",
+		width : "100%",
+		theme_advanced_toolbar_location: 'top',
+		theme_advanced_toolbar_align: 'left',
+		theme_advanced_resizing : true
+	});	
+</script>
+<title>EPM - Project Infomation</title>
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="header-left">
+				<a class="logo" href="/"> <img src="img/logo-b.png"></img></a>
+				<h2 class="header-title">EPM</h2>
+			</div>
+			<div id="header-right">
+				<div id="menu-bar-left">
+					<div id="menu-bar-right">
+						<div id="menu-bar">
+							<ul class="header-menu">
+								<li>
+									<a href="desktop.html" class="active">Desktop</a>
+								</li>
+								<li>
+									<a href="#">My account</a>
+								</li>
+								<li>
+									<a href="/">Setting</a>
+								</li>
+								<li class="last">
+									<a href="/">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div id="body-wrapper">
+		<div id="body">
+			<ul id="body-tab">
+				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
+				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
+				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
+				<li class="tab" id="tab-user"> <a href="#"> User</a> </li>
+				<li class="tab" id="tab-msg"> <a href="#"> Timetracker</a> </li>								
+			</ul>
+			<div class="clear"></div>
+			<div id="body-left">
+				<h1 class="content-title"> Task 1 </h1>
+				<div class="table-content">
+					<table class="table-info" width="100%">
+						<tr>
+							<td width="30%">
+								Action:
+							</td>
+							<td width="70%">
+							    <a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+								<a class="button btn-edit" href="edittask.html">
+									<span>edit</span>
+								</a>	
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td width="30%">
+								User:
+							</td>
+							<td width="70%">
+							    Admin
+							</td>
+						</tr>
+						<tr>
+							<td>
+								End:
+							</td>
+							<td>
+							    29/12/2009
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Description:
+							</td>
+							<td>
+							    bla bla bla
+							</td>
+						</tr>
+					</table>					
+				</div>
+				
+			</div>
+			<div id="body-right">
+				<div class="module">
+					<h1>Search</h1>
+					<div class="module-content">
+						<input class="text-search" type="text"/>
+						<input type="button" class="btn-search" value="Go!"/>
+					</div>
+				</div>
+				<div class="module">
+					<h1>User Online</h1>
+					<div class="module-content">
+						<ul class="list">
+							<li><a href="/">Admin</a></li>
+							<li><a href="/">User</a></li>
+							<li><a href="/">Mod</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="footer-wrapper">
+		<div id="footer">
+			<p>copyright by EPM 2009</p>
+		</div>
+	</div>
+</body>
+</html>

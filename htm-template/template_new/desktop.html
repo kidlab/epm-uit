@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/curvycorners.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.tab').removeClass('active');
+		$('#tab-desktop').addClass('active');
+	});
+</script>
+<title>EPM</title>
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="header-left">
+				<a class="logo" href="/"> <img src="img/logo-b.png"></img></a>
+				<h2 class="header-title">EPM</h2>
+			</div>
+			<div id="header-right">
+				<div id="menu-bar-left">
+					<div id="menu-bar-right">
+						<div id="menu-bar">
+							<ul class="header-menu">
+								<li>
+									<a href="desktop.html" class="active">Desktop</a>
+								</li>
+								<li>
+									<a href="#">My account</a>
+								</li>
+								<li>
+									<a href="/">Setting</a>
+								</li>
+								<li class="last">
+									<a href="/">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div id="body-wrapper">
+		<div id="body">
+			<ul id="body-tab">
+				<li class="tab" id="tab-desktop"> <a href="desktop.html"> Desktop </a> </li>
+				<li class="tab" id="tab-project"> <a href="myproject.html"> My projects </a> </li>
+				<li class="tab" id="tab-tasks"> <a href="mytasks.html"> My tasks</a> </li>
+				<li class="tab" id="tab-msg"> <a> My messages</a> </li>								
+			</ul>
+			<div class="clear"></div>
+			<div id="body-left">
+				<h1 class="content-title"> Desktop </h1>
+				
+				<div class="table-content">
+					<div class="table-cover">			
+						Project
+					</div>
+					<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
+						<tr>
+							<th width="5%"></th>
+							<th width="35%">Names</th>
+							<th width="30%">Done</th>
+							<th width="15%">Day left</th>
+							<th width="10%">Edit</th>
+						</tr>
+						<tr>
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="/">Project 1 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>	
+						<tr class="odd">
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="/">Project 1 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>				
+					</table>	
+				</div>
+				
+				<div class="table-content">
+					<div class="table-cover">			
+						Tasks
+					</div>
+					<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
+						<tr>
+							<th width="5%"></th>
+							<th width="35%">Tasks</th>
+							<th width="30%">Project</th>
+							<th width="15%">Days left</th>
+							<th width="10%">Edit</th>
+						</tr>
+						<tr>
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="/"> Lorem ipsum </a></td>
+							<td> Pretium vitae odio </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>	
+						<tr class="odd">
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="/"> Lorem ipsum </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>				
+					</table>	
+				</div>		
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus vehicula est at pulvinar. Cras iaculis, neque sit amet viverra semper, libero augue ornare augue, at placerat nunc erat ut metus. Nam vitae ligula eu nisl porttitor egestas eget ac enim. Vestibulum lacinia enim ac sapien sodales eget scelerisque felis vestibulum. Nam blandit turpis a tellus ullamcorper in fermentum sem condimentum. Aenean consequat sagittis magna, ac sodales lacus placerat vitae. Morbi sit amet dolor turpis. Morbi dui ligula, faucibus nec adipiscing quis, sollicitudin ac orci. Praesent mollis consectetur risus, quis semper metus viverra et. In consectetur fringilla augue non lobortis. Nunc lorem lectus, suscipit vulputate consequat non, tincidunt ac nibh. Ut orci eros, tristique eget rutrum ut, pretium vitae odio. 
+				</p>
+			</div>
+			<div id="body-right">
+				<div class="module">
+					<h1>Search</h1>
+					<div class="module-content">
+						<input class="text-search" type="text"/>
+						<input type="button" class="btn-search" value="Go!"/>
+					</div>
+				</div>
+				<div class="module">
+					<h1>User Online</h1>
+					<div class="module-content">
+						<ul class="list">
+							<li><a href="/">Admin</a></li>
+							<li><a href="/">User</a></li>
+							<li><a href="/">Mod</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="footer-wrapper">
+		<div id="footer">
+			<p>copyright by EPM 2009</p>
+		</div>
+	</div>
+</body>
+</html>
