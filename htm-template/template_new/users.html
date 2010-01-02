@@ -8,11 +8,10 @@
 <script type="text/javascript" src="js/curvycorners.js"></script>
 <script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/mce_advanced.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.tab').removeClass('active');
-		$('#tab-project').addClass('active');
+		$('#tab-user').addClass('active');
 
 		$('#tool-add').toggle(function(){
 			$('#form-add').slideDown('fast');
@@ -21,7 +20,7 @@
 		});
 	});
 </script>
-<title>EPM</title>
+<title>EPM - User</title>
 </head>
 <body>
 	<div id="header-wrapper">
@@ -39,10 +38,10 @@
 									<a href="desktop.html" class="active">Desktop</a>
 								</li>
 								<li>
-									<a href="myproject.html">Project</a>
+									<a href="#">My account</a>
 								</li>
 								<li>
-									<a href="/">Setting</a>
+									<a href="#">Setting</a>
 								</li>
 								<li class="last">
 									<a href="/">Logout</a>
@@ -60,56 +59,46 @@
 				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
 				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
 				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
-				<li class="tab" id="tab-user"> <a href="#"> User</a> </li>
-				<li class="tab" id="tab-msg"> <a href="report.html"> Timetracker</a> </li>					
+				<li class="tab" id="tab-user"> <a href="users.html"> User</a> </li>
+				<li class="tab" id="tab-msg"> <a href="report.html"> Timetracker</a> </li>				
 			</ul>
 			<div class="clear"></div>
 			<div id="body-left">
-				<h1 class="content-title"> My Projects </h1>				
+				<h1 class="content-title"> Project / Milestones </h1>				
 				<div class="table-content">
-					<div class="form-ajax" id="form-edit">
-					<h1>Edit Project</h1>
-					<div class="add-poject-form">
+					<div class="table-cover">
+						<div class="cover-buttons-list">
+							<a href="/" class="cover-btn tool-add" id="tool-add">
+								<span>Add</span>
+							</a>
+							<a href="/" class="cover-btn tool-edit">
+								<span>Edit</span>
+							</a>
+							<a href="/" class="cover-btn tool-del">
+								<span>Del</span>
+							</a>
+							<a href="/" class="cover-btn tool-check">
+								<span>Check</span>
+							</a>
+						</div>	
+						People
+					</div>
+<!--				******************** FORM ADD ******************* 	-->
+					<div class="form-ajax" id="form-add" style="display: none;">
+					<h1>Add User</h1>
+					<div class="add-project-form">
 						<form action="" method="POST">
 						<table cellpadding="1" cellspacing="5" border="0" width="100%">
 							<tr>
 								<td width="10%">
-									Name:
+									User:
 								</td>
 								<td width="90%">
-									<input class="form-test" id="input-name" type="text" name="name" style="width: 70%">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Describe
-								</td>
-								<td>
-									<textarea class="form-test" id="input-desc" name="desc" style="width: 100%" cols="20" rows="5"></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Due:
-								</td>
-								<td>
-									<input class="form-test" id="input-due" type="text" name="due" style="width: 70%">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Budget
-								</td>
-								<td>
-									<input class="form-test" id="input-budget" type="text" name="budget" style="width: 70%">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									People
-								</td>
-								<td>
-									
+									<select name="form-user" id="add-user" class="" style="width: 70%">
+										<option>Please Choose</option>
+										<option>User 1</option>
+										<option>User 2</option>
+									</select>									
 								</td>
 							</tr>
 							<tr>
@@ -122,8 +111,34 @@
 						</form>
 					</div>
 				</div>
-				
+				<!-- ******************** END FORM ADD ******************* 	-->
+				<div class="table-grip-wrapper">
+					<div class="grid-content">
+						<div class="grid-items-wrapper">
+							<div class="gi-wrapper" style="position: relative;">
+								<a class="grid-item" href="#">
+									<img alt="" src="img/user-icon-male.png"/>
+									<p>User 1</p>
+								</a>
+								<a href="#" class="grid-item-icon grid-del"><span>del</span></a>
+								<a href="#" class="grid-item-icon grid-edit"><span>edit</span></a>
+							</div>
+							
+							<div class="gi-wrapper" style="position: relative;">
+								<a class="grid-item" href="#">
+									<img alt="" src="img/user-icon-male.png"/>
+									<p>User 1</p>
+								</a>
+								<a href="#" class="grid-item-icon grid-del"><span>del</span></a>
+								<a href="#" class="grid-item-icon grid-edit"><span>edit</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
 				</div>
+			</div>
+				
+				
 			</div>
 			<div id="body-right">
 				<div class="module">
