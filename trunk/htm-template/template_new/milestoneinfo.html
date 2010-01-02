@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.tab').removeClass('active');
-		$('#tab-milestone').addClass('active');
+		$('#tab-task').addClass('active');
 		$('.table-info tr:even > td').addClass('row-odd');
 
 		$('.grid-item').hover(function(){
@@ -69,12 +69,12 @@
 				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
 				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
 				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
-				<li class="tab" id="tab-user"> <a href="#"> User</a> </li>
-				<li class="tab" id="tab-msg"> <a href="#"> Timetracker</a> </li>								
+				<li class="tab" id="tab-user"> <a href="users.html"> User</a> </li>
+				<li class="tab" id="tab-msg"> <a href="report.html"> Timetracker</a> </li>								
 			</ul>
 			<div class="clear"></div>
 			<div id="body-left">
-				<h1 class="content-title"> Milestone 1 </h1>
+				<h1 class="content-title"> Task 1 </h1>
 				<div class="table-content">
 					<table class="table-info" width="100%">
 						<tr>
@@ -85,7 +85,7 @@
 							    <a class="button btn-check" href="/">
 									<span>check</span>
 								</a>
-								<a class="button btn-edit" href="editmilestone.html">
+								<a class="button btn-edit" href="edittask.html">
 									<span>edit</span>
 								</a>	
 								<a class="button btn-del" href="/">
@@ -95,10 +95,10 @@
 						</tr>
 						<tr>
 							<td width="30%">
-								Start:
+								User:
 							</td>
 							<td width="70%">
-							    20/12/2009
+							    Admin
 							</td>
 						</tr>
 						<tr>
@@ -121,17 +121,26 @@
 				</div>
 				
 				<div class="grid-content">
-					<h1 class="sub-title"> Tasklist</h1>
-					<div class="grid-items-wrapper">
-						<a class="grid-item" href="#">
-							<img alt="" src="img/tasklist.png"/>
-							<p>Tasklist 1</p>
-						</a>
-						<a class="grid-item" href="#">
-							<img alt="" src="img/tasklist.png"/>
-							<p>Tasklist 2</p>
-						</a>
+						<div class="grid-items-wrapper">
+							<h1>Tasklist</h1>
+							<div class="gi-wrapper" style="position: relative;">
+								<a class="grid-item" href="#">
+									<img alt="" src="img/tasklist.png"/>
+									<p>User 1</p>
+								</a>
+<!--								<a href="#" class="grid-item-icon grid-del"><span>del</span></a>-->
+							</div>
+							
+							<div class="gi-wrapper" style="position: relative;">
+								<a class="grid-item" href="#">
+									<img alt="" src="img/tasklist.png"/>
+									<p>User 1</p>
+								</a>
+<!--								<a href="#" class="grid-item-icon grid-del"><span>del</span></a>-->
+							</div>
+						</div>
 					</div>
+					<div class="clear"></div>
 				</div>
 			</div>
 			<div id="body-right">

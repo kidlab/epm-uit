@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.tab').removeClass('active');
-		$('#tab-project').addClass('active');
+		$('#tab-tracker').addClass('active');
 
 		$('#tool-add').toggle(function(){
 			$('#form-add').slideDown('fast');
@@ -65,10 +65,11 @@
 	<div id="body-wrapper">
 		<div id="body">
 			<ul id="body-tab">
-				<li class="tab" id="tab-desktop"> <a href="desktop.html"> Desktop </a> </li>
-				<li class="tab" id="tab-project"> <a href="myproject.html"> My projects </a> </li>
-				<li class="tab" id="tab-tasks"> <a href="mytasks.html"> My tasks</a> </li>
-				<li class="tab" id="tab-msg"> <a> My messages</a> </li>							
+				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
+				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
+				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
+				<li class="tab" id="tab-user"> <a href="users.html"> User</a> </li>
+				<li class="tab" id="tab-tracker"> <a href="report.html"> Timetracker</a> </li>						
 			</ul>
 			<div class="clear"></div>
 			<div id="body-left">
@@ -92,70 +93,15 @@
 						</div>	
 						Projects
 					</div>
-<!--				******************** FORM ADD ******************* 	-->
-					<div class="form-ajax" id="form-add" style="display: none;">
-					<h1>Add Project</h1>
-					<div class="add-project-form">
-						<form action="" method="POST">
-						<table cellpadding="1" cellspacing="5" border="0" width="100%">
-							<tr>
-								<td width="10%">
-									Name:
-								</td>
-								<td width="90%">
-									<input class="form-test" id="input-name" type="text" name="name" style="width: 70%">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Describe
-								</td>
-								<td>
-									<textarea class="form-test" id="input-desc" name="desc" style="width: 100%" cols="20" rows="5"></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Due:
-								</td>
-								<td>
-									<input class="form-test" id="input-due" type="text" name="due" style="width: 70%">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Budget
-								</td>
-								<td>
-									<input class="form-test" id="input-budget" type="text" name="budget" style="width: 70%">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									People
-								</td>
-								<td>
-									
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center">
-									<input type="button" name="submit" value="Save">
-									<input type="button" name="submit" value="Cancel">
-								</td>
-							</tr>
-						</table>
-						</form>
-					</div>
-				</div>
-				<!-- ******************** END FORM ADD ******************* 	-->
 				<div class="table-list-wrapper">
 					<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
 						<tr>
 							<th width="5%"></th>
-							<th width="35%">Names</th>
-							<th width="30%">Done</th>
-							<th width="15%">Day left</th>
+							<th width="30%">User</th>
+							<th width="20%">Task</th>
+							<th width="15%">Start</th>
+							<th width="10%">End</th>
+							<th width="10%">Hours</th>
 							<th width="10%">Edit</th>
 						</tr>
 						<tr>
@@ -165,8 +111,10 @@
 								</a>
 							</td>
 							<td> <a href="projectinfo.html">Project 1 </a></td>
-							<td> 50% </td>
-							<td> 50 days</td>
+							<td> <a href="taskinfo.html">Task 1 </a></td>
+							<td> 20/12/2009 </td>
+							<td> 31/12/2009 </td>
+							<td> 40 hours </td>
 							<td>
 								<a class="button btn-edit" href="editproject.html">
 									<span>edit</span>

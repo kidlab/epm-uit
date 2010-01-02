@@ -11,8 +11,14 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.tab').removeClass('active');
-		$('#tab-project').addClass('active');
+		$('#tab-user').addClass('active');
 		$('.table-info tr:even > td').addClass('row-odd');
+
+		$('.grid-item').hover(function(){
+				$(this).addClass('grip-content-hover');
+			},function(){
+				$(this).removeClass('grip-content-hover');
+			});
 	});
 	
 	tinyMCE.init({
@@ -24,7 +30,7 @@
 		theme_advanced_resizing : true
 	});	
 </script>
-<title>EPM - Project Infomation</title>
+<title>EPM - User Infomation</title>
 </head>
 <body>
 	<div id="header-wrapper">
@@ -60,65 +66,62 @@
 	<div id="body-wrapper">
 		<div id="body">
 			<ul id="body-tab">
-				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
-				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
-				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
-				<li class="tab" id="tab-user"> <a href="users.html"> User</a> </li>
-				<li class="tab" id="tab-msg"> <a href="report.html"> Timetracker</a> </li>							
+				<li class="tab" id="tab-user"> <a href="userinfo.html"> User </a> </li>
+				<li class="tab" id="tab-edit"> <a href="edituser.html"> Edit </a> </li>					
 			</ul>
 			<div class="clear"></div>
 			<div id="body-left">
-				<h1 class="content-title"> Project 1 </h1>
-				<div class="table-content">
+				<h1 class="content-title"> User Profile </h1>
+				<div class="table-content" style="border-top: 1px solid #5376A2; border-bottom: 1px solid #5376A2;">
 					<table class="table-info" width="100%">
 						<tr>
-							<td width="30%">
-								Action:
+							<td width="30%" rowspan="5" style="text-align: center;">	
+								<img src="img/no-avatar-male.jpg" alt="avatar" style="border: 1px solid #B0C0DF"/>
 							</td>
-							<td width="70%">
-							    <a class="button btn-check" href="/">
-									<span>check</span>
-								</a>
-								<a class="button btn-edit" href="editproject.html">
-									<span>edit</span>
-								</a>	
+							<td width="20%" class="title-cell">
+								Company:
+							</td>
+							<td width="50%">
+							 	
 							</td>
 						</tr>
 						<tr>
-							<td width="30%">
-								Done:
-							</td>
-							<td width="70%">
-							    50%
-							</td>
-						</tr>
-						<tr>
-							<td>
-								Budget:
+							<td class="title-cell">
+								Email:
 							</td>
 							<td>
-							    1,000,000
+							    example@gmail.com
 							</td>
 						</tr>
 						<tr>
 							<td>
-								Days left:
+								URL:
 							</td>
 							<td>
-							    14 days
+							    
 							</td>
 						</tr>
 						<tr>
 							<td>
-								Describe:
+								Phone:
 							</td>
 							<td>
-							    bla bla bla
+							    0908080808
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Address:
+							</td>
+							<td>
+							    Bình Dương
 							</td>
 						</tr>
 					</table>					
-				</div>
-				<div class="table-content">
+				</div>				
+				
+			<!-- ************************ PROJECT ********************** -->
+			<div class="table-content">
 					<div class="table-cover">
 						<div class="cover-buttons-list">
 							<a href="/" class="cover-btn tool-add" id="tool-add">
@@ -134,49 +137,59 @@
 								<span>Check</span>
 							</a>
 						</div>	
-						Timetracking
+						Projects
 					</div>
-					<div class="form-ajax" id="form-timetracker">
-						<h1>Timetracker</h1>
-						<form>
-							<table width="100%">
-								<tr>
-									<td width="15%">
-										Day
-									</td>
-									<td width="85%">
-										<input id="tt_day" name="day" type="text" style="width: 20%"/>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										Start:
-									</td>
-									<td>
-										<input id="tt_start" name="start" type="text" style="width: 20%">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										End:
-									</td>
-									<td>
-										<input id="tt_end" name="end"  type="text" style="width: 20%">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										Comment:
-									</td>
-									<td>
-										<textarea id="comment" name="comment"  style="width: 20%"></textarea>
-									</td>
-								</tr>
-							</table>
-						</form>
-					</div>
+				<div class="table-list-wrapper">
+					<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
+						<tr>
+							<th width="5%"></th>
+							<th width="35%">Names</th>
+							<th width="30%">Done</th>
+							<th width="15%">Day left</th>
+							<th width="10%">Edit</th>
+						</tr>
+						<tr>
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="projectinfo.html">Project 1 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="editproject.html">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>	
+						<tr class="odd">
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="projectinfo.html">Project 1 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="editproject.html">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>				
+					</table>
 				</div>
+				</div>	
 			</div>
+			
+			
 			<div id="body-right">
 				<div class="module">
 					<h1>Search</h1>
