@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.tab').removeClass('active');
-		$('#tab-user').addClass('active');
+		$('#tab-user-admin').addClass('active');
 
 		$('#tool-add').toggle(function(){
 			$('#form-add').slideDown('fast');
@@ -56,11 +56,9 @@
 	<div id="body-wrapper">
 		<div id="body">
 			<ul id="body-tab">
-				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
-				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
-				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
-				<li class="tab" id="tab-user"> <a href="users.html"> User</a> </li>
-				<li class="tab" id="tab-msg"> <a href="report.html"> Timetracker</a> </li>				
+				<li class="tab" id="tab-project-admin"> <a href="myproject.html">Projects Administration</a> </li>
+				<li class="tab" id="tab-user-admin"> <a href="user_administration.html">Users Administration</a> </li>
+				<li class="tab" id="tab-system-admin"> <a href="system_admin.html">System Administration</a> </li>
 			</ul>
 			<div class="clear"></div>
 			<div id="body-left">
