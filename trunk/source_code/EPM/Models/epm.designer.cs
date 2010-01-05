@@ -30,9 +30,48 @@ namespace EPM.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
+    partial void InsertAction(Action instance);
+    partial void UpdateAction(Action instance);
+    partial void DeleteAction(Action instance);
+    partial void InsertMilestone(Milestone instance);
+    partial void UpdateMilestone(Milestone instance);
+    partial void DeleteMilestone(Milestone instance);
+    partial void InsertMilestone_Assigned(Milestone_Assigned instance);
+    partial void UpdateMilestone_Assigned(Milestone_Assigned instance);
+    partial void DeleteMilestone_Assigned(Milestone_Assigned instance);
+    partial void InsertModule(Module instance);
+    partial void UpdateModule(Module instance);
+    partial void DeleteModule(Module instance);
+    partial void InsertModule_Action(Module_Action instance);
+    partial void UpdateModule_Action(Module_Action instance);
+    partial void DeleteModule_Action(Module_Action instance);
     partial void InsertProject(Project instance);
     partial void UpdateProject(Project instance);
     partial void DeleteProject(Project instance);
+    partial void InsertProject_Assigned(Project_Assigned instance);
+    partial void UpdateProject_Assigned(Project_Assigned instance);
+    partial void DeleteProject_Assigned(Project_Assigned instance);
+    partial void InsertRole(Role instance);
+    partial void UpdateRole(Role instance);
+    partial void DeleteRole(Role instance);
+    partial void InsertRole_Assigned(Role_Assigned instance);
+    partial void UpdateRole_Assigned(Role_Assigned instance);
+    partial void DeleteRole_Assigned(Role_Assigned instance);
+    partial void InsertTask(Task instance);
+    partial void UpdateTask(Task instance);
+    partial void DeleteTask(Task instance);
+    partial void InsertTask_Assigned(Task_Assigned instance);
+    partial void UpdateTask_Assigned(Task_Assigned instance);
+    partial void DeleteTask_Assigned(Task_Assigned instance);
+    partial void InsertTasklist(Tasklist instance);
+    partial void UpdateTasklist(Tasklist instance);
+    partial void DeleteTasklist(Tasklist instance);
+    partial void InsertTime_Tracker(Time_Tracker instance);
+    partial void UpdateTime_Tracker(Time_Tracker instance);
+    partial void DeleteTime_Tracker(Time_Tracker instance);
     #endregion
 		
 		public EpmDataContext() : 
@@ -65,6 +104,54 @@ namespace EPM.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<User> Users
+		{
+			get
+			{
+				return this.GetTable<User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Action> Actions
+		{
+			get
+			{
+				return this.GetTable<Action>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Milestone> Milestones
+		{
+			get
+			{
+				return this.GetTable<Milestone>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Milestone_Assigned> Milestone_Assigneds
+		{
+			get
+			{
+				return this.GetTable<Milestone_Assigned>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Module> Modules
+		{
+			get
+			{
+				return this.GetTable<Module>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Module_Action> Module_Actions
+		{
+			get
+			{
+				return this.GetTable<Module_Action>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Project> Projects
 		{
 			get
@@ -72,10 +159,66 @@ namespace EPM.Models
 				return this.GetTable<Project>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Project_Assigned> Project_Assigneds
+		{
+			get
+			{
+				return this.GetTable<Project_Assigned>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Role> Roles
+		{
+			get
+			{
+				return this.GetTable<Role>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Role_Assigned> Role_Assigneds
+		{
+			get
+			{
+				return this.GetTable<Role_Assigned>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Task> Tasks
+		{
+			get
+			{
+				return this.GetTable<Task>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Task_Assigned> Task_Assigneds
+		{
+			get
+			{
+				return this.GetTable<Task_Assigned>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Tasklist> Tasklists
+		{
+			get
+			{
+				return this.GetTable<Tasklist>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Time_Tracker> Time_Trackers
+		{
+			get
+			{
+				return this.GetTable<Time_Tracker>();
+			}
+		}
 	}
 	
-	[Table(Name="dbo.Project")]
-	public partial class Project : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -84,13 +227,21 @@ namespace EPM.Models
 		
 		private string _name;
 		
-		private string _desc;
+		private string _email;
 		
-		private System.Nullable<System.DateTime> _start;
+		private int _phone;
 		
-		private System.Nullable<System.DateTime> _end;
+		private string _password;
 		
-		private System.Nullable<byte> _status;
+		private string _company;
+		
+		private byte _gender;
+		
+		private string _address;
+		
+		private string _country;
+		
+		private byte _admin;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -100,22 +251,30 @@ namespace EPM.Models
     partial void OnidChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
-    partial void OndescChanging(string value);
-    partial void OndescChanged();
-    partial void OnstartChanging(System.Nullable<System.DateTime> value);
-    partial void OnstartChanged();
-    partial void OnendChanging(System.Nullable<System.DateTime> value);
-    partial void OnendChanged();
-    partial void OnstatusChanging(System.Nullable<byte> value);
-    partial void OnstatusChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void OnphoneChanging(int value);
+    partial void OnphoneChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void OncompanyChanging(string value);
+    partial void OncompanyChanged();
+    partial void OngenderChanging(byte value);
+    partial void OngenderChanged();
+    partial void OnaddressChanging(string value);
+    partial void OnaddressChanged();
+    partial void OncountryChanging(string value);
+    partial void OncountryChanged();
+    partial void OnadminChanging(byte value);
+    partial void OnadminChanged();
     #endregion
 		
-		public Project()
+		public User()
 		{
 			OnCreated();
 		}
 		
-		[Column(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id
 		{
 			get
@@ -135,7 +294,379 @@ namespace EPM.Models
 			}
 		}
 		
-		[Column(Storage="_name", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		[Column(Storage="_name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_email", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_phone", DbType="Int NOT NULL")]
+		public int phone
+		{
+			get
+			{
+				return this._phone;
+			}
+			set
+			{
+				if ((this._phone != value))
+				{
+					this.OnphoneChanging(value);
+					this.SendPropertyChanging();
+					this._phone = value;
+					this.SendPropertyChanged("phone");
+					this.OnphoneChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_password", DbType="VarChar(45) NOT NULL", CanBeNull=false)]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_company", DbType="NVarChar(45)")]
+		public string company
+		{
+			get
+			{
+				return this._company;
+			}
+			set
+			{
+				if ((this._company != value))
+				{
+					this.OncompanyChanging(value);
+					this.SendPropertyChanging();
+					this._company = value;
+					this.SendPropertyChanged("company");
+					this.OncompanyChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_gender", DbType="TinyInt NOT NULL")]
+		public byte gender
+		{
+			get
+			{
+				return this._gender;
+			}
+			set
+			{
+				if ((this._gender != value))
+				{
+					this.OngenderChanging(value);
+					this.SendPropertyChanging();
+					this._gender = value;
+					this.SendPropertyChanged("gender");
+					this.OngenderChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_address", DbType="NVarChar(512)")]
+		public string address
+		{
+			get
+			{
+				return this._address;
+			}
+			set
+			{
+				if ((this._address != value))
+				{
+					this.OnaddressChanging(value);
+					this.SendPropertyChanging();
+					this._address = value;
+					this.SendPropertyChanged("address");
+					this.OnaddressChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_country", DbType="NVarChar(45) NOT NULL", CanBeNull=false)]
+		public string country
+		{
+			get
+			{
+				return this._country;
+			}
+			set
+			{
+				if ((this._country != value))
+				{
+					this.OncountryChanging(value);
+					this.SendPropertyChanging();
+					this._country = value;
+					this.SendPropertyChanged("country");
+					this.OncountryChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_admin", DbType="TinyInt NOT NULL")]
+		public byte admin
+		{
+			get
+			{
+				return this._admin;
+			}
+			set
+			{
+				if ((this._admin != value))
+				{
+					this.OnadminChanging(value);
+					this.SendPropertyChanging();
+					this._admin = value;
+					this.SendPropertyChanged("admin");
+					this.OnadminChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Action")]
+	public partial class Action : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public Action()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Milestone")]
+	public partial class Milestone : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _project_id;
+		
+		private string _name;
+		
+		private string _desc;
+		
+		private System.Nullable<System.DateTime> _start;
+		
+		private System.Nullable<System.DateTime> _end;
+		
+		private System.Nullable<byte> _status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onproject_idChanging(int value);
+    partial void Onproject_idChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OndescChanging(string value);
+    partial void OndescChanged();
+    partial void OnstartChanging(System.Nullable<System.DateTime> value);
+    partial void OnstartChanged();
+    partial void OnendChanging(System.Nullable<System.DateTime> value);
+    partial void OnendChanged();
+    partial void OnstatusChanging(System.Nullable<byte> value);
+    partial void OnstatusChanged();
+    #endregion
+		
+		public Milestone()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_project_id", DbType="Int NOT NULL")]
+		public int project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this.Onproject_idChanging(value);
+					this.SendPropertyChanging();
+					this._project_id = value;
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string name
 		{
 			get
@@ -211,6 +742,1648 @@ namespace EPM.Models
 					this._end = value;
 					this.SendPropertyChanged("end");
 					this.OnendChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_status", DbType="TinyInt")]
+		public System.Nullable<byte> status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Milestone_Assigned")]
+	public partial class Milestone_Assigned : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _milestone_id;
+		
+		private int _user_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onmilestone_idChanging(int value);
+    partial void Onmilestone_idChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    #endregion
+		
+		public Milestone_Assigned()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_milestone_id", DbType="Int NOT NULL")]
+		public int milestone_id
+		{
+			get
+			{
+				return this._milestone_id;
+			}
+			set
+			{
+				if ((this._milestone_id != value))
+				{
+					this.Onmilestone_idChanging(value);
+					this.SendPropertyChanging();
+					this._milestone_id = value;
+					this.SendPropertyChanged("milestone_id");
+					this.Onmilestone_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Module")]
+	public partial class Module : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public Module()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Module_Action")]
+	public partial class Module_Action : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _module_id;
+		
+		private int _action_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onmodule_idChanging(int value);
+    partial void Onmodule_idChanged();
+    partial void Onaction_idChanging(int value);
+    partial void Onaction_idChanged();
+    #endregion
+		
+		public Module_Action()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_module_id", DbType="Int NOT NULL")]
+		public int module_id
+		{
+			get
+			{
+				return this._module_id;
+			}
+			set
+			{
+				if ((this._module_id != value))
+				{
+					this.Onmodule_idChanging(value);
+					this.SendPropertyChanging();
+					this._module_id = value;
+					this.SendPropertyChanged("module_id");
+					this.Onmodule_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_action_id", DbType="Int NOT NULL")]
+		public int action_id
+		{
+			get
+			{
+				return this._action_id;
+			}
+			set
+			{
+				if ((this._action_id != value))
+				{
+					this.Onaction_idChanging(value);
+					this.SendPropertyChanging();
+					this._action_id = value;
+					this.SendPropertyChanged("action_id");
+					this.Onaction_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Project")]
+	public partial class Project : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _name;
+		
+		private System.Nullable<System.DateTime> _start;
+		
+		private System.Nullable<System.DateTime> _end;
+		
+		private System.Nullable<byte> _status;
+		
+		private string _desc;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnstartChanging(System.Nullable<System.DateTime> value);
+    partial void OnstartChanged();
+    partial void OnendChanging(System.Nullable<System.DateTime> value);
+    partial void OnendChanged();
+    partial void OnstatusChanging(System.Nullable<byte> value);
+    partial void OnstatusChanged();
+    partial void OndescChanging(string value);
+    partial void OndescChanged();
+    #endregion
+		
+		public Project()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_name", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_start", DbType="DateTime")]
+		public System.Nullable<System.DateTime> start
+		{
+			get
+			{
+				return this._start;
+			}
+			set
+			{
+				if ((this._start != value))
+				{
+					this.OnstartChanging(value);
+					this.SendPropertyChanging();
+					this._start = value;
+					this.SendPropertyChanged("start");
+					this.OnstartChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[end]", Storage="_end", DbType="DateTime")]
+		public System.Nullable<System.DateTime> end
+		{
+			get
+			{
+				return this._end;
+			}
+			set
+			{
+				if ((this._end != value))
+				{
+					this.OnendChanging(value);
+					this.SendPropertyChanging();
+					this._end = value;
+					this.SendPropertyChanged("end");
+					this.OnendChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_status", DbType="TinyInt")]
+		public System.Nullable<byte> status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[desc]", Storage="_desc", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string desc
+		{
+			get
+			{
+				return this._desc;
+			}
+			set
+			{
+				if ((this._desc != value))
+				{
+					this.OndescChanging(value);
+					this.SendPropertyChanging();
+					this._desc = value;
+					this.SendPropertyChanged("desc");
+					this.OndescChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Project_Assigned")]
+	public partial class Project_Assigned : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _project_id;
+		
+		private int _user_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onproject_idChanging(int value);
+    partial void Onproject_idChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    #endregion
+		
+		public Project_Assigned()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_project_id", DbType="Int NOT NULL")]
+		public int project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this.Onproject_idChanging(value);
+					this.SendPropertyChanging();
+					this._project_id = value;
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[user)id]", Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Role")]
+	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<int> _project_id;
+		
+		private string _name;
+		
+		private byte _admin;
+		
+		private int _moduleAction_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onproject_idChanging(System.Nullable<int> value);
+    partial void Onproject_idChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnadminChanging(byte value);
+    partial void OnadminChanged();
+    partial void OnmoduleAction_idChanging(int value);
+    partial void OnmoduleAction_idChanged();
+    #endregion
+		
+		public Role()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_project_id", DbType="Int")]
+		public System.Nullable<int> project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this.Onproject_idChanging(value);
+					this.SendPropertyChanging();
+					this._project_id = value;
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_admin", DbType="TinyInt NOT NULL")]
+		public byte admin
+		{
+			get
+			{
+				return this._admin;
+			}
+			set
+			{
+				if ((this._admin != value))
+				{
+					this.OnadminChanging(value);
+					this.SendPropertyChanging();
+					this._admin = value;
+					this.SendPropertyChanged("admin");
+					this.OnadminChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_moduleAction_id", DbType="Int NOT NULL")]
+		public int moduleAction_id
+		{
+			get
+			{
+				return this._moduleAction_id;
+			}
+			set
+			{
+				if ((this._moduleAction_id != value))
+				{
+					this.OnmoduleAction_idChanging(value);
+					this.SendPropertyChanging();
+					this._moduleAction_id = value;
+					this.SendPropertyChanged("moduleAction_id");
+					this.OnmoduleAction_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Role_Assigned")]
+	public partial class Role_Assigned : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _user_id;
+		
+		private int _role_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Onrole_idChanging(int value);
+    partial void Onrole_idChanged();
+    #endregion
+		
+		public Role_Assigned()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_role_id", DbType="Int NOT NULL")]
+		public int role_id
+		{
+			get
+			{
+				return this._role_id;
+			}
+			set
+			{
+				if ((this._role_id != value))
+				{
+					this.Onrole_idChanging(value);
+					this.SendPropertyChanging();
+					this._role_id = value;
+					this.SendPropertyChanged("role_id");
+					this.Onrole_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Task")]
+	public partial class Task : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _tasklist_id;
+		
+		private System.DateTime _start;
+		
+		private System.DateTime _end;
+		
+		private string _title;
+		
+		private string _desc;
+		
+		private byte _status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Ontasklist_idChanging(int value);
+    partial void Ontasklist_idChanged();
+    partial void OnstartChanging(System.DateTime value);
+    partial void OnstartChanged();
+    partial void OnendChanging(System.DateTime value);
+    partial void OnendChanged();
+    partial void OntitleChanging(string value);
+    partial void OntitleChanged();
+    partial void OndescChanging(string value);
+    partial void OndescChanged();
+    partial void OnstatusChanging(byte value);
+    partial void OnstatusChanged();
+    #endregion
+		
+		public Task()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_tasklist_id", DbType="Int NOT NULL")]
+		public int tasklist_id
+		{
+			get
+			{
+				return this._tasklist_id;
+			}
+			set
+			{
+				if ((this._tasklist_id != value))
+				{
+					this.Ontasklist_idChanging(value);
+					this.SendPropertyChanging();
+					this._tasklist_id = value;
+					this.SendPropertyChanged("tasklist_id");
+					this.Ontasklist_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_start", DbType="DateTime NOT NULL")]
+		public System.DateTime start
+		{
+			get
+			{
+				return this._start;
+			}
+			set
+			{
+				if ((this._start != value))
+				{
+					this.OnstartChanging(value);
+					this.SendPropertyChanging();
+					this._start = value;
+					this.SendPropertyChanged("start");
+					this.OnstartChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[end]", Storage="_end", DbType="DateTime NOT NULL")]
+		public System.DateTime end
+		{
+			get
+			{
+				return this._end;
+			}
+			set
+			{
+				if ((this._end != value))
+				{
+					this.OnendChanging(value);
+					this.SendPropertyChanging();
+					this._end = value;
+					this.SendPropertyChanged("end");
+					this.OnendChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_title", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string title
+		{
+			get
+			{
+				return this._title;
+			}
+			set
+			{
+				if ((this._title != value))
+				{
+					this.OntitleChanging(value);
+					this.SendPropertyChanging();
+					this._title = value;
+					this.SendPropertyChanged("title");
+					this.OntitleChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[desc]", Storage="_desc", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string desc
+		{
+			get
+			{
+				return this._desc;
+			}
+			set
+			{
+				if ((this._desc != value))
+				{
+					this.OndescChanging(value);
+					this.SendPropertyChanging();
+					this._desc = value;
+					this.SendPropertyChanged("desc");
+					this.OndescChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_status", DbType="TinyInt NOT NULL")]
+		public byte status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Task_Assigned")]
+	public partial class Task_Assigned : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _task_id;
+		
+		private int _user_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Ontask_idChanging(int value);
+    partial void Ontask_idChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    #endregion
+		
+		public Task_Assigned()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_task_id", DbType="Int NOT NULL")]
+		public int task_id
+		{
+			get
+			{
+				return this._task_id;
+			}
+			set
+			{
+				if ((this._task_id != value))
+				{
+					this.Ontask_idChanging(value);
+					this.SendPropertyChanging();
+					this._task_id = value;
+					this.SendPropertyChanged("task_id");
+					this.Ontask_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Tasklist")]
+	public partial class Tasklist : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _project_id;
+		
+		private int _miletone_id;
+		
+		private string _name;
+		
+		private string _desc;
+		
+		private System.DateTime _start;
+		
+		private System.Nullable<System.DateTime> _end;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onproject_idChanging(int value);
+    partial void Onproject_idChanged();
+    partial void Onmiletone_idChanging(int value);
+    partial void Onmiletone_idChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OndescChanging(string value);
+    partial void OndescChanged();
+    partial void OnstartChanging(System.DateTime value);
+    partial void OnstartChanged();
+    partial void OnendChanging(System.Nullable<System.DateTime> value);
+    partial void OnendChanged();
+    #endregion
+		
+		public Tasklist()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_project_id", DbType="Int NOT NULL")]
+		public int project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this.Onproject_idChanging(value);
+					this.SendPropertyChanging();
+					this._project_id = value;
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_miletone_id", DbType="Int NOT NULL")]
+		public int miletone_id
+		{
+			get
+			{
+				return this._miletone_id;
+			}
+			set
+			{
+				if ((this._miletone_id != value))
+				{
+					this.Onmiletone_idChanging(value);
+					this.SendPropertyChanging();
+					this._miletone_id = value;
+					this.SendPropertyChanged("miletone_id");
+					this.Onmiletone_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[desc]", Storage="_desc", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string desc
+		{
+			get
+			{
+				return this._desc;
+			}
+			set
+			{
+				if ((this._desc != value))
+				{
+					this.OndescChanging(value);
+					this.SendPropertyChanging();
+					this._desc = value;
+					this.SendPropertyChanged("desc");
+					this.OndescChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_start", DbType="DateTime NOT NULL")]
+		public System.DateTime start
+		{
+			get
+			{
+				return this._start;
+			}
+			set
+			{
+				if ((this._start != value))
+				{
+					this.OnstartChanging(value);
+					this.SendPropertyChanging();
+					this._start = value;
+					this.SendPropertyChanged("start");
+					this.OnstartChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[end]", Storage="_end", DbType="DateTime")]
+		public System.Nullable<System.DateTime> end
+		{
+			get
+			{
+				return this._end;
+			}
+			set
+			{
+				if ((this._end != value))
+				{
+					this.OnendChanging(value);
+					this.SendPropertyChanging();
+					this._end = value;
+					this.SendPropertyChanged("end");
+					this.OnendChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Time_Tracker")]
+	public partial class Time_Tracker : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _user_id;
+		
+		private int _project_id;
+		
+		private int _task_id;
+		
+		private string _comment;
+		
+		private System.Nullable<System.DateTime> _start;
+		
+		private System.Nullable<System.DateTime> _end;
+		
+		private string _hours;
+		
+		private System.Nullable<byte> _status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Onproject_idChanging(int value);
+    partial void Onproject_idChanged();
+    partial void Ontask_idChanging(int value);
+    partial void Ontask_idChanged();
+    partial void OncommentChanging(string value);
+    partial void OncommentChanged();
+    partial void OnstartChanging(System.Nullable<System.DateTime> value);
+    partial void OnstartChanged();
+    partial void OnendChanging(System.Nullable<System.DateTime> value);
+    partial void OnendChanged();
+    partial void OnhoursChanging(string value);
+    partial void OnhoursChanged();
+    partial void OnstatusChanging(System.Nullable<byte> value);
+    partial void OnstatusChanged();
+    #endregion
+		
+		public Time_Tracker()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_project_id", DbType="Int NOT NULL")]
+		public int project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this.Onproject_idChanging(value);
+					this.SendPropertyChanging();
+					this._project_id = value;
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_task_id", DbType="Int NOT NULL")]
+		public int task_id
+		{
+			get
+			{
+				return this._task_id;
+			}
+			set
+			{
+				if ((this._task_id != value))
+				{
+					this.Ontask_idChanging(value);
+					this.SendPropertyChanging();
+					this._task_id = value;
+					this.SendPropertyChanged("task_id");
+					this.Ontask_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_comment", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string comment
+		{
+			get
+			{
+				return this._comment;
+			}
+			set
+			{
+				if ((this._comment != value))
+				{
+					this.OncommentChanging(value);
+					this.SendPropertyChanging();
+					this._comment = value;
+					this.SendPropertyChanged("comment");
+					this.OncommentChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_start", DbType="DateTime")]
+		public System.Nullable<System.DateTime> start
+		{
+			get
+			{
+				return this._start;
+			}
+			set
+			{
+				if ((this._start != value))
+				{
+					this.OnstartChanging(value);
+					this.SendPropertyChanging();
+					this._start = value;
+					this.SendPropertyChanged("start");
+					this.OnstartChanged();
+				}
+			}
+		}
+		
+		[Column(Name="[end]", Storage="_end", DbType="DateTime")]
+		public System.Nullable<System.DateTime> end
+		{
+			get
+			{
+				return this._end;
+			}
+			set
+			{
+				if ((this._end != value))
+				{
+					this.OnendChanging(value);
+					this.SendPropertyChanging();
+					this._end = value;
+					this.SendPropertyChanged("end");
+					this.OnendChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_hours", DbType="NChar(10)")]
+		public string hours
+		{
+			get
+			{
+				return this._hours;
+			}
+			set
+			{
+				if ((this._hours != value))
+				{
+					this.OnhoursChanging(value);
+					this.SendPropertyChanging();
+					this._hours = value;
+					this.SendPropertyChanged("hours");
+					this.OnhoursChanged();
 				}
 			}
 		}
