@@ -8,4 +8,5 @@
     <h2>
         Sorry, an error occurred while processing your request.
     </h2>
+    <p>Please contact to the site's administrators.</p>
 </asp:Content>
