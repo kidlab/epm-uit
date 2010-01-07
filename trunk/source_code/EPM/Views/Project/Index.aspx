@@ -41,7 +41,7 @@
 						</tr>
 						
 						
-                        <% foreach (var project in Model) { %>
+                        <% if (Model.Count > 0) foreach (var project in Model) { %>
                         <tr>
                             <td></td>
 							<td>
@@ -61,15 +61,15 @@
 								<%= project.start %>
 							</td>
 							<td>
-								<a class="project-edit icon" id="<%= project.id %>"> <span>Edit</span> </a>
-								<a class="project-del icon" id="<%= project.id %>"> <span>Delete</span> </a>
+								<a class="project-edit icon" href="<%= this.Url.RouteUrl(this.ViewContext.RouteData.Values) + "/Edit/" + project.id %>"> <span>Edit</span> </a>
+								<a class="project-del icon" href="<%= this.Url.RouteUrl(this.ViewContext.RouteData.Values) + "/Delete/" + project.id %>"> <span>Delete</span> </a>
 							</td>
                         </tr>
                         <% } %>
 						<tr>
 							<td colspan="5">
 								<div class="table-project-info">
-									<p>aaaaa</p>
+									<p></p>
 									<p class="info-title">
 										Users:
 									</p>

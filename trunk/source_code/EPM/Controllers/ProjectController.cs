@@ -125,5 +125,44 @@ namespace EPM.Controllers
 
              return View(new ProjectFormViewModel(project));
          }
+
+
+         //
+            // HTTP GET: /Dinners/Delete/1
+
+           
+            public ActionResult Delete(int id)
+            {
+
+                Project project = projectRepository.GetProject(id);
+
+                if (project == null)
+                    return View("NotFound");
+
+                projectRepository.Delete(project);
+                projectRepository.Save();
+
+                return View("Index");
+            }
+
+            // 
+            // HTTP POST: /Dinners/Delete/1
+            /*
+            [AcceptVerbs(HttpVerbs.Post)]
+            public ActionResult Delete(int id, string confirmButton)
+            {
+
+                Project project = projectRepository.GetProject(id);
+
+                if (project == null)
+                    return View("NotFound"); 
+                
+                projectRepository.Delete(project);
+                projectRepository.Save();
+
+                return View("Index");
+            }
+             */
     }
+     
 }
