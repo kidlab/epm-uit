@@ -34,7 +34,7 @@ namespace EPM.Controllers
 
             const int pageSize = 10;
 
-            var allMileStones = mileStoneRepository.FindAllMilestones(); 
+            var allMileStones = mileStoneRepository.GetAll(); 
             var paginatedMileStones = new PaginatedList<Milestone>(allMileStones, page ?? 0, pageSize);
 
             return View(paginatedMileStones);
@@ -60,7 +60,7 @@ namespace EPM.Controllers
         public ActionResult Edit(int id)
         {
 
-            Milestone mileStone = mileStoneRepository.GetMilestone(id);
+            Milestone mileStone = mileStoneRepository.GetOne(id);
 
             return View(new MileStoneFormViewModel(mileStone));
         }
@@ -69,7 +69,7 @@ namespace EPM.Controllers
         public ActionResult Edit(int id, FormCollection collection)
         {
 
-            Milestone mileStone = mileStoneRepository.GetMilestone(id);
+            Milestone mileStone = mileStoneRepository.GetOne(id);
 
             try
             {
@@ -134,7 +134,7 @@ namespace EPM.Controllers
         public ActionResult Delete(int id)
         {
 
-            Milestone mileStone = mileStoneRepository.GetMilestone(id);
+            Milestone mileStone = mileStoneRepository.GetOne(id);
 
             if (mileStone == null)
                 return View("NotFound");

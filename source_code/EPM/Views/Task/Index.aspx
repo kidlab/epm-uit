@@ -1,9 +1,9 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<System.Collections.Generic.List<EPM.Models.Project>>"  %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<System.Collections.Generic.List<EPM.Controllers.TaskViewModel>>"  %>
 <asp:Content ID="scriptContent" ContentPlaceHolderID="ScriptContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function(){
 	        $('.tab').removeClass('active');
-	        $('#tab-project').addClass('active');
+	        $('#tab-tasks').addClass('active');
 
 	        $('#tool-add').toggle(function(){
 		        $('#form-add').slideDown('slow');
@@ -14,19 +14,9 @@
     </script>
 </asp:Content>
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    My Projects
+    My Tasks
 </asp:Content>
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-    <%--Changed on 2010-01-07
-    by: ManVHT
-    @desc:
-        - List all project by ProjectList.ascx
-    --%>
-    <% 
-        ViewData["ShowToolButtons"] = true;
-        Html.RenderPartial("ProjectList"); 
-    %>
-    
-    <%-- End changes  --%>
+    <% Html.RenderPartial("TasksList");%>
 </asp:Content>
 

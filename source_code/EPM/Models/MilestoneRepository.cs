@@ -12,27 +12,48 @@ using System.Xml.Linq;
 
 namespace EPM.Models
 {
-    public class MilestoneRepository : IMilestoneRepository
+    /// <summary>
+    /// MilestoneRepository
+    /// </summary>
+    /// <remarks>  
+    /// Changed on 2010-01-09
+    /// By: ManVHT.
+    /// @description:
+    ///     - Inherit from the generic interface IMilestoneRepository and BaseModel.
+    /// </remarks>
+    public class MilestoneRepository : BaseModel, IMilestoneRepository
     {
-        EpmDataContext db = new EpmDataContext();
+        #region CONSTRUCTOR
+
+        public MilestoneRepository()
+            : base()
+        {
+        }
+
+        public MilestoneRepository(EpmDataContext sharedDataContext)
+            : base(sharedDataContext)
+        {
+        }
+
+        #endregion
 
         //
         // Query Methods
 
-        public IQueryable<Milestone> FindAllMilestones()
+        public IQueryable<Milestone> GetAll()
         {
-            return db.Milestones;
+            return _db.Milestones;
         }
 
         public IQueryable<Milestone> FindAllMilestonesByProjectId(int projectId)
         {
-            return from ml in db.Milestones where ml.project_id == projectId select ml;
+            return from ml in _db.Milestones where ml.project_id == projectId select ml;
         }
 
 
-        public Milestone GetMilestone(int id)
+        public Milestone GetOne(int id)
         {
-            return db.Milestones.SingleOrDefault(d => d.id == id);
+            return _db.Milestones.SingleOrDefault(d => d.id == id);
         }
 
         //
@@ -40,21 +61,13 @@ namespace EPM.Models
 
         public void Add(Milestone milestone)
         {
-            db.Milestones.InsertOnSubmit(milestone);
+            _db.Milestones.InsertOnSubmit(milestone);
         }
 
         public void Delete(Milestone milestone)
         {
-            db.Milestones.DeleteOnSubmit(milestone);
+            _db.Milestones.DeleteOnSubmit(milestone);
 
-        }
-
-        //
-        // Persistence 
-
-        public void Save()
-        {
-            db.SubmitChanges();
         }
     }
 }

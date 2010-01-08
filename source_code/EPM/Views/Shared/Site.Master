@@ -1,22 +1,33 @@
 <%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="icon" href="../../Content/images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="../../Content/images/favicon.ico"  type="image/x-icon" />
+    <link rel="icon" href="/Content/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/Content/images/favicon.ico"  type="image/x-icon" />
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-    <link href="../../Content/style.css" type="text/css" rel="stylesheet" />
+    <link href="/Content/style.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="/Scripts/jquery.js"></script>
     <script type="text/javascript" src="/Scripts/curvycorners.js"></script>
-<script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript" src="/Scripts/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            mode: "textareas",
+            theme: "advanced",
+            width: "100%",
+            theme_advanced_toolbar_location: 'top',
+            theme_advanced_toolbar_align: 'left',
+            theme_advanced_resizing: true
+        });	
+	</script>
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
 </head>
 
 <body>
     <div id="header-wrapper"> 
 		<div id="header">
             <div id="header-left">					
-				<a class="logo" href="/"> <img src="../../Content/images/logo-b.png" alt="EPM logo"/></a>
+				<a class="logo" href="/"> <img src="/Content/images/logo-b.png" alt="EPM logo"/></a>
 				<h2 class="header-title">EPM - Easy Project Management</h2>
 				</div>
 			<div id="header-right">										
@@ -25,7 +36,7 @@
 						<div id="menu-bar">
 							<ul class="header-menu">
 								<li>
-									<a id="desktop-menu" href="#" class="active">Desktop</a>
+									<a id="desktop-menu" href="/" class="active">Desktop</a>
 								</li>
 								<li>
 									<a id="account-menu" href="#">My account</a>
@@ -46,16 +57,17 @@
 	</div>
     <div id="body-wrapper">
     <div id="body">
-			<ul id="body-tab">
-				<li class="tab" id="tab-desktop"> <a href="#"> Desktop </a> </li>
-				<li class="tab" id="tab-project"> <a href="#"> My projects </a> </li>
-				<li class="tab" id="tab-tasks"> <a href="#"> My tasks</a> </li>
-				<li class="tab" id="tab-msg"> <a> My messages</a> </li>								
-			</ul>
+        <asp:ContentPlaceHolder ID="BodyTab" runat="server" />
+        <% // Check if the ContentPlaceHolder has no content. If it has no content, render the default tabs.
+            if (!EPM.Helpers.WebUIHelper.ContainsControlsOrCodeBlock(this.BodyTab))
+                Html.RenderPartial("DefaultTabs");
+            
+        %>			
 			<div class="clear"></div>
             <div id="body-left">
+                <h1 class="content-title"> <asp:ContentPlaceHolder ID="ItemTitle" runat="server" /> </h1>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            </div>
+            </div>           
             <div id="body-right">
 			    <div class="module">
 					<h1>Search</h1>
@@ -68,7 +80,7 @@
 					<h1>User Online</h1>
 					<div class="module-content">
 						<ul class="list">
-							<li><a href="#">Admin</a></li>
+							<li><a href="#">admin</a></li>
 						</ul>
 					</div>
 				</div>
