@@ -22,12 +22,20 @@ namespace EPM.Models
             get { return (GetRuleViolations().Count() == 0); }
         }
 
-         public IEnumerable<RuleViolation> GetRuleViolations() 
-         {
-             if (String.IsNullOrEmpty(name))
+        public IEnumerable<RuleViolation> GetRuleViolations()
+        {
+            if (String.IsNullOrEmpty(name))
                 yield return new RuleViolation("Name required", "Name");
-            yield break; 
-         } 
+            yield break;
+        }
+
+        public int GetDayLeft()
+        {
+            if (start == null || end == null)
+                return 0;
+
+            return (int)start.Value.Subtract(end.Value).TotalDays;
+        }
     } 
 }
  

@@ -12,15 +12,18 @@ using System.Xml.Linq;
 
 namespace EPM.Models
 {
-    public interface IMilestoneRepository
+    /// <summary>
+    /// IMilestoneRepository
+    /// </summary>
+    /// <remarks>  
+    /// Changed on 2010-01-09
+    /// By: ManVHT.
+    /// @description:
+    ///     - Inherit from the generic interface IRepository<T>.
+    ///     - Changed names of methods.
+    /// </remarks>
+    public interface IMilestoneRepository : IRepository<Milestone>
     {
-        IQueryable<Milestone> FindAllMilestones();
         IQueryable<Milestone> FindAllMilestonesByProjectId(int projectId);
-        Milestone GetMilestone(int id);
-
-        void Add(Milestone milestone);
-        void Delete(Milestone milestone);
-
-        void Save();
     }
 }
