@@ -9,20 +9,25 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using Common;
 
 namespace EPM.Models
 {
     /// <summary>
-    /// MilestoneRepository
-    /// </summary>
-    /// <remarks>  
-    /// Changed on 2010-01-09
+    /// Changed on 2010-01-06
     /// By: ManVHT.
-    /// @description:
-    ///     - Inherit from the generic interface IMilestoneRepository and BaseModel.
-    /// </remarks>
+    /// @description: 
+    ///     - Inherit from BaseModel.
+    ///     - Add try{}catch{}
+    /// </summary>
     public class MilestoneRepository : BaseModel, IMilestoneRepository
     {
+        /**
+         * Add on 2010-01-07
+         * by: ManVHT.
+         * @description:
+         *      Constructor region.
+         */
         #region CONSTRUCTOR
 
         public MilestoneRepository()
@@ -37,23 +42,114 @@ namespace EPM.Models
 
         #endregion
 
+        /** End changes */
+
         //
         // Query Methods
 
         public IQueryable<Milestone> GetAll()
         {
-            return _db.Milestones;
-        }
+            /**
+             * Changed on 2010-01-07
+             * By: ManVHT.
+             * @description:
+             *      Because LINQ doesn't update changes until DataContext refreshes, we should refresh to get new data.
+             */
+            _refreshDataContext();
 
-        public IQueryable<Milestone> FindAllMilestonesByProjectId(int projectId)
-        {
-            return from ml in _db.Milestones where ml.project_id == projectId select ml;
+            /* End changes */
+
+            return _db.Milestones;
         }
 
 
         public Milestone GetOne(int id)
         {
-            return _db.Milestones.SingleOrDefault(d => d.id == id);
+            try
+            {
+                _refreshDataContext();
+                return _db.Milestones.SingleOrDefault(d => d.id == id);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
+        public IQueryable<Milestone> GetMilestonesByUserProjectId(int userID,int projectId, int pageIndex, int pageSize)
+        {
+            try
+            {
+                var query = GetMilestonesByUserProjectId(userID,projectId);
+
+                return query.Skip(pageIndex * pageSize).Take(pageSize);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
+        public IQueryable<Milestone> GetMilestonesByUser(int userID)
+        {
+            try
+            {
+                _refreshDataContext();
+
+                var query =
+                    from milestone in _db.Milestones
+                    join milestone_assigned in _db.Milestone_Assigneds
+                    on milestone.id equals milestone_assigned.milestone_id
+                    where milestone_assigned.user_id == userID
+                    select milestone;
+
+                return query;
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
+        public IQueryable<Milestone> GetMilestonesByUserProjectId(int userID, int projectId)
+        {
+            try
+            {
+                _refreshDataContext();
+
+                var query =
+                    from milestone in _db.Milestones
+                    join milestone_assigned in _db.Milestone_Assigneds
+                    on milestone.id equals milestone_assigned.milestone_id
+                    where milestone_assigned.user_id == userID 
+                    && milestone.project_id == projectId
+                    select milestone;
+
+                return query;
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
+        public IQueryable<Milestone> GetMilestones(int pageIndex, int pageSize)
+        {
+            try
+            {
+                _refreshDataContext();
+
+                return _db.Milestones.Skip(pageIndex * pageSize).Take(pageSize);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
         }
 
         //
@@ -61,13 +157,28 @@ namespace EPM.Models
 
         public void Add(Milestone milestone)
         {
-            _db.Milestones.InsertOnSubmit(milestone);
+            try
+            {
+                _db.Milestones.InsertOnSubmit(milestone);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
         }
 
         public void Delete(Milestone milestone)
         {
-            _db.Milestones.DeleteOnSubmit(milestone);
-
+            try
+            {
+                _db.Milestones.DeleteOnSubmit(milestone);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
         }
     }
 }

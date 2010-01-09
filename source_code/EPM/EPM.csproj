@@ -413,6 +413,10 @@
     <Content Include="Scripts\tiny_mce\utils\form_utils.js" />
     <Content Include="Scripts\tiny_mce\utils\mctabs.js" />
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
+    <Content Include="Views\Milestone\Edit.aspx" />
+    <Content Include="Views\Milestone\Index.aspx" />
+    <Content Include="Views\Milestone\MilestoneForm.ascx" />
+    <Content Include="Views\Milestone\MilestoneList.ascx" />
     <Content Include="Views\Project\ManageProject.aspx" />
     <Content Include="Views\Project\ProjectList.ascx" />
     <Content Include="Views\Project\Edit.aspx" />
