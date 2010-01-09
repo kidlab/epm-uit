@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<link href="css/calendar.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/curvycorners.js"></script>
+<script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.tab').removeClass('active');
+		$('#tab-user').addClass('active');
+
+		$('#tool-add').toggle(function(){
+			$('#form-add').slideDown('fast');
+		}, function(){
+			$('#form-add').slideUp('fast');
+		});
+	});
+</script>
+<title>EPM - User</title>
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="header-left">
+				<a class="logo" href="/"> <img src="img/logo-b.png"></img></a>
+				<h2 class="header-title">EPM</h2>
+			</div>
+			<div id="header-right">
+				<div id="menu-bar-left">
+					<div id="menu-bar-right">
+						<div id="menu-bar">
+							<ul class="header-menu">
+								<li>
+									<a href="desktop.html" class="active">Desktop</a>
+								</li>
+								<li>
+									<a href="#">My account</a>
+								</li>
+								<li>
+									<a href="#">Setting</a>
+								</li>
+								<li class="last">
+									<a href="/">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div id="body-wrapper">
+		<div id="body">
+			<ul id="body-tab">
+				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
+				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
+				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
+				<li class="tab" id="tab-user"> <a href="users.html"> User</a> </li>
+				<li class="tab" id="tab-msg"> <a href="report.html"> Timetracker</a> </li>				
+			</ul>
+			<div class="clear"></div>
+			<div id="body-left">
+				<h1 class="content-title"> Project / User </h1>	
+				<div class="calendar-wrapper"> 	
+				<table width="294" border="1">
+					<tbody>
+						<tr>
+							<th colspan="7">January 2010</th>
+						</tr>
+						<tr class="header">
+							<td width="42">S</td>
+							<td width="42">M</td>
+							<td width="42">T</td>
+							<td width="42">W</td>
+							<td width="42">T</td>
+							<td width="42">F</td>
+							<td width="42">S</td>
+						</tr>
+						<tr>
+							<td/>
+							<td/>
+							<td/>
+							<td/>
+							<td/>
+							<td> 1 </td>
+							<td> 2 </td>
+						</tr>
+						<tr>
+							<td> 3 </td>
+							<td> 4 </td>
+							<td> 5 </td>
+							<td> 6 </td>
+							<td> 7 </td>
+							<td> 8 </td>
+							<td class="link"> 9 </td>
+						</tr>
+						<tr>
+							<td> 10 </td>
+							<td> 11 </td>
+							<td> 12 </td>
+							<td> 13 </td>
+							<td> 14 </td>
+							<td> 15 </td>
+							<td> 16 </td>
+						</tr>
+						<tr>
+							<td> 17 </td>
+							<td> 18 </td>
+							<td> 19 </td>
+							<td> 20 </td>
+							<td> 21 </td>
+							<td> 22 </td>
+							<td> 23 </td>
+						</tr>
+						<tr>
+							<td> 24 </td>
+							<td> 25 </td>
+							<td> 26 </td>
+							<td> 27 </td>
+							<td> 28 </td>
+							<td> 29 </td>
+							<td> 30 </td>
+						</tr>
+						<tr>
+							<td> 31 </td>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+							<td> </td>
+						</tr>
+					</tbody>
+				</table>
+				</div>		
+				
+			</div>
+			<div id="body-right">
+				<div class="module">
+					<h1>Search</h1>
+					<div class="module-content">
+						<input class="text-search" type="text"/>
+						<input type="button" class="btn-search" value="Go!"/>
+					</div>
+				</div>
+				<div class="module">
+					<h1>User Online</h1>
+					<div class="module-content">
+						<ul class="list">
+							<li><a href="/">Admin</a></li>
+							<li><a href="/">User</a></li>
+							<li><a href="/">Mod</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="footer-wrapper">
+		<div id="footer">
+			<p>copyright by EPM 2009</p>
+		</div>
+	</div>
+</body>
+</html>
