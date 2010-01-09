@@ -16,14 +16,34 @@ namespace EPM
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+           /* routes.Add(
+                new Route
+                {
+                    Url = "Milestone/[projectId]",
+                    Defaults = new { controller = "Milestone", action = "Index", projectId = 0 },
+                    RouteHandler = typeof(MvcRouteHandler)
+                }
+                ); */
+            /*
+            routes.MapRoute(
+                "Milestone",
+                "Milestone/Index/[projectId]",
+                new { controller = "Milestone", action = "Index", projectId="" }
+             );
+            routes.MapRoute(
+               "Milestone",
+               "Milestone/{action}/{id}",
+               new { controller = "Milestone", action = "Edit", id = "" }
+           );
+             */
             routes.MapRoute(
                 "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+                "{controller}/{action}/{projectId}/{id}",                           // URL with parameters
+                new { controller = "Home", action = "Index", projectId="", id = "" }  // Parameter defaults
             );
-
+             
         }
 
         protected void Application_Start()

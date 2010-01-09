@@ -16,14 +16,15 @@ namespace EPM.Models
     /// IMilestoneRepository
     /// </summary>
     /// <remarks>  
-    /// Changed on 2010-01-09
-    /// By: ManVHT.
+    /// Changed on 2010-01-09 / 6:39PM
+    /// By: HaiLD.
     /// @description:
     ///     - Inherit from the generic interface IRepository<T>.
     ///     - Changed names of methods.
     /// </remarks>
     public interface IMilestoneRepository : IRepository<Milestone>
     {
-        IQueryable<Milestone> FindAllMilestonesByProjectId(int projectId);
+        //IQueryable<Milestone> FindAllMilestonesByProjectId(int projectId);
+        IQueryable<Milestone> GetMilestonesByUserProjectId(int userID,int projectId, int pageIndex, int pageSize);
     }
 }

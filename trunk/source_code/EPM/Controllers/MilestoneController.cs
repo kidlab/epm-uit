@@ -6,39 +6,31 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using EPM.Models;
 using EPM.Helpers;
+using Common;
 
 namespace EPM.Controllers
 {
-    public class MileStoneFormViewModel
+    public class MilestoneFormViewModel
     {
         // Properties
-        public Milestone MileStone { get; private set; }
+        public Milestone Milestone { get; private set; }
 
         // Constructor
-        public MileStoneFormViewModel(Milestone mileStone)
+        public MilestoneFormViewModel(Milestone milestone)
         {
-            MileStone = mileStone;
-
+            Milestone = milestone;
         }
     }
+
+    /// <summary>
+    /// Changed on 2010-01-09
+    /// By: HaiLD.
+    /// @description: 
+    ///     - Stop using PaginatedList.
+    /// </summary>
     public class MilestoneController : Controller
     {
-
-        IMilestoneRepository mileStoneRepository;
-
-        //
-        // GET: /MileStone/
-
-        public ActionResult Index(int? page, int? projectId)
-        {
-
-            const int pageSize = 10;
-
-            var allMileStones = mileStoneRepository.GetAll(); 
-            var paginatedMileStones = new PaginatedList<Milestone>(allMileStones, page ?? 0, pageSize);
-
-            return View(paginatedMileStones);
-        }
+        private IMilestoneRepository milestoneRepository;
 
         public MilestoneController()
             : this(new MilestoneRepository())
@@ -47,12 +39,47 @@ namespace EPM.Controllers
 
         public MilestoneController(IMilestoneRepository repository)
         {
-            mileStoneRepository = repository;
+            milestoneRepository = repository;
         }
 
+        //
+        // GET: /Milestone/
+
+        public ActionResult Index(int? page, int? projectId, int? id)
+        {
+            List<Milestone> allMilestones = new List<Milestone>();
+
+            try
+            {
+                const int pageSize = 10;
+
+                /**
+                * Changed on 2010-01-06
+                * By: ManVHT.
+                * @description:
+                *      - Stop using PaginatedList.
+                 *     - User should be stored in session.
+                */
+                /* Start changes */
+                User currentUser = this.Session["user"] as User;
+                
+               
+                if (currentUser != null)
+                    allMilestones = milestoneRepository.GetMilestonesByUserProjectId(currentUser.id,projectId ?? 0, page ?? 0, pageSize).ToList();
+                //var paginatedMilestones = new PaginatedList<Milestone>(allMilestones, page ?? 0, pageSize);
+                /* End changes.*/
+
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneController), exc);
+            }
+
+            return View(allMilestones);
+        }
 
         /// <summary>
-        ///  nedd for login  [Authorize]
+        ///  Need for login  [Authorize]
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -60,51 +87,51 @@ namespace EPM.Controllers
         public ActionResult Edit(int id)
         {
 
-            Milestone mileStone = mileStoneRepository.GetOne(id);
-
-            return View(new MileStoneFormViewModel(mileStone));
+            Milestone milestone = milestoneRepository.GetOne(id);
+            return View(new MilestoneFormViewModel(milestone));
         }
 
+        [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(int id, FormCollection collection)
         {
 
-            Milestone mileStone = mileStoneRepository.GetOne(id);
+            Milestone milestone = milestoneRepository.GetOne(id);
+           
 
             try
             {
-                UpdateModel(mileStone);
+                UpdateModel(milestone);
 
-                mileStoneRepository.Save();
+                milestoneRepository.Save();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index/" + milestone.project_id);
             }
             catch
             {
-                //ModelState.AddModelErrors(mileStone.GetRuleViolations());
+                //ModelState.AddModelErrors(milestone.GetRuleViolations());
 
-                return View(new MileStoneFormViewModel(mileStone));
+                return View(new MilestoneFormViewModel(milestone));
             }
         }
 
         //
         // GET: /Dinners/Create
 
-
         public ActionResult Create()
         {
 
-            Milestone mileStone = new Milestone();
+            Milestone milestone = new Milestone();
 
 
-            return View(new MileStoneFormViewModel(mileStone));
+            return View(new MilestoneFormViewModel(milestone));
         }
 
         //
         // POST: /Dinners/Create
-
+        [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(Milestone mileStone)
+        public ActionResult Create(Milestone milestone)
         {
 
             if (ModelState.IsValid)
@@ -112,37 +139,36 @@ namespace EPM.Controllers
 
                 try
                 {
-                    mileStoneRepository.Add(mileStone);
-                    mileStoneRepository.Save();
+                    milestoneRepository.Add(milestone);
+                    milestoneRepository.Save();
 
                     return RedirectToAction("Index");
                 }
                 catch
                 {
-                    // ModelState.AddModelErrors(mileStone.GetRuleViolations());
+                    // ModelState.AddModelErrors(milestone.GetRuleViolations());
                 }
             }
 
-            return View(new MileStoneFormViewModel(mileStone));
+            return View(new MilestoneFormViewModel(milestone));
         }
 
-
         //
-        // HTTP GET: /Dinners/Delete/1
+        // HTTP GET: /Milestone/Delete/1
 
 
         public ActionResult Delete(int id)
         {
 
-            Milestone mileStone = mileStoneRepository.GetOne(id);
+            Milestone milestone = milestoneRepository.GetOne(id);
 
-            if (mileStone == null)
+            if (milestone == null)
                 return View("NotFound");
 
-            mileStoneRepository.Delete(mileStone);
-            mileStoneRepository.Save();
+            milestoneRepository.Delete(milestone);
+            milestoneRepository.Save();
 
-            return View("Index");
+            return RedirectToAction("Milestone");
         }
 
         // 
@@ -152,17 +178,25 @@ namespace EPM.Controllers
         public ActionResult Delete(int id, string confirmButton)
         {
 
-            MileStone mileStone = mileStoneRepository.GetMileStone(id);
+            Milestone milestone = milestoneRepository.GetMilestone(id);
 
-            if (mileStone == null)
+            if (milestone == null)
                 return View("NotFound"); 
                 
-            mileStoneRepository.Delete(mileStone);
-            mileStoneRepository.Save();
+            milestoneRepository.Delete(milestone);
+            milestoneRepository.Save();
 
             return View("Index");
         }
-         */
-    }
+        */
 
+        //
+        // GET: /Milestone/ManageMilestone/1
+
+        public ActionResult ManageMilestone(int id)
+        {
+            Milestone milestone = milestoneRepository.GetOne(id);
+            return View(new MilestoneFormViewModel(milestone));
+        }
+    }
 }
