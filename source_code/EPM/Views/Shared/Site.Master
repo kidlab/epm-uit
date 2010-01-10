@@ -60,8 +60,7 @@
         <asp:ContentPlaceHolder ID="BodyTab" runat="server" />
         <% // Check if the ContentPlaceHolder has no content. If it has no content, render the default tabs.
             if (!EPM.Helpers.WebUIHelper.ContainsControlsOrCodeBlock(this.BodyTab))
-                Html.RenderPartial("DefaultTabs");
-            
+                Html.RenderPartial("DefaultTabs");            
         %>			
 			<div class="clear"></div>
             <div id="body-left">
