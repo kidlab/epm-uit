@@ -7,15 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1 class="content-title"> System / User Administration </h1>	
-    <%
-        ViewData["ShowToolButtons"] = true;
-        Html.RenderPartial("UserList");
-    %>
-    
-    <%
-        ViewData["ShowToolButtons"] = true;
-        Html.RenderPartial("UserRole");
-    %>
+    <% ViewData["ShowToolButtons"] = true; %>
+        <div id="ajaxUserList">
+        </div>    
+    <% Html.RenderPartial("UserRole"); %>
 
 </asp:Content>
 
@@ -24,12 +19,8 @@
         $(document).ready(function() {
             $('.tab').removeClass('active');
             $('#tab-user-admin').addClass('active');
-
-            $('#tool-add').toggle(function() {
-                $('#form-add').slideDown('fast');
-            }, function() {
-                $('#form-add').slideUp('fast');
-            });
+            /// ToanNM: Load user list ajax content
+            $("#ajaxUserList").load('/Admin/AjaxUserList/');
         });
     </script>
 </asp:Content>

@@ -1,16 +1,20 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Controllers.UserProfileViewModel>" %>
+
+<% 
+    var user = Model.user;
+%>
 
 <div class="table-content" style="border-top: 1px solid #5376A2; border-bottom: 1px solid #5376A2;">
 	<table class="table-info" width="100%">
 		<tr>
 			<td width="30%" rowspan="5" style="text-align: center;">	
-				<img src="img/no-avatar-male.jpg" alt="avatar" style="border: 1px solid #B0C0DF"/>
+				<img src="/Content/images/no-avatar-male.jpg" alt="avatar" style="border: 1px solid #B0C0DF"/>
 			</td>
 			<td width="20%" class="title-cell">
 				Company:
 			</td>
 			<td width="50%">
-			 	
+			 	<%= user.company%>
 			</td>
 		</tr>
 		<tr>
@@ -18,7 +22,7 @@
 				Email:
 			</td>
 			<td>
-			    example@gmail.com
+			    <%= user.email%>
 			</td>
 		</tr>
 		<tr>
@@ -34,7 +38,7 @@
 				Phone:
 			</td>
 			<td>
-			    0908080808
+			    <%= user.phone%>
 			</td>
 		</tr>
 		<tr>
@@ -42,7 +46,7 @@
 				Address:
 			</td>
 			<td>
-			    Bình Dương
+			    <%= user.address%>
 			</td>
 		</tr>
 	</table>					
