@@ -1,32 +1,51 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<EPM.Controllers.UserProfileViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	UserView
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <% 
+        if (Model != null)
+        {
+            var user = Model.user;
+        
+    %>
 
-    <h1 class="content-title"> System / User Infomation </h1>	
+    <h1 class="content-title"> User Profile: <%=  user.name%> </h1>	
     <%
         ViewData["ShowToolButtons"] = true;
-        Html.RenderPartial("UserList");
+        Html.RenderPartial("UserInfo");
     %>    
+        <div id="userId" style="display:none"><%=user.id%></div>
+        <div id="ajaxProjectList">
+        </div>
+    <% }
+       else{
+    %>
+        <h1 class="content-title"> No user found! </h1>	
+    <%
+       }    
+    %>
 
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <script type="text/javascript">
-	    $(document).ready(function(){
-		    $('.tab').removeClass('active');
-		    $('#tab-user').addClass('active');
-		    $('.table-info tr:even > td').addClass('row-odd');
+        $(document).ready(function() {
+            $('.tab').removeClass('active');
+            $('#tab-user').addClass('active');
+            $('.table-info tr:even > td').addClass('row-odd');
 
-		    $('.grid-item').hover(function(){
-				    $(this).addClass('grip-content-hover');
-			    },function(){
-				    $(this).removeClass('grip-content-hover');
-			    });
-	    });
+            $('.grid-item').hover(function() {
+                $(this).addClass('grip-content-hover');
+            }, function() {
+                $(this).removeClass('grip-content-hover');
+            });
+
+            var userId = $("#userId").html();
+            $('#ajaxProjectList').load('/Admin/AjaxProjectsByUserView/id/' + userId);
+        });
     	
 	    tinyMCE.init({
 		    mode : "textareas",

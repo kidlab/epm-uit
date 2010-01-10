@@ -414,10 +414,12 @@
     <Content Include="Scripts\tiny_mce\utils\form_utils.js" />
     <Content Include="Scripts\tiny_mce\utils\mctabs.js" />
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
+    <Content Include="Views\Admin\AjaxProjectsByUserView.ascx" />
+    <Content Include="Views\Admin\UserAdd.aspx" />
     <Content Include="Views\Admin\UserAdmin.aspx" />
     <Content Include="Views\Admin\UserForm.ascx" />
     <Content Include="Views\Admin\UserInfo.ascx" />
-    <Content Include="Views\Admin\UserList.ascx" />
+    <Content Include="Views\Admin\AjaxUserList.ascx" />
     <Content Include="Views\Admin\UserRole.ascx" />
     <Content Include="Views\Admin\UserView.aspx" />
     <Content Include="Views\Milestone\Edit.aspx" />

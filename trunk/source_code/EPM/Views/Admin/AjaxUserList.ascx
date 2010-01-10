@@ -1,21 +1,25 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Controllers.UserIndexViewModel>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Helpers.PaginatedList<EPM.Models.User>>" %>
 
 <% 
-    if (Model.Users.Count > 0)
+    if ( Model.Count > 0)
     {
-        var users = Model.Users.ToArray();
-    }
+        var users = Model.ToArray();
 %>
+
+<script type="text/javascript">
+    // ToanNM
+    // show add new user 
+    $(document).ready(function() {
+    });
+</script>
+
 <div class="table-content">
 		<div class="table-cover">
-			<% if (ViewData["ShowToolButtons"] != null
-                && (bool)ViewData["ShowToolButtons"] == true)
-            {// Show toolstrip buttons.%>
             <div class="cover-buttons-list">
-		        <a href="#" class="cover-btn tool-add" id="tool-add">
+		        <a href="/Admin/UserAdd/" class="cover-btn tool-add" id="tool-add">
 			        <span>Add</span>
 		        </a>
-		        <a href="/" class="cover-btn tool-edit">
+		        <%--<a href="/" class="cover-btn tool-edit">
 			        <span>Edit</span>
 		        </a>
 		        <a href="/" class="cover-btn tool-del">
@@ -23,15 +27,14 @@
 		        </a>
 		        <a href="/" class="cover-btn tool-check">
 			        <span>Check</span>
-		        </a>
+		        </a>--%>
 	        </div>	
-            <%}%>
 			User Administration
 		</div>
 <!--				******************** FORM ADD ******************* 	-->
 		<div class="form-ajax" id="form-add" style="display: none;">
 		    <% 
-		        Html.RenderPartial("UserForm"); 
+		        //Html.RenderPartial("UserForm"); 
 		    %>
 	    </div>
 	<!-- ******************** END FORM ADD ******************* 	-->
@@ -41,9 +44,9 @@
 			    <%
                     foreach (var item in users)
                     {
-                        string linkView = "/Admin/UserView/" + item.id;
-                        string linkEdit = "/Admin/UserEdit/" + item.id;
-                        string linkDel  = "/Admin/UserDel/" + item.id;
+                        string linkView = "/Admin/UserView/id/" + item.id;
+                        string linkEdit = "/Admin/UserEdit/id/" + item.id;
+                        string linkDel  = "/Admin/UserDel/id/" + item.id;
                         %>
                         <div class="gi-wrapper" style="position: relative;">
 					        <a class="grid-item" href="<%= linkView%>">
@@ -76,3 +79,4 @@
 		<div class="clear"></div>
 	</div>
 </div>
+<% } %>

@@ -46,6 +46,10 @@ namespace EPM.Controllers
         public UserProfileViewModel() { }
     }
 
+    public class ajaxProjectsByUserViewModel { 
+        
+    }
+
     /// <summary>
     /// Changed on 10/1/2009
     /// by: ToanNM
@@ -65,6 +69,8 @@ namespace EPM.Controllers
             Redirect("/admin/useradmin");
             return View();
         }
+
+        #region USER_ADMIN
 
         //
         // GET: /Admin/useradmin
@@ -94,17 +100,123 @@ namespace EPM.Controllers
         public ActionResult UserView(int? id) {
             User user = null;
             PaginatedList<Models.Project> projects = null;
+            UserProfileViewModel viewModel = null;
             try
             {
                 if (id != null)
+                {
                     user = userRespository.getUserById(id.Value);
+                    projects = new PaginatedList<Project>(projectRespository.GetProjectsByUser(id.Value),
+                        0, 10);
+
+                    viewModel = new UserProfileViewModel(user, projects);
+                }
                 else
                     return View();
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
+            return View(viewModel);
+        }
 
-                projects = new PaginatedList<Project>(projectRespository.GetProjectsByUser(id.Value),
-                    0, 10);
+        //
+        // GET /Admin/AjaxProjectView
+        public ActionResult AjaxUserList(int? page) {
+            PaginatedList<Models.User> users = null;
+            try
+            {
+                int pageSize = 10;
+                users = new PaginatedList<User>(userRespository.GetAll(), page ?? 0, pageSize);
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
+            return View(users);
+        }
 
-                UserProfileViewModel viewModel = new UserProfileViewModel(user, projects);
+        //
+        // GET /Admin/AjaxProjectView
+        public ActionResult AjaxProjectsByUserView(int? id) {
+            PaginatedList<Models.Project> projects = null;
+            try
+            {
+                if (id != null)
+                {
+                    projects = new PaginatedList<Project>(projectRespository.GetProjectsByUser(id.Value),
+                        0, 10);
+                }
+                else
+                    return View();
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
+            return View(projects);
+        }
+
+        //
+        // GET /Admin/AjaxUserAdd
+        public ActionResult UserAdd()
+        {            
+            return View();
+        }
+
+        //
+        // GET /Admin/AjaxUserAdd
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UserAdd(FormCollection form){
+            Models.User user = new User();
+            string password = "";
+            string repeatPassword = "";
+            List<String> errorMessage = new List<string>();
+            errorMessage.Clear();
+            try
+            {
+                user.name = Request.Form["username"];
+                user.company = Request.Form["company"];
+                user.email = Request.Form["email"];
+                user.phone = Request.Form["phone"];
+                user.address = Request.Form["address"];
+                user.country = Request.Form["country"];
+                user.gender = Byte.Parse(Request.Form["gender"]);
+                password = Request.Form["password"];
+                repeatPassword = Request.Form["repeatpassword"];
+                user.password = password;
+                //validate
+                if (user.name == null || user.name == "")
+                    errorMessage.Add("Name require");
+                if (user.email == null || user.email == "")
+                    errorMessage.Add("Email require");
+                if (user.phone == null || user.phone == "")
+                    errorMessage.Add("Phone number require");
+                if (user.address == null || user.address == "")
+                    errorMessage.Add("Address require");
+                if (password == null || password != repeatPassword || password == "")
+                    errorMessage.Add("Password does not match");
+                try
+                {
+                    int.Parse(user.phone);
+                }
+                catch 
+                {
+                    errorMessage.Add("Phone is invalid");
+                }
+
+                // summary
+                if (errorMessage.Count == 0)
+                {
+                    userRespository.Add(user);
+                    userRespository.Save();
+                    return Redirect("/Admin/UserAdmin");
+                }
+                else {
+                    ViewData["errors"] = errorMessage;
+                }
             }
             catch (Exception ex)
             {
@@ -112,5 +224,7 @@ namespace EPM.Controllers
             }
             return View(user);
         }
+
+        #endregion
     }
 }
