@@ -79,6 +79,43 @@ namespace EPM.Models
                 throw new DbAccessException(exc);
             }
         }
+        /// <summary>
+        /// changed on 10/1/2009
+        /// by: ToanNM
+        /// - get all User with pagination
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public IQueryable<User> GetAllUsers(int pageIndex, int pageSize)
+        {
+            try
+            {
+                var query = GetAll();
+
+                return query.Skip(pageIndex * pageSize).Take(pageSize);
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(UserRepository), ex);
+                throw new DbAccessException(ex);
+            }
+
+        }
+
+        public User getUserById(int id) {
+            try
+            {
+                var query = GetOne(id);
+
+                return query;
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(UserRepository), ex);
+                throw new DbAccessException(ex);
+            }
+        }
 
         #endregion
 
