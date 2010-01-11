@@ -62,6 +62,15 @@ namespace EPM.Controllers
         private UserRepository userRespository = new UserRepository();
         private ProjectRepository projectRespository = new ProjectRepository();
 
+        // ERROR
+        private string ERR_NAME_REQUIRE = "Name require";
+        private string ERR_EMAIl_REQUIRE = "Email require";
+        private string ERR_PHONE_REQUIRE = "Phone number require";
+        private string ERR_PHONE_INVALID = "Phone number invalid";
+        private string ERR_ADDRESS_REQUIRE = "Address require";
+        private string ERR_PASSWORD_NOT_MATCH = "Password does not match";
+        private string ERR_OLD_PASSWORD_INVALID = "Wrong Old password";
+
         //
         // GET: /Admin/
         public ActionResult Index()
@@ -161,7 +170,8 @@ namespace EPM.Controllers
         //
         // GET /Admin/AjaxUserAdd
         public ActionResult UserAdd()
-        {            
+        {
+            
             return View();
         }
 
@@ -198,14 +208,6 @@ namespace EPM.Controllers
                     errorMessage.Add("Address require");
                 if (password == null || password != repeatPassword || password == "")
                     errorMessage.Add("Password does not match");
-                try
-                {
-                    int.Parse(user.phone);
-                }
-                catch 
-                {
-                    errorMessage.Add("Phone is invalid");
-                }
 
                 // summary
                 if (errorMessage.Count == 0)
@@ -225,6 +227,84 @@ namespace EPM.Controllers
             return View(user);
         }
 
+        //
+        // GET /Admin/UserEdit/id/
+        public ActionResult UserEdit(int? id) {
+            User user = new User();
+            if (id != null && userRespository.getUserById(id.Value) != null) {
+                user = userRespository.getUserById(id.Value);
+                return View(user);
+            }
+            return View();
+        }
+
+        //
+        // GET /Admin/UserEdit/id/
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UserEdit(int? id,FormCollection form) {
+            Models.User user = new User();
+            string oldpassword = "";
+            string password = "";
+            string repeatPassword = "";
+            List<String> errorMessage = new List<string>();
+            errorMessage.Clear();
+            try
+            {
+                user.id         = int.Parse(Request.Form["id"]);
+                user            = userRespository.getUserById(user.id);
+                user.name       = Request.Form["username"];
+                user.company    = Request.Form["company"];
+                user.email      = Request.Form["email"];
+                user.phone      = Request.Form["phone"];
+                user.address    = Request.Form["address"];
+                user.country    = Request.Form["country"];
+                user.gender     = Byte.Parse(Request.Form["gender"]);
+                oldpassword     = Request.Form["oldpassword"];
+                password        = Request.Form["password"];
+                repeatPassword  = Request.Form["repeatpassword"];
+                user.password   = password;                
+                //validate
+                if (user.name == null || user.name == "")
+                    errorMessage.Add(ERR_NAME_REQUIRE);
+                if (user.email == null || user.email == "")
+                    errorMessage.Add(ERR_EMAIl_REQUIRE);
+                if (user.phone == null || user.phone == "")
+                    errorMessage.Add(ERR_PHONE_REQUIRE);
+                if (user.address == null || user.address == "")
+                    errorMessage.Add(ERR_EMAIl_REQUIRE);
+                if (oldpassword != "" && oldpassword != user.password)
+                    errorMessage.Add(ERR_OLD_PASSWORD_INVALID);
+                if (oldpassword != "" && (password == null || password != repeatPassword || password == ""))
+                    errorMessage.Add(ERR_PASSWORD_NOT_MATCH);
+
+                // summary
+                if (errorMessage.Count == 0)
+                {
+                    userRespository.Save();
+                    return Redirect("/Admin/UserAdmin");
+                }
+                else
+                {
+                    ViewData["errors"] = errorMessage;
+                }
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
+            return View(user);
+        }
+
         #endregion
+
+        private bool isNumber(String str) {
+            while (str.Contains(" "))
+            {
+                str.Replace(" ", "");
+            }
+            int no;
+            return int.TryParse(str, out no);
+        }
     }
 }
