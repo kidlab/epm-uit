@@ -84,6 +84,7 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\PhoneValidator.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\DbAccessException.cs" />
     <Compile Include="Models\Epm.designer.cs">
       <AutoGen>True</AutoGen>
@@ -99,6 +100,7 @@
     <Compile Include="Models\MilestoneRepository.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectRepository.cs" />
+    <Compile Include="Models\RoleRepository.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TaskRepository.cs" />
@@ -417,6 +419,8 @@
     <Content Include="Views\Admin\AjaxProjectsByUserView.ascx" />
     <Content Include="Views\Admin\UserAdd.aspx" />
     <Content Include="Views\Admin\UserAdmin.aspx" />
+    <Content Include="Views\Admin\UserEdit.aspx" />
+    <Content Include="Views\Admin\UserEditForm.ascx" />
     <Content Include="Views\Admin\UserForm.ascx" />
     <Content Include="Views\Admin\UserInfo.ascx" />
     <Content Include="Views\Admin\AjaxUserList.ascx" />
@@ -468,6 +472,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Content\images\epm_logo.svg" />
     <None Include="Models\Epm.dbml.layout">
       <DependentUpon>Epm.dbml</DependentUpon>

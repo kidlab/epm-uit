@@ -1,11 +1,8 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Models.User>" %>
 <% 
-    var action = "/Admin/UserAdd/";
     EPM.Models.User user = new EPM.Models.User();
-    if (Model != null)
-    {
-        user = Model;
-    }
+    user = Model;
+    var action = "/Admin/UserEdit/id/" + user.id;
     //
     // check if there were errors
     if (ViewData["errors"] != null)
@@ -85,8 +82,16 @@
 				</td>
 				<td>					
 					<select name="gender">
-					    <option value="0">Nam</option>
-					    <option value="1">Nữ</option>
+					    <% if (user.gender == 1)
+                        {%>
+					        <option value="0">Nam</option>
+					        <option value="1">Nữ</option>
+					    <% }
+                        else
+                        {%>
+                            <option value="0">Nam</option>
+					        <option value="1" selected="selected">Nữ</option>
+					    <% } %>
 					</select>
 				</td>
 			</tr>
@@ -98,6 +103,14 @@
 					<input type="radio" value="1" name="role"/> Admin <br />
 					<input type="radio" value="2" name="role"/> User <br />
 					<input type="radio" value="3" name="role"/> Client
+				</td>
+			</tr>
+			<tr>
+				<td class="title-cell">
+					password:
+				</td>
+				<td>
+					<input class="form-test" id="Password1" type="password" name="oldpassword" style="width: 70%">
 				</td>
 			</tr>
 			<tr>
@@ -118,6 +131,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
+				    <input class="form-test" type="hidden" name="id" value="<%= user.id%>" />
 					<input type="submit" name="submit" value="Save">
 				</td>
 			</tr>
