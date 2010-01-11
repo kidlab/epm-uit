@@ -1,24 +1,31 @@
 @CHARSET "utf-8";
 
-.calendar-wrapper table{
+.calendar-wrapper table, .calendar-sidebar-wrapper table{
 	width: 100%;
 	border-collapse: collapse;
 	font-size: 15px;
 	border-color: #acacac;
 }
 
-.calendar-wrapper th, .calendar-wrapper tr.header td{
+.calendar-wrapper th, .calendar-wrapper tr.header td, .calendar-sidebar-wrapper th, .calendar-sidebar-wrapper tr.header td{
 	font-weight: bold;
 	background: #5376A2;
 	color: #fafafa;
 }
 
-.calendar-wrapper td, .calendar-wrapper th{
+.calendar-wrapper td, .calendar-wrapper th, .calendar-sidebar-wrapper td, .calendar-sidebar-wrapper th{
 	padding: 5px 10px;
 	text-align: center;
 	border-color: #acacac;
 }
 
-.calendar-wrapper td.link{
+.calendar-wrapper td.link, .calendar-sidebar-wrapper td.link{
 	background: #E8EEF4;
+}
+
+.calendar-sidebar-wrapper table{
+	font-size: 11px;
+}
+.calendar-sidebar-wrapper td, .calendar-sidebar-wrapper th{
+	padding: 2px 3px;
 }
