@@ -24,7 +24,12 @@ namespace EPM.Models
     /// </remarks>
     public interface IMilestoneRepository : IRepository<Milestone>
     {
-        //IQueryable<Milestone> FindAllMilestonesByProjectId(int projectId);
+        //IQueryable<Milestone> FindAllMilestonesByProjectId(int userID,int projectId, int pageIndex, int pageSize);
         IQueryable<Milestone> GetMilestonesByUserProjectId(int userID,int projectId, int pageIndex, int pageSize);
+        //IQueryable<Milestone> FindAllMilestonesByProjectId(int userID, int projectId);
+        IQueryable<Milestone> GetMilestonesByUserProjectId(int userID, int projectId);
+		//IQueryable<Milestone> FindAllMilestonesByUser(int userID);
+        IQueryable<Milestone> GetMilestonesByUser(int userID);
+		
     }
 }
