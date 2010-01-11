@@ -9,6 +9,8 @@
 
     <h2>index TEST</h2>
    
-    <%= Html.calendar("First Name", "this is a calendar:")%>
+    <%= Html.calendar(1,1,-1)%>
+    <p />
+    <%= Html.calendar(2,1,-1)%>
  
 </asp:Content>
