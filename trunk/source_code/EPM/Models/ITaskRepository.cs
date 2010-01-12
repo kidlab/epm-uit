@@ -24,6 +24,14 @@ namespace EPM.Models
         IQueryable<Task> GetTasksByUser(int userID);
 
         /// <summary>
+        /// Gets all task of a user without paginating.
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="projectID"></param>
+        /// <returns></returns>
+        IQueryable<Task> GetTaskByUserProjectId(int userID, int projectID);
+
+        /// <summary>
         /// Gets the project associate with this task.
         /// </summary>
         /// <param name="taskID"></param>

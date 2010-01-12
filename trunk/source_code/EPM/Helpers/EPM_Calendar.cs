@@ -111,7 +111,7 @@ namespace EPM.Helpers
             else
             {
                 allMilestones = _milestoneRepository.GetMilestonesByUserProjectId(user_id, project_id).ToList();
-  //              allTasks = _taskRepository.GetTaskByUserProjectId(user_id, project_id).ToList();
+                allTasks = _taskRepository.GetTaskByUserProjectId(user_id, project_id).ToList();
             }
             //-----------------
 

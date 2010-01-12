@@ -42,15 +42,9 @@ namespace EPM.Models
     partial void InsertModule(Module instance);
     partial void UpdateModule(Module instance);
     partial void DeleteModule(Module instance);
-    partial void InsertModule_Action(Module_Action instance);
-    partial void UpdateModule_Action(Module_Action instance);
-    partial void DeleteModule_Action(Module_Action instance);
     partial void InsertProject_Assigned(Project_Assigned instance);
     partial void UpdateProject_Assigned(Project_Assigned instance);
     partial void DeleteProject_Assigned(Project_Assigned instance);
-    partial void InsertRole(Role instance);
-    partial void UpdateRole(Role instance);
-    partial void DeleteRole(Role instance);
     partial void InsertRole_Assigned(Role_Assigned instance);
     partial void UpdateRole_Assigned(Role_Assigned instance);
     partial void DeleteRole_Assigned(Role_Assigned instance);
@@ -72,6 +66,12 @@ namespace EPM.Models
     partial void InsertProject(Project instance);
     partial void UpdateProject(Project instance);
     partial void DeleteProject(Project instance);
+    partial void InsertRole(Role instance);
+    partial void UpdateRole(Role instance);
+    partial void DeleteRole(Role instance);
+    partial void InsertModule_Action(Module_Action instance);
+    partial void UpdateModule_Action(Module_Action instance);
+    partial void DeleteModule_Action(Module_Action instance);
     #endregion
 		
 		public EpmDataContext() : 
@@ -136,27 +136,11 @@ namespace EPM.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Module_Action> Module_Actions
-		{
-			get
-			{
-				return this.GetTable<Module_Action>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Project_Assigned> Project_Assigneds
 		{
 			get
 			{
 				return this.GetTable<Project_Assigned>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Role> Roles
-		{
-			get
-			{
-				return this.GetTable<Role>();
 			}
 		}
 		
@@ -213,6 +197,22 @@ namespace EPM.Models
 			get
 			{
 				return this.GetTable<Project>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Role> Roles
+		{
+			get
+			{
+				return this.GetTable<Role>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Module_Action> Module_Actions
+		{
+			get
+			{
+				return this.GetTable<Module_Action>();
 			}
 		}
 	}
@@ -705,116 +705,6 @@ namespace EPM.Models
 		}
 	}
 	
-	[Table(Name="dbo.Module_Action")]
-	public partial class Module_Action : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private int _module_id;
-		
-		private int _action_id;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onmodule_idChanging(int value);
-    partial void Onmodule_idChanged();
-    partial void Onaction_idChanging(int value);
-    partial void Onaction_idChanged();
-    #endregion
-		
-		public Module_Action()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_module_id", DbType="Int NOT NULL")]
-		public int module_id
-		{
-			get
-			{
-				return this._module_id;
-			}
-			set
-			{
-				if ((this._module_id != value))
-				{
-					this.Onmodule_idChanging(value);
-					this.SendPropertyChanging();
-					this._module_id = value;
-					this.SendPropertyChanged("module_id");
-					this.Onmodule_idChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_action_id", DbType="Int NOT NULL")]
-		public int action_id
-		{
-			get
-			{
-				return this._action_id;
-			}
-			set
-			{
-				if ((this._action_id != value))
-				{
-					this.Onaction_idChanging(value);
-					this.SendPropertyChanging();
-					this._action_id = value;
-					this.SendPropertyChanged("action_id");
-					this.Onaction_idChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[Table(Name="dbo.Project_Assigned")]
 	public partial class Project_Assigned : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -900,164 +790,6 @@ namespace EPM.Models
 					this._user_id = value;
 					this.SendPropertyChanged("user_id");
 					this.Onuser_idChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.Role")]
-	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private System.Nullable<int> _project_id;
-		
-		private string _name;
-		
-		private byte _admin;
-		
-		private int _moduleAction_id;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onproject_idChanging(System.Nullable<int> value);
-    partial void Onproject_idChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnadminChanging(byte value);
-    partial void OnadminChanged();
-    partial void OnmoduleAction_idChanging(int value);
-    partial void OnmoduleAction_idChanged();
-    #endregion
-		
-		public Role()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_project_id", DbType="Int")]
-		public System.Nullable<int> project_id
-		{
-			get
-			{
-				return this._project_id;
-			}
-			set
-			{
-				if ((this._project_id != value))
-				{
-					this.Onproject_idChanging(value);
-					this.SendPropertyChanging();
-					this._project_id = value;
-					this.SendPropertyChanged("project_id");
-					this.Onproject_idChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_admin", DbType="TinyInt NOT NULL")]
-		public byte admin
-		{
-			get
-			{
-				return this._admin;
-			}
-			set
-			{
-				if ((this._admin != value))
-				{
-					this.OnadminChanging(value);
-					this.SendPropertyChanging();
-					this._admin = value;
-					this.SendPropertyChanged("admin");
-					this.OnadminChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_moduleAction_id", DbType="Int NOT NULL")]
-		public int moduleAction_id
-		{
-			get
-			{
-				return this._moduleAction_id;
-			}
-			set
-			{
-				if ((this._moduleAction_id != value))
-				{
-					this.OnmoduleAction_idChanging(value);
-					this.SendPropertyChanging();
-					this._moduleAction_id = value;
-					this.SendPropertyChanged("moduleAction_id");
-					this.OnmoduleAction_idChanged();
 				}
 			}
 		}
@@ -2428,6 +2160,274 @@ namespace EPM.Models
 					this._budget = value;
 					this.SendPropertyChanged("budget");
 					this.OnbudgetChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Role")]
+	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<int> _project_id;
+		
+		private string _name;
+		
+		private byte _admin;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onproject_idChanging(System.Nullable<int> value);
+    partial void Onproject_idChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnadminChanging(byte value);
+    partial void OnadminChanged();
+    #endregion
+		
+		public Role()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_project_id", DbType="Int")]
+		public System.Nullable<int> project_id
+		{
+			get
+			{
+				return this._project_id;
+			}
+			set
+			{
+				if ((this._project_id != value))
+				{
+					this.Onproject_idChanging(value);
+					this.SendPropertyChanging();
+					this._project_id = value;
+					this.SendPropertyChanged("project_id");
+					this.Onproject_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_admin", DbType="TinyInt NOT NULL")]
+		public byte admin
+		{
+			get
+			{
+				return this._admin;
+			}
+			set
+			{
+				if ((this._admin != value))
+				{
+					this.OnadminChanging(value);
+					this.SendPropertyChanging();
+					this._admin = value;
+					this.SendPropertyChanged("admin");
+					this.OnadminChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Module_Action")]
+	public partial class Module_Action : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _module_id;
+		
+		private int _action_id;
+		
+		private int _role_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onmodule_idChanging(int value);
+    partial void Onmodule_idChanged();
+    partial void Onaction_idChanging(int value);
+    partial void Onaction_idChanged();
+    partial void Onrole_idChanging(int value);
+    partial void Onrole_idChanged();
+    #endregion
+		
+		public Module_Action()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_module_id", DbType="Int NOT NULL")]
+		public int module_id
+		{
+			get
+			{
+				return this._module_id;
+			}
+			set
+			{
+				if ((this._module_id != value))
+				{
+					this.Onmodule_idChanging(value);
+					this.SendPropertyChanging();
+					this._module_id = value;
+					this.SendPropertyChanged("module_id");
+					this.Onmodule_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_action_id", DbType="Int NOT NULL")]
+		public int action_id
+		{
+			get
+			{
+				return this._action_id;
+			}
+			set
+			{
+				if ((this._action_id != value))
+				{
+					this.Onaction_idChanging(value);
+					this.SendPropertyChanging();
+					this._action_id = value;
+					this.SendPropertyChanged("action_id");
+					this.Onaction_idChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_role_id", DbType="Int NOT NULL")]
+		public int role_id
+		{
+			get
+			{
+				return this._role_id;
+			}
+			set
+			{
+				if ((this._role_id != value))
+				{
+					this.Onrole_idChanging(value);
+					this.SendPropertyChanging();
+					this._role_id = value;
+					this.SendPropertyChanged("role_id");
+					this.Onrole_idChanged();
 				}
 			}
 		}

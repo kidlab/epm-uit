@@ -15,7 +15,7 @@
         - user_id : id của user đang đăng nhập
         - project_id : id của project user đó đang coi . id = -1 : mún coi calendar cho tất cả project (user đang ở màn hính Desktop) 
     -->
-    <%= Html.calendar(1,1,-1)%>
+    <%= Html.calendar(1,1,3)%>
     <p />
     <%= Html.calendar(2,1,-1)%>
  
