@@ -1,5 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<EPM.Controllers.ProjectFormViewModel>" %>
-
+<%@ Import Namespace="EPM.Helpers" %> 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TitleContent" runat="server">
 	<%= "Project [" + Model.Project.name + "]" %>
 </asp:Content>
@@ -72,6 +72,7 @@
 			</tr>
 		</table>					
 	</div>
+	<%= Html.calendar(1, (int)ViewData["user_id"], (int)ViewData["project_id"])%>
 	<div class="table-content">
 		<div class="table-cover">
 			<div class="cover-buttons-list">

@@ -73,14 +73,15 @@ namespace EPM.Helpers
             }
             else
             {
-                return renderSmallCalendar(user_id);
+                return renderSmallCalendar();
             }
         }
 
         public static string renderBigCalendar(int user_id, int project_id)
         {
             //Here we start building the table heads
-            string cal = "<div class='calendar-wrapper'>";
+            string cal = "<div class='table-cover'>  Calendar </div>";
+            cal += "<div class='calendar-wrapper'>";
             cal += "<table border=1 width=294>";
             cal += "<tr><th colspan=7>" + title + " " + year + "</th></tr>";
             cal += "<tr class='header'><td width=42>S</td><td width=42>M</td><td width=42>T</td><td width=42>W</td><td width=42>T</td><td width=42>F</td><td width=42>S</td></tr>";
@@ -164,7 +165,7 @@ namespace EPM.Helpers
             return cal;
         }
 
-        public static string renderSmallCalendar(int user_id)
+        public static string renderSmallCalendar()
         {
             //Here we start building the table heads
             string cal = "<div class='calendar-sidebar-wrapper'>";

@@ -28,6 +28,13 @@ namespace EPM.Controllers
         /// Used for paginating: the number of items per page.
         /// </summary>
         private const int PAGE_SIZE = 5;
+        private IUserRepository userModel = new UserRepository();
+  //      private User user = new User();
+
+        public HomeController()
+        {
+            
+        }
 
         public ActionResult Index()
         {
@@ -37,10 +44,10 @@ namespace EPM.Controllers
              * @description:
              *     - Always store admin in session (test only :D)
              */
-            IUserRepository userModel = new UserRepository();
-            User user = userModel.GetAdmin(); // May be logging in here ...      
-            //this.Session["user"] = user;
-            HttpContext.Session["user"] = user;
+            User user = (User)this.Session["user"];
+            if (user == null)
+                return this.Redirect("/Login");
+            ViewData["user"] = user;
             /** End changes */
 
             /**

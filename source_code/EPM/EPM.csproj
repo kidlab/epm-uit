@@ -64,6 +64,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MilestoneController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
@@ -436,6 +437,7 @@
     <Content Include="Views\Admin\UserList.ascx" />
     <Content Include="Views\Admin\UserRole.ascx" />
     <Content Include="Views\Admin\UserView.aspx" />
+    <Content Include="Views\Login\Index.aspx" />
     <Content Include="Views\Milestone\Edit.aspx" />
     <Content Include="Views\Milestone\Index.aspx" />
     <Content Include="Views\Milestone\MilestoneForm.ascx" />

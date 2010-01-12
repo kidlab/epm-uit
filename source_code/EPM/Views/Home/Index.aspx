@@ -1,4 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<EPM.Controllers.HomeViewModel>" %>
+<%@ Import Namespace="EPM.Helpers" %> 
 <asp:Content ID="scriptContent" ContentPlaceHolderID="ScriptContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function() {
@@ -22,7 +23,11 @@
     <% 
         if (Model.Projects != null)
             Html.RenderPartial("../Project/ProjectList", Model.Projects);
-
+        EPM.Models.User user = (EPM.Models.User)ViewData["user"];
+        
+        Writer.Write(Html.calendar(1, user.id, -1));
+        Writer.Write("<br /><br />"); 
+            
         if (Model.Tasks != null)
             Html.RenderPartial("../Task/TasksList", Model.Tasks);
     %>	

@@ -195,6 +195,18 @@ namespace EPM.Controllers
 
         public ActionResult ManageProject(int id)
         {
+            /**
+             * Changed on 2010-01-07
+             * By: ManVHT.
+             * @description:
+             *     - Always store admin in session (test only :D)
+             */
+            IUserRepository userModel = new UserRepository();
+            User user = userModel.GetAdmin(); // May be logging in here ...      
+            this.Session["user"] = user;
+            ViewData["user_id"] = user.id;
+            ViewData["project_id"] = id;
+
             Project project = projectRepository.GetOne(id);
             return View(new ProjectFormViewModel(project));
         }

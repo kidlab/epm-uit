@@ -134,7 +134,8 @@ namespace EPM.Models
             }
         }
 
-        public bool IsExistName(string name) {
+        public bool IsExistName(string name) 
+        {
             try
             {
                 if (GetUserByName(name) == null)
@@ -148,6 +149,28 @@ namespace EPM.Models
                 throw new DbAccessException(ex);
             }
         }
+
+
+        public User getExistUser(string username, string password)
+        {
+            try
+            {
+                var query = from user in _db.Users
+                            where (user.name == username) &&
+                                  (user.password == password)
+                            select user;
+                if (query.ToList().Count > 0)
+                    return query.First();
+                else
+                    return null;               
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(UserRepository), ex);
+                throw new DbAccessException(ex);
+            }
+        }
+
 
         public IQueryable<User> GetUserNotInProject(int? id) {
             try
@@ -166,9 +189,12 @@ namespace EPM.Models
             }
         }
 
+
         #endregion
 
         #region IRepository<User> Members
+
+
 
         public IQueryable<User> GetAll()
         {
