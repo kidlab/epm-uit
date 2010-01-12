@@ -49,8 +49,10 @@ namespace EPM.Controllers
 
         public ActionResult Index(int? page)
         {
-            List<Project> allProjects = new List<Project>();
+            // check login
+            if (!isLogin()) return this.Redirect("/Login");
 
+            List<Project> allProjects = new List<Project>();
             try
             {
                 const int pageSize = 10;
@@ -214,6 +216,10 @@ namespace EPM.Controllers
         //
         // GET: /Project/User/
         public ActionResult User(int? id) {
+            // check login
+            if (!isLogin()) 
+                return Redirect("/Login");
+
             userRepository = new UserRepository();
 
             List<User> users = userRepository.GetUsersByProject(id.Value).ToList();
@@ -233,6 +239,9 @@ namespace EPM.Controllers
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserAdd() {
+            // check login
+            if (!isLogin()) return this.Redirect("/Login");
+
             Project_AssignedRepository paRepository = new Project_AssignedRepository();
 
             int user_id = int.Parse(Request.Form["user"]);
@@ -255,6 +264,9 @@ namespace EPM.Controllers
         // GET /Project/UserAdd/
         public ActionResult UserRemove(int? projectId, int? id)
         {
+            // check login
+            if (!isLogin()) return this.Redirect("/Login");
+
             try
             {
                 UserRepository userRepository = new UserRepository();
@@ -274,6 +286,9 @@ namespace EPM.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserRemove()
         {
+            // check login
+            if (!isLogin()) return this.Redirect("/Login");
+
             try
             {
                 int id = int.Parse(Request.Form["user"]);
@@ -289,6 +304,11 @@ namespace EPM.Controllers
             {
                 return View("~/View/Shared/Error");
             }
+        }
+
+        private bool isLogin(){
+            User user = (User)this.Session["user"];
+            return user != null;
         }
     }
 }
