@@ -54,15 +54,16 @@ namespace EPM.Controllers
                 const int pageSize = 10;
 
                 /**
-                * Changed on 2010-01-06
-                * By: ManVHT.
+                * Changed on 2010-01-10
+                * By: HaiLD.
                 * @description:
                 *      - Stop using PaginatedList.
                  *     - User should be stored in session.
                 */
                 /* Start changes */
                 User currentUser = this.Session["user"] as User;
-                
+
+               // Tracer.Log("Milestone", "projectId " + projectId + " ml_id" + id, "F:\\error.log");
                
                 if (currentUser != null)
                     allMilestones = milestoneRepository.GetMilestonesByUserProjectId(currentUser.id,projectId ?? 0, page ?? 0, pageSize).ToList();
@@ -88,6 +89,7 @@ namespace EPM.Controllers
         {
 
             Milestone milestone = milestoneRepository.GetOne(id);
+            //Tracer.Log("Milestone", " ml_id " + id, "F:\\error.log");
             return View(new MilestoneFormViewModel(milestone));
         }
 

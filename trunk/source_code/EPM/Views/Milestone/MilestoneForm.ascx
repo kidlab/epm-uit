@@ -21,6 +21,7 @@ by; ManVHT
 <div class="form-ajax" id="form-edit">
 	<form action="<%= actionLink %>" method="post">
 	<input type="hidden" name="id" value="<%if(isOnEditing) Writer.Write(Model.Milestone.id);%>" />
+	
 	<table cellpadding="1" cellspacing="5" border="0" width="100%">
 		<tr>
 			<td width="10%">

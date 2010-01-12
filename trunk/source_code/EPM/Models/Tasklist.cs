@@ -15,8 +15,8 @@ using System.Collections.Generic;
 
 namespace EPM.Models
 {
-    [Bind(Include = "id,tasklist_id,start,end,title,desc,status")]
-    public partial class Task
+    [Bind(Include = "id,project_id,miletone_id,name,desc")]
+    public partial class Tasklist
     {
         public bool IsValid
         {
@@ -25,12 +25,10 @@ namespace EPM.Models
 
         public IEnumerable<RuleViolation> GetRuleViolations()
         {
-            if (String.IsNullOrEmpty(title))
+            if (String.IsNullOrEmpty(name))
                 yield return new RuleViolation("Task Title required", "name");
 
-            if (end.CompareTo(start) < 0)
-                yield return new RuleViolation("Deadline must less than or equal to start datetime", "Deadline");
-
+            
             yield break;
         }
     }
