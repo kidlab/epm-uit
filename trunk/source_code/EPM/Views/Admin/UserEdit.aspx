@@ -36,8 +36,8 @@
         int id = Model.id;
     %>
      <ul id="body-tab">
-		<li class="tab" id="tab-user"> <a href="/Admin/UserView/id/<%= id%>"> User </a> </li>
-		<li class="tab" id="tab-edit"> <a href="/Admin/UserEdit/id/<%= id%>"> Edit </a> </li>						
+		<li class="tab" id="tab-user"> <a href="/Admin/UserView/<%= id%>"> User </a> </li>
+		<li class="tab" id="tab-edit"> <a href="/Admin/UserEdit/<%= id%>"> Edit </a> </li>						
 	</ul>
 </asp:Content>
 
