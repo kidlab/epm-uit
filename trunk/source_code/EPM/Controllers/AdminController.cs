@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -342,6 +343,176 @@ namespace EPM.Controllers
 
         #region ROLE ADMIN
 
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult RoleAdd(FormCollection form)
+        {
+            const string IS_CHECKED = "1";
+
+            try
+            {
+                IRoleRepository roleModel = new RoleRepository();
+
+                List<Module_Action> moduleActions = new List<Module_Action>();
+
+                int moduleID = -1;
+                string strValue = "";
+
+                #region PROJECT
+
+                moduleID = roleModel.GetModuleByName(EpmConst.PROJECT_MODULE).id;
+                strValue = Request.Form["project_add"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.ADD_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["project_edit"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.EDIT_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["project_del"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.DEL_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["project_close"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.CLOSE_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                #endregion
+
+                #region MILESTONE
+
+                moduleID = roleModel.GetModuleByName(EpmConst.MILESTONE_MODULE).id;
+                strValue = Request.Form["milestone_add"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.ADD_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["milestone_edit"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.EDIT_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["milestone_del"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.DEL_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["milestone_close"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.CLOSE_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                #endregion
+
+                #region TASK
+
+                moduleID = roleModel.GetModuleByName(EpmConst.TASK_MODULE).id;
+                strValue = Request.Form["task_add"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.ADD_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["task_edit"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.EDIT_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["ptask_del"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.DEL_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                strValue = Request.Form["task_close"];
+                if (strValue == IS_CHECKED)
+                {
+                    Module_Action ma = new Module_Action();
+                    ma.module_id = moduleID;
+                    ma.action_id = roleModel.GetActionByName(EpmConst.CLOSE_ACTION).id;
+                    moduleActions.Add(ma);
+                }
+
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
+            return View();
+        }
+
+        public ActionResult RoleEdit(int? id)
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
+            return View();
+        }
+
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult RoleEdit(int? id, FormCollection form)
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
+            return View();
+        }
 
         #endregion
 

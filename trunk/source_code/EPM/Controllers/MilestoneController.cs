@@ -62,7 +62,6 @@ namespace EPM.Controllers
                 */
                 /* Start changes */
                 User currentUser = this.Session["user"] as User;
-
                // Tracer.Log("Milestone", "projectId " + projectId + " ml_id" + id, "F:\\error.log");
                
                 if (currentUser != null)

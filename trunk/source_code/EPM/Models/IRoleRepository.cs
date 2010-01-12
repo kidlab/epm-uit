@@ -18,6 +18,10 @@ namespace EPM.Models
         /// get all global Roles
         /// </summary>
         /// <returns></returns>
-        IQueryable<Role> GetGlobalRoles();        
+        IQueryable<Role> GetGlobalRoles();
+
+        Module GetModuleByName(string moduleName);
+
+        Action GetActionByName(string actionName);
     }
 }
