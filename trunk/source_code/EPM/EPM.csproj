@@ -86,6 +86,9 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\PhoneValidator.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Epm.cs">
+      <DependentUpon>Epm.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\IRoleRepository.cs" />
     <Compile Include="Models\IRole_AssignedRepository.cs" />
     <Compile Include="Models\ITasklistRepository.cs" />
