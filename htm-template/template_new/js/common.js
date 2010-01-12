@@ -1,3 +1,15 @@
+function slide(id, controlId){
+	if ($('#' + id).hasClass("opened"))
+	{
+		$("#" + id ).removeClass("opened");
+		$("#" + controlId ).slideUp('slow');
+	}
+	else {
+		$("#" + id ).addClass("opened");
+		$("#" + controlId ).slideDown('slow');
+	}
+}
+
 
 function toggleSlide(id, controlId ,class1, control){
 	if ($("#" + id).hasClass(class1))

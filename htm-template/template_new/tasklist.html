@@ -20,6 +20,9 @@
 		});
 	});
 
+	function openTasklist(id, controlId){
+		slide(id, controlId);
+	}
 	
 	tinyMCE.init({
 		mode : "textareas",
@@ -74,7 +77,61 @@
 			</ul>
 			<div class="clear"></div>
 			<div id="body-left">
-				<h1 class="content-title"> Project / Tasklist </h1>				
+				
+				<h1 class="content-title"> Project / Tasklist </h1>
+				
+				<div class="page-buttons">
+					<a class="page-button-add" id="pb-add" onclick="openTasklist(this.id,'form-add-tasklist')"><span>add</span></a>
+				</div>
+				<div class="clear"></div>
+				<br/>
+				
+				<div class="form-ajax" id="form-add-tasklist" style="display: none;">
+					<h1>Add Tasklist</h1>
+					<div class="add-project-form">
+						<form action="" method="POST">
+						<table cellpadding="1" cellspacing="5" border="0" width="100%">
+							<tr>
+								<td width="10%">
+									Name:
+								</td>
+								<td width="90%">
+									<input class="form-text" id="input-name" type="text" name="name" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Description:
+								</td>
+								<td>
+									<textarea class="form-text" id="input-desc" name="text" style="width: 70%" cols="20" rows="5"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Milestone:
+								</td>
+								<td>
+									<select name="" style="width: 70%">
+										<option value="1">please choose</option>
+										<option value="2"> Milestone 1 </option>
+										<option value="3"> Milestone 2 </option>
+										<option value="4"> Milestone 3 </option>
+									</select>
+									
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<input type="button" name="submit" value="Save">
+									<input type="button" name="submit" value="Cancel">
+								</td>
+							</tr>
+						</table>
+						</form>
+					</div>
+				</div>
+					
 				<div class="table-content">
 					<div class="table-cover">
 						<div class="cover-buttons-list">
