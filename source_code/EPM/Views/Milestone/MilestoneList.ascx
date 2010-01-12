@@ -22,7 +22,12 @@
 		Milestones
 	</div>
     <div class="form-ajax" id="form-add" style="display: none;">
-        <%Html.RenderPartial("~/Views/Milestone/MilestoneForm.ascx", new EPM.Controllers.MilestoneFormViewModel(null));%>
+        <%
+            EPM.Models.Milestone mileStone = new EPM.Models.Milestone();
+            if (Model.Count > 0)
+                mileStone.project_id = Model[0].project_id;                   
+            Html.RenderPartial("~/Views/Milestone/MilestoneForm.ascx", new EPM.Controllers.MilestoneFormViewModel(mileStone));
+        %>
     </div>
 	<div class="table-list-wrapper">
 	    <table class="table-list" width="100%" cellpadding="1" cellspacing="1">

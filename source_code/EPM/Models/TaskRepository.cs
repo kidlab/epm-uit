@@ -112,6 +112,26 @@ namespace EPM.Models
             }
         }
 
+        public IQueryable<Task> GetTaskByTasklist(int taskListId)
+        {
+            try
+            {
+                _refreshDataContext();
+
+                var query =
+                    from task in _db.Tasks
+                    where (task.tasklist_id == taskListId)
+                    select task;
+
+                return query;
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(TaskRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
         #endregion
 
         #region IRepository<Task> Members

@@ -30,6 +30,8 @@ namespace EPM.Models
         IQueryable<Milestone> GetMilestonesByUserProjectId(int userID, int projectId);
 		//IQueryable<Milestone> FindAllMilestonesByUser(int userID);
         IQueryable<Milestone> GetMilestonesByUser(int userID);
+        IQueryable<Milestone> GetMilestonesByProjectId(int projectId);
+        
 		
     }
 }

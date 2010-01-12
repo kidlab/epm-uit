@@ -76,6 +76,20 @@ namespace EPM.Models
             }
         }
 
+        public Milestone GetOneByName(string name)
+        {
+            try
+            {
+                _refreshDataContext();
+                return _db.Milestones.SingleOrDefault(d => d.name == name);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
         public IQueryable<Milestone> GetMilestonesByUserProjectId(int userID,int projectId, int pageIndex, int pageSize)
         {
             try
@@ -83,6 +97,22 @@ namespace EPM.Models
                 var query = GetMilestonesByUserProjectId(userID,projectId);
 
                 return query.Skip(pageIndex * pageSize).Take(pageSize);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(MilestoneRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+        public IQueryable<Milestone> GetMilestonesByProjectId(int projectId)
+        {
+            try
+            {
+                var query = from milestone in _db.Milestones
+                            where milestone.project_id == projectId
+                            select milestone;
+
+                return query;
             }
             catch (Exception exc)
             {

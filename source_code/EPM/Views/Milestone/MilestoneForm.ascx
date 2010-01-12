@@ -8,20 +8,28 @@ by; ManVHT
 <%  string contentTitle = "Add Milestone";
     string actionLink = "#";
     bool isOnEditing = false;
-    if (Model != null && Model.Milestone != null)
-    {
-        // Is on editing mode.{
-        contentTitle = "Edit Milestone";
-        isOnEditing = true;
-        actionLink = "/Milestone/Edit";
-    }
+    bool isOnAdd = false;
+    if (Model != null)
+        if (Model.Milestone.id > 0)
+        {
+            // Is on editing mode.{
+            contentTitle = "Edit Milestone";
+            isOnEditing = true;
+            actionLink = "/Milestone/Edit";
+        }
+        else
+        {
+            isOnAdd = true;
+
+            actionLink = "/Milestone/Create/" + Model.Milestone.project_id;
+        }
 %>
 <div class="table-content">
 <h1> <%= contentTitle %></h1>
 <div class="form-ajax" id="form-edit">
 	<form action="<%= actionLink %>" method="post">
 	<input type="hidden" name="id" value="<%if(isOnEditing) Writer.Write(Model.Milestone.id);%>" />
-	
+	<input type="hidden" name="project_id" value="<%  Writer.Write(Model.Milestone.project_id);%>" />
 	<table cellpadding="1" cellspacing="5" border="0" width="100%">
 		<tr>
 			<td width="10%">

@@ -17,31 +17,15 @@
 		<br/>
 		<div class="form-ajax" id="form-add-tasklist" style="display: none;">
        <%
-           EPM.Models.Tasklist taskList = new EPM.Models.Tasklist();
-           if (Model.Count >0 )
-           taskList.project_id = Model[0].Tasklist.project_id;
-           Html.RenderPartial("~/Views/Tasklist/TasklistForm.ascx", new EPM.Controllers.TasklistFormViewModel(taskList));%>
+           EPM.Models.Tasklist taskLists = new EPM.Models.Tasklist();
+           if (Model != null && Model.Count >0 )
+            taskLists.project_id = Model[0].Tasklist.project_id;
+           Html.RenderPartial("~/Views/Tasklist/TasklistForm.ascx", new EPM.Controllers.TasklistFormViewModel(taskLists));%>
        </div>
 		
 			
 		<div >
-			<div class="table-cover">
-				<div class="cover-buttons-list">
-					<a href="/" class="cover-btn tool-add" id="tool-add">
-						<span>Add</span>
-					</a>
-					<a href="/" class="cover-btn tool-edit">
-						<span>Edit</span>
-					</a>
-					<a href="/" class="cover-btn tool-del">
-						<span>Del</span>
-					</a>
-					<a href="/" class="cover-btn tool-check">
-						<span>Check</span>
-					</a>
-				</div>	
-				Tasklist
-			</div>
+			
 <!--				******************** FORM ADD ******************* 	-->
 			<div class="form-ajax" id="form-add" style="display: none;">
 			    <%
@@ -49,50 +33,79 @@
                     Html.RenderPartial("~/Views/Task/TaskForm.ascx", new EPM.Controllers.TaskFormViewModel(null));%>
 			</div>
 		</div>
-		<!-- ******************** END FORM ADD ******************* 	-->
-		<div class="table-list-wrapper">
-			<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
-				<tr>
-					<th width="5%"></th>
-					<th >Names</th>
-					<th width="10%">Edit <%= Model.Count %></th>
-				</tr>
-				 <% if (Model != null && Model.Count > 0)
-            for (int id = 0; id < Model.Count; id++)
-            {
-
-                var tasklist = Model[id].Tasklist;
-                string lnkEdit = "/Tasklist/Edit/" + tasklist.project_id+ "/" + tasklist.id;
-                //Html.ActionLink(project.name, "Edit", new { id = project.id });
-                string lnkDelete =
-                    Url.RouteUrl(this.ViewContext.RouteData.Values) + "/Tasklist/Delete/" + tasklist.id;
-
-                // This makes the table more easily readable.
-                if (id % 2 == 0)
-                    this.Writer.Write("<tr>");
-                else
-                    this.Writer.Write("<tr class=\"odd\">");
-                %>
-				
-					<td>
-						<a class="button btn-check" href="/">
-							<span>check</span>
-						</a>
-					</td>
-					<td> <a href="<%= lnkEdit%>"><%= tasklist.name%></a></td>
-					
-					<td>
-						<a class="button btn-edit" href="<%= lnkEdit%>">
-							<span>edit</span>
-						</a>								
-						<a class="button btn-del" href="<%= lnkDelete%>">
-							<span>delete</span>
-						</a>						
-					</td>
-				</tr>	
-							
-				<% } %>
-			</table>
+				<!-- ******************** END FORM ADD ******************* 	-->
+		 <% if (Model != null && Model.Count > 0)
+          for (int idTL = 0; idTL < Model.Count; idTL++)
+          {
+              var tasklist = Model[idTL].Tasklist;
+              string lnkEditTL = "/Tasklist/Edit/" + tasklist.project_id + "/" + tasklist.id;
+              //Html.ActionLink(project.name, "Edit", new { id = project.id });
+              string lnkDeleteTL =
+                  Url.RouteUrl(this.ViewContext.RouteData.Values) + "/Tasklist/Delete/" + tasklist.id;
+        %>
+        <div class="table-cover">
+				<div class="cover-buttons-list">
+					<a href="#" class="cover-btn tool-add" id="tool-add" onclick="addTask(<%= tasklist.id %>)">
+						<span>Add</span>
+					</a>
+					<a href="<%= lnkEditTL %>" class="cover-btn tool-edit">
+						<span>Edit</span>
+					</a>
+					<a href="<%= lnkDeleteTL %>" class="cover-btn tool-del">
+						<span>Del</span>
+					</a>
+					<a href="/" class="cover-btn tool-check">
+						<span>Check</span>
+					</a>
+				</div>	
+				<%= tasklist.name %>
+			</div>
+		    <div class="table-list-wrapper">
+			    <table class="table-list" width="100%" cellpadding="1" cellspacing="1">
+				    <tr>
+					    <th width="5%"></th>
+					    <th >Name</th>
+					    <th width="10%">Edit <%= Model.Count%></th>
+				    </tr>
+				     <%
+                        List<EPM.Models.Task> tasks;
+                        EPM.Models.TaskRepository taskRepo = new EPM.Models.TaskRepository();
+                        tasks = taskRepo.GetTaskByTasklist(tasklist.id).ToList<EPM.Models.Task>();
+                        if (tasks.Count > 0)
+                        for (int idT = 0; idT < tasks.Count; idT++)
+                        {
+                            string lnkEditT = "/Task/Edit/" + tasks[idT].id;
+                            //Html.ActionLink(project.name, "Edit", new { id = project.id });
+                            string lnkDeleteT =
+                                Url.RouteUrl(this.ViewContext.RouteData.Values) + "/Task/Delete/" + tasks[idT].id;
+                            // This makes the table more easily readable.
+                            if (idT % 2 == 0)
+                                this.Writer.Write("<tr>");
+                            else
+                                this.Writer.Write("<tr class=\"odd\">");
+                    %>
+    				
+					    <td>
+						    <a class="button btn-check" href="/">
+							    <span>check</span>
+						    </a>
+					    </td>
+					    <td> <a href="<%= lnkEditT %>"><%= tasks[idT].title%></a></td>
+    					
+					    <td>
+						    <a class="button btn-edit" href="<%= lnkEditT%>">
+							    <span>edit</span>
+						    </a>								
+						    <a class="button btn-del" href="<%= lnkDeleteT%>">
+							    <span>delete</span>
+						    </a>						
+					    </td>
+				    </tr>	
+    							
+				    <% } %>
+			    </table>
+			 <% } %>
+			 </div>
 			<!-- ******************** HIDDEN TABLE LIST ********** -->
 			<div class="hidden-table-list" id="finish-milestone1" style="display: none">
 				<table class="table-list" width="100%" cellpadding="1" cellspacing="1" >

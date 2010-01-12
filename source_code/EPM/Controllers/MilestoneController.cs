@@ -44,7 +44,7 @@ namespace EPM.Controllers
 
         //
         // GET: /Milestone/
-
+        
         public ActionResult Index(int? page, int? projectId, int? id)
         {
             List<Milestone> allMilestones = new List<Milestone>();
@@ -106,7 +106,7 @@ namespace EPM.Controllers
                 UpdateModel(milestone);
 
                 milestoneRepository.Save();
-
+                
                 return RedirectToAction("Index/" + milestone.project_id);
             }
             catch
@@ -120,37 +120,52 @@ namespace EPM.Controllers
         //
         // GET: /Dinners/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int? projectId)
         {
 
             Milestone milestone = new Milestone();
-
-
+            
             return View(new MilestoneFormViewModel(milestone));
         }
 
         //
-        // POST: /Dinners/Create
+        // POST: /Milestone/Create
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Milestone milestone)
         {
-
-            if (ModelState.IsValid)
+            try
             {
+              
+                Milestone_AssignedRepository milestoneAssignedRepo = new Milestone_AssignedRepository();
+                MilestoneRepository mlRepo = new MilestoneRepository();
 
-                try
-                {
-                    milestoneRepository.Add(milestone);
-                    milestoneRepository.Save();
+                milestone.start = (DateTime?) DateTime.Now;
+             
+                milestoneRepository.Add(milestone);
+                milestoneRepository.Save();
 
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    // ModelState.AddModelErrors(milestone.GetRuleViolations());
-                }
+                /*IUserRepository userModel = new UserRepository();
+                User user = userModel.GetAdmin(); // May be logging in here ...      
+                this.Session["user"] = user;
+                */
+                User currentUser = HttpContext.Session["user"] as User;
+                //Tracer.Log("", "userID " + currentUser.id , "F:\\error.log");
+
+                Milestone_Assigned milestoneAssign = new Milestone_Assigned();
+                Milestone newMilestone =  mlRepo.GetOneByName(milestone.name);
+                milestoneAssign.milestone_id = newMilestone.id;
+                milestoneAssign.user_id = currentUser.id;
+                               
+                milestoneAssignedRepo.Add(milestoneAssign);
+                milestoneAssignedRepo.Save();
+                return RedirectToAction("/Index/" + milestone.project_id);
             }
+            catch (Exception exc)
+            {
+                Tracer.Log("", exc.Message, "F:\\error.log");
+            }
+           
 
             return View(new MilestoneFormViewModel(milestone));
         }
