@@ -394,6 +394,24 @@ input, select, option{
 	font-size: 16px;
 }
 
+.page-buttons{
+	float:right;
+	margin-top: -33px;
+}
+.page-buttons span{
+	display: none;
+}
+
+.page-button-add{
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url(../Content/images/adds.png) no-repeat;
+}
+.page-button-add:hover{
+	background-position: 0 -30px;
+}
+
 /*---------------- ERROR ----------------*/
 .error-message
 {
