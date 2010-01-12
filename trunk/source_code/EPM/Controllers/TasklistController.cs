@@ -72,17 +72,19 @@ namespace EPM.Controllers
 
         public ActionResult Index(int? page, int? projectId, int? id)
         {
+            // check login
+            if (!isLogin()) return this.Redirect("/Login");
+
             List<TasklistFormViewModel> allTasklistVM = new List<TasklistFormViewModel>();
 
             try
-            {
-
-                
+            {                
                 const int pageSize = 10;
 
                 User currentUser = HttpContext.Session["user"] as User;
                 ViewData["projectId"] = projectId;
                 ViewData["userId"] = currentUser.id;
+                ViewData["project_id"] = projectId;
                 if (currentUser != null)
                 {
                     List<Tasklist> allTasklists = 
@@ -228,6 +230,13 @@ namespace EPM.Controllers
         {
             Tasklist tasklist = _tasklistRepository.GetOne(id);
             return View(new TasklistFormViewModel(tasklist));
+        }
+
+
+        private bool isLogin()
+        {
+            User user = (User)this.Session["user"];
+            return user != null;
         }
     }
 }

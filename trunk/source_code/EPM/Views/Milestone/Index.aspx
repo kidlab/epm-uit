@@ -3,7 +3,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
 	        $('.tab').removeClass('active');
-	        $('#tab-project').addClass('active');
+	        $('#tab-milestone').addClass('active');
 
 	        $('#tool-add').toggle(function(){
 		        $('#form-add').slideDown('slow');
@@ -16,6 +16,11 @@
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
     My Projects
 </asp:Content>
+
+<asp:Content ID="bodyTab" ContentPlaceHolderID="BodyTab" runat="server">
+    <% Html.RenderPartial("~/Views/Shared/ProjectManageTabs.ascx");%>
+</asp:Content>
+
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
     <%--Changed on 2010-01-07
     by: ManVHT
