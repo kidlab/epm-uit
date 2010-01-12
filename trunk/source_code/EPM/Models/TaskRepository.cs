@@ -164,6 +164,20 @@ namespace EPM.Models
             }
         }
 
+        public Task GetTaskByTitle(string title)
+        {
+            try
+            {
+                _refreshDataContext();
+                return _db.Tasks.SingleOrDefault(task => task.title == title);
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(TaskRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
         public void Add(Task obj)
         {
             try
