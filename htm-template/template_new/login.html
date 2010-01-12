@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="css/style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/curvycorners.js"></script>
+<script type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.tab').removeClass('active');
+		$('#tab-milestone').addClass('active');
+
+		$('#tool-add').toggle(function(){
+			$('#form-add').slideDown('fast');
+		}, function(){
+			$('#form-add').slideUp('fast');
+		});
+	});
+</script>
+<title>EPM - Milestone</title>
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="header-left">
+				<a class="logo" href="/"> <img src="img/logo-b.png"></img></a>
+				<h2 class="header-title">EPM</h2>
+			</div>
+			<div id="header-right">
+				<div id="menu-bar-left">
+					<div id="menu-bar-right">
+						<div id="menu-bar">
+							<ul class="header-menu">
+								<li>
+									<a href="desktop.html" class="active">Desktop</a>
+								</li>
+								<li>
+									<a href="#">My account</a>
+								</li>
+								<li>
+									<a href="#">Setting</a>
+								</li>
+								<li class="last">
+									<a href="/">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<div id="body-wrapper">
+		<div id="body">
+			<div id="login-wrapper" >
+				<form>
+					<label>Username</label>
+					<input type="text" name="username" style="width:95%; padding :3px;">
+					<label>Password</label>
+					<input type="text" name="password" style="width:95%; padding :3px;">
+					<center>
+						<input type="submit" value="OK"></input>
+					</center>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div id="footer-wrapper">
+		<div id="footer">
+			<p>copyright by EPM 2009</p>
+		</div>
+	</div>
+</body>
+</html>
