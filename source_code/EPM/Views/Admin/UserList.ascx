@@ -19,15 +19,6 @@
 		        <a href="/Admin/UserAdd/" class="cover-btn tool-add" id="tool-add">
 			        <span>Add</span>
 		        </a>
-		        <%--<a href="/" class="cover-btn tool-edit">
-			        <span>Edit</span>
-		        </a>
-		        <a href="/" class="cover-btn tool-del">
-			        <span>Del</span>
-		        </a>
-		        <a href="/" class="cover-btn tool-check">
-			        <span>Check</span>
-		        </a>--%>
 	        </div>	
 			User Administration
 		</div>
@@ -53,8 +44,8 @@
 						        <img alt="" src="/Content/images/user-icon-male.png"/>
 						        <p><%= item.name %></p>
 					        </a>
-					        <a href="<%= linkEdit%>" class="grid-item-icon grid-del"><span>del</span></a>
-					        <a href="<%= linkDel%>" class="grid-item-icon grid-edit"><span>edit</span></a>
+					        <a href="<%= linkDel%>" class="grid-item-icon grid-del"><span>del</span></a>
+					        <a href="<%= linkEdit%>" class="grid-item-icon grid-edit"><span>edit</span></a>
 				        </div>
 				        <% } %>
 				<%--<div class="gi-wrapper" style="position: relative;">

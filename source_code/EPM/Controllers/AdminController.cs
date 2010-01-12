@@ -61,6 +61,8 @@ namespace EPM.Controllers
     {
         private UserRepository userRespository = new UserRepository();
         private ProjectRepository projectRespository = new ProjectRepository();
+        private RoleRepository roleRepository = new RoleRepository();
+        private Role_AssignedRepository raRepository = new Role_AssignedRepository();
 
         // ERROR
         private string ERR_NAME_REQUIRE = "Name require";
@@ -70,6 +72,7 @@ namespace EPM.Controllers
         private string ERR_ADDRESS_REQUIRE = "Address require";
         private string ERR_PASSWORD_NOT_MATCH = "Password does not match";
         private string ERR_OLD_PASSWORD_INVALID = "Wrong Old password";
+        private string ERR_ROLE_REQUIRE = "Role Require";
 
         //
         // GET: /Admin/
@@ -83,25 +86,27 @@ namespace EPM.Controllers
 
         //
         // GET: /Admin/useradmin
-        public ActionResult UserAdmin(int? page) {            
-            List<Models.User> users = new List<User>();
+        public ActionResult UserAdmin(int? page) {
+            IQueryable<User> users = null;
+            PaginatedList<Models.User> resultUsers = null;
             try
             {
                 const int pageSize = 20;
                 User currentUser = this.Session["user"] as User;
                 if (currentUser != null)
+                {
                     //users = userRespository.GetAll().ToList();
-                    users = userRespository.GetAllUsers(page ?? 0, pageSize).ToList();
-
+                    resultUsers = new PaginatedList<User>(userRespository.GetAllUsers(page ?? 0, pageSize),
+                            0, 10);
+                    if (resultUsers.Count > 0)                     
+                        return View(resultUsers);
+                }
             }
             catch (Exception ex)
             {
                 Tracer.Log(typeof(AdminController), ex);
             }
-
-            UserIndexViewModel viewModel = new UserIndexViewModel();
-            viewModel.Users = users;
-            return View(viewModel);
+            return View();
         }
 
         //
@@ -128,23 +133,7 @@ namespace EPM.Controllers
                 Tracer.Log(typeof(AdminController), ex);
             }
             return View(viewModel);
-        }
-
-        //
-        // GET /Admin/AjaxProjectView
-        public ActionResult AjaxUserList(int? page) {
-            PaginatedList<Models.User> users = null;
-            try
-            {
-                int pageSize = 10;
-                users = new PaginatedList<User>(userRespository.GetAll(), page ?? 0, pageSize);
-            }
-            catch (Exception ex)
-            {
-                Tracer.Log(typeof(AdminController), ex);
-            }
-            return View(users);
-        }
+        }     
 
         //
         // GET /Admin/AjaxProjectView
@@ -171,7 +160,16 @@ namespace EPM.Controllers
         // GET /Admin/AjaxUserAdd
         public ActionResult UserAdd()
         {
-            
+            List<Role> roles = new List<Role>();
+            try
+            {
+                roles = roleRepository.GetGlobalRoles().ToList<Role>();
+                ViewData["roles"] = roles;
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(AdminController), ex);
+            }
             return View();
         }
 
@@ -181,12 +179,18 @@ namespace EPM.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserAdd(FormCollection form){
             Models.User user = new User();
+            List<Role> roles = new List<Role>();
             string password = "";
             string repeatPassword = "";
             List<String> errorMessage = new List<string>();
             errorMessage.Clear();
             try
             {
+                // get role list first
+                roles = roleRepository.GetGlobalRoles().ToList<Role>();
+                ViewData["roles"] = roles;
+
+                // then get user information
                 user.name = Request.Form["username"];
                 user.company = Request.Form["company"];
                 user.email = Request.Form["email"];
@@ -231,8 +235,13 @@ namespace EPM.Controllers
         // GET /Admin/UserEdit/id/
         public ActionResult UserEdit(int? id) {
             User user = new User();
+            List<Role> roles = new List<Role>();
             if (id != null && userRespository.getUserById(id.Value) != null) {
                 user = userRespository.getUserById(id.Value);
+
+                roles = roleRepository.GetGlobalRoles().ToList<Role>();
+                ViewData["roles"] = roles;
+                
                 return View(user);
             }
             return View();
@@ -244,13 +253,21 @@ namespace EPM.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserEdit(int? id,FormCollection form) {
             Models.User user = new User();
-            string oldpassword = "";
-            string password = "";
-            string repeatPassword = "";
+            List<Role> roles = new List<Role>();
+            Role_Assigned ra = new Role_Assigned();
+            string oldpassword      = "";
+            string password         = "";
+            string repeatPassword   = "";
+            int newRole = 0;
             List<String> errorMessage = new List<string>();
             errorMessage.Clear();
             try
             {
+                // get role list
+                roles = roleRepository.GetGlobalRoles().ToList<Role>();
+                ViewData["roles"] = roles;
+
+                // find user
                 user.id         = int.Parse(Request.Form["id"]);
                 user            = userRespository.getUserById(user.id);
                 user.name       = Request.Form["username"];
@@ -263,7 +280,12 @@ namespace EPM.Controllers
                 oldpassword     = Request.Form["oldpassword"];
                 password        = Request.Form["password"];
                 repeatPassword  = Request.Form["repeatpassword"];
-                user.password   = password;                
+                user.password   = password;
+                ra              = raRepository.GetAssignGlobal(user.id);
+                if (int.TryParse(Request.Form["role"], out newRole)) {
+                    //newRole = int.Parse(Request.Form["role"]);
+                    ra.role_id = newRole;
+                }
                 //validate
                 if (user.name == null || user.name == "")
                     errorMessage.Add(ERR_NAME_REQUIRE);
@@ -277,11 +299,16 @@ namespace EPM.Controllers
                     errorMessage.Add(ERR_OLD_PASSWORD_INVALID);
                 if (oldpassword != "" && (password == null || password != repeatPassword || password == ""))
                     errorMessage.Add(ERR_PASSWORD_NOT_MATCH);
+                if (int.TryParse(Request.Form["role"], out newRole)
+                    errorMessage.Add(ERR_ROLE_REQUIRE);
 
+                
                 // summary
                 if (errorMessage.Count == 0)
                 {
                     userRespository.Save();
+
+                    raRepository.Save();
                     return Redirect("/Admin/UserAdmin");
                 }
                 else

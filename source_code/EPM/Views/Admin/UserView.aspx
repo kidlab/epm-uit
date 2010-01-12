@@ -17,10 +17,10 @@
         ViewData["ShowToolButtons"] = true;
         Html.RenderPartial("UserInfo");
     %>    
-        <div id="userId" style="display:none"><%=user.id%></div>
-        <div id="ajaxProjectList">
-        </div>
-    <% }
+        
+    <% 
+        Html.RenderPartial("ProjectList");
+        }
        else{
     %>
         <h1 class="content-title"> No user found! </h1>	

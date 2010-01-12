@@ -84,6 +84,8 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\PhoneValidator.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\IRoleRepository.cs" />
+    <Compile Include="Models\IRole_AssignedRepository.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\DbAccessException.cs" />
     <Compile Include="Models\Epm.designer.cs">
@@ -101,12 +103,11 @@
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectRepository.cs" />
     <Compile Include="Models\RoleRepository.cs" />
+    <Compile Include="Models\Role_AssignRepository.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TaskRepository.cs" />
-    <Compile Include="Models\User.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -120,6 +121,7 @@
     <Content Include="Content\blue\main-bg.jpg" />
     <Content Include="Content\images\activity.png" />
     <Content Include="Content\images\add-files.png" />
+    <Content Include="Content\images\adds.png" />
     <Content Include="Content\images\bg_btn.png" />
     <Content Include="Content\images\bg_btn_over.png" />
     <Content Include="Content\images\butn-check.png" />
@@ -417,13 +419,14 @@
     <Content Include="Scripts\tiny_mce\utils\mctabs.js" />
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
     <Content Include="Views\Admin\AjaxProjectsByUserView.ascx" />
+    <Content Include="Views\Admin\ProjectList.ascx" />
     <Content Include="Views\Admin\UserAdd.aspx" />
     <Content Include="Views\Admin\UserAdmin.aspx" />
     <Content Include="Views\Admin\UserEdit.aspx" />
     <Content Include="Views\Admin\UserEditForm.ascx" />
     <Content Include="Views\Admin\UserForm.ascx" />
     <Content Include="Views\Admin\UserInfo.ascx" />
-    <Content Include="Views\Admin\AjaxUserList.ascx" />
+    <Content Include="Views\Admin\UserList.ascx" />
     <Content Include="Views\Admin\UserRole.ascx" />
     <Content Include="Views\Admin\UserView.aspx" />
     <Content Include="Views\Milestone\Edit.aspx" />
