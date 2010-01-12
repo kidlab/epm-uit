@@ -20,6 +20,7 @@ namespace EPM.Controllers
             Task = task;
         }
 
+
         public string GetProjectName()
         {
             string name = String.Empty;
@@ -71,6 +72,7 @@ namespace EPM.Controllers
 
             try
             {
+                
                 const int pageSize = 10;
 
                 User currentUser = HttpContext.Session["user"] as User;

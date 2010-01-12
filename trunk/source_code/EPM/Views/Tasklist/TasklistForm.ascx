@@ -5,7 +5,9 @@ by; ManVHT
     - Apply new style of TasklistForm.
 --%>
 
-<%  string contentTitle = "Add TaskList";
+<%  
+    
+    string contentTitle = "Add TaskList";
     string actionLink = "#";
     bool isOnEditing = false;
     bool isOnAdd = false;
@@ -60,7 +62,24 @@ by; ManVHT
 				</td>
 				<td>
 					<select  class="form-text" id="input-tasklist" name="miletone_id" style="width: 70%">
-						<option value="1"> Milestone 1</option>
+					<%
+			           List<EPM.Models.Milestone> milestones ;
+                       EPM.Models.MilestoneRepository milestoneRepo = new EPM.Models.MilestoneRepository();
+
+                       milestones = milestoneRepo.GetMilestonesByProjectId(Model.Tasklist.project_id).ToList<EPM.Models.Milestone>();
+
+                       for (int i=0; i < milestones.Count; i++ )
+                       {
+                          
+					  %>
+						<option value="<%= milestones[i].id %>"
+						    <% 
+						       if (Model.Tasklist.miletone_id == milestones[i].id)
+                               Writer.Write(" selected='selected'"); 
+                               %>
+						    ><%= milestones[i].name%></option>
+						
+					<% } %>
 					</select>
 				</td>
 			</tr>	

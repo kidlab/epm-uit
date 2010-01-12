@@ -87,6 +87,9 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\PhoneValidator.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Milestone_AssignedRepository.cs" />
+    <Compile Include="Models\MilestoneAssigned.cs" />
+    <Compile Include="Models\IMilestone_AssignedRepository.cs" />
     <Compile Include="Models\IRoleRepository.cs" />
     <Compile Include="Models\IRole_AssignedRepository.cs" />
     <Compile Include="Models\ITasklistRepository.cs" />
@@ -437,6 +440,7 @@
     <Content Include="Views\Admin\UserList.ascx" />
     <Content Include="Views\Admin\UserRole.ascx" />
     <Content Include="Views\Admin\UserView.aspx" />
+    <Content Include="Views\Milestone\Create.aspx" />
     <Content Include="Views\Login\Index.aspx" />
     <Content Include="Views\Milestone\Edit.aspx" />
     <Content Include="Views\Milestone\Index.aspx" />
@@ -457,7 +461,10 @@
     <Content Include="Views\Tasklist\Index.aspx" />
     <Content Include="Views\Tasklist\TasklistForm.ascx" />
     <Content Include="Views\Tasklist\TasklistList.ascx" />
+    <Content Include="Views\Task\Create.aspx" />
+    <Content Include="Views\Task\Edit.aspx" />
     <Content Include="Views\Task\Index.aspx" />
+    <Content Include="Views\Task\TaskForm.ascx" />
     <Content Include="Views\Task\TasksList.ascx" />
     <Content Include="Views\Test\index.aspx" />
     <Content Include="Web.config" />

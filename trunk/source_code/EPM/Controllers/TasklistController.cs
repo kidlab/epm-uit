@@ -14,12 +14,17 @@ namespace EPM.Controllers
     {
         public Tasklist Tasklist { get; private set; }
         public List<User> Users { get; private set; }
+        public List<Milestone> Milestones { get; private set; }
         //public List<User> Users { get; private set; }
         public TasklistFormViewModel(Tasklist tasklist)
         {
             Tasklist = tasklist;
         }
-
+        public TasklistFormViewModel(Tasklist tasklist,List<Milestone> milestones)
+        {
+            Tasklist = tasklist;
+            Milestones = milestones;
+        }
         public Project GetProject()
         {
             Project project = new Project();
@@ -38,6 +43,7 @@ namespace EPM.Controllers
 
             return project;
         }
+       
     }
 
     /// <summary>
@@ -70,9 +76,17 @@ namespace EPM.Controllers
 
             try
             {
+
+                
                 const int pageSize = 10;
 
+<<<<<<< .mine
                 User currentUser = HttpContext.Session["user"] as User;
+                ViewData["projectId"] = projectId;
+                ViewData["userId"] = currentUser.id;
+=======
+                User currentUser = HttpContext.Session["user"] as User;
+>>>>>>> .r76
                 if (currentUser != null)
                 {
                     List<Tasklist> allTasklists = 
@@ -86,6 +100,7 @@ namespace EPM.Controllers
                         allTasklistVM.Add(new TasklistFormViewModel(tasklist));
                     }
                 }
+                //return View();
             }
             catch (Exception exc)
             {
@@ -143,7 +158,7 @@ namespace EPM.Controllers
 
             tasklist.project_id = (int)projectId;
 
-            Tracer.Log("Tasklist", " projectId " + projectId, "F:\\error.log");
+            //Tracer.Log("Tasklist", " projectId " + projectId, "F:\\error.log");
 
             return View(new TasklistFormViewModel(tasklist));
         }

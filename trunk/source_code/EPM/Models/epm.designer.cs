@@ -774,7 +774,7 @@ namespace EPM.Models
 			}
 		}
 		
-		[Column(Name="[user)id]", Storage="_user_id", DbType="Int NOT NULL")]
+		[Column(Name="[user_id]", Storage="_user_id", DbType="Int NOT NULL")]
 		public int user_id
 		{
 			get

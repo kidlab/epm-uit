@@ -8,20 +8,35 @@ by; ManVHT
 <%  string contentTitle = "Add TaskList";
     string actionLink = "#";
     bool isOnEditing = false;
-    if (Model != null && Model.Task != null)
-    {
-        // Is on editing mode.{
-        contentTitle = "Edit Task";
-        isOnEditing = true;
-        actionLink = "/Task/Edit";
-    }
+    bool isOnAdd = false;
+    int projectId;
+    if (Model.Task != null)
+        if (Model.Task.id > 0)
+        {
+            // Is on editing mode.{
+            contentTitle = "Edit Tasklist";
+            isOnEditing = true;
+            actionLink = "/Task/Edit";
+        }
+        else
+        {
+            // special solution for task
+            isOnAdd = true;
+            actionLink = "/Task/Create";
+        }
 %>
+<script type="text/javascript">
+    function addTask(taskListId) {
+        $('#tasklist_id').val(taskListId);
+    }
+</script>
 <div class="table-content">
 	<div class="form-ajax" id="Div1">
 	<h1>Task</h1>
 	<div class="add-poject-form">
-		<form action="<%= actionLink %>" method="POST">
+		<form id="formTask" action="<%= actionLink %>" method="POST">
 		<input type="hidden" name="id" value="<%if(isOnEditing) Writer.Write(Model.Task.id);%>" />
+		<input type="hidden" name="tasklist_id" id="tasklist_id" value="" />
 		<table cellpadding="1" cellspacing="5" border="0" width="100%">
 			<tr>
 				<td width="10%">
@@ -56,8 +71,26 @@ by; ManVHT
 					Tasklist:
 				</td>
 				<td>
-					<select  class="form-text" id="input-tasklist" name="tasklist" style="width: 70%">
-						<option value="1"> Tasklist 1</option>
+					<select  class="form-text" id="input-tasklist" name="tasklist_id" style="width: 70%">
+						<%
+			               List<EPM.Models.Tasklist> taskLists ;
+                           EPM.Models.TasklistRepository taskListRepo = new EPM.Models.TasklistRepository();
+                          
+                           taskLists = taskListRepo.GetTasklistsByProject((int)ViewData["projectId"]).ToList<EPM.Models.Tasklist>();
+                         		    
+                           for (int i = 0; i < taskLists.Count; i++)
+                           {
+                          
+					  %>
+						    <option value="<%= taskLists[i].id %>"
+						        <% 
+						           if ( isOnEditing) 
+						            if (Model.Task.tasklist_id == taskLists[i].id)
+                                       Writer.Write(" selected='selected'"); 
+                                   %>
+						        ><%= taskLists[i].name%></option>
+						
+					    <% } %>
 					</select>
 				</td>
 			</tr>	
@@ -66,10 +99,27 @@ by; ManVHT
 					Assign:
 				</td>
 				<td>
-					<select  class="form-text" id="input-assign" name="assign" style="width: 70%">
-						<option value="1"> All</option>
-						<option value="2"> admin</option>
+					<select  class="form-text" id="input-assign" name="assign_id" style="width: 70%" >
+						<%
+			               List<EPM.Models.User> users ;
+                           EPM.Models.UserRepository userRepo = new EPM.Models.UserRepository();
+                          
+                           users = userRepo.GetUsersByProject((int)ViewData["projectId"]).ToList<EPM.Models.User>();
+                         		    
+                           for (int i = 0; i < users.Count; i++)
+                           {
+                          
+					  %>
+						    <option value="<%= users[i].id %>"
+						        <% 
+						           if ( (int)ViewData["userId"]== users[i].id)
+                                   Writer.Write(" selected='selected'"); 
+                                   %>
+						        ><%= users[i].name%></option>
+						
+					    <% } %>
 					</select>
+					
 				</td>
 			</tr>							
 			<tr>
