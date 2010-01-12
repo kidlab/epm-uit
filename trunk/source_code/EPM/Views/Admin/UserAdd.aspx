@@ -16,6 +16,7 @@
          $(document).ready(function() {
              $('.tab').removeClass('active');
              $('#tab-user-admin').addClass('active');
+             $('.table-form tr:even > td').addClass('row-odd');
          });
     </script>
 </asp:Content>

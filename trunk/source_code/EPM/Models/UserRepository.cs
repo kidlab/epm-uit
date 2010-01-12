@@ -149,6 +149,23 @@ namespace EPM.Models
             }
         }
 
+        public IQueryable<User> GetUserNotInProject(int? id) {
+            try
+            {
+                var query = from u in _db.Users
+                            where !(from pa in _db.Project_Assigneds
+                                    select pa.user_id).Contains(u.id)
+                            select u;
+                
+                return query;
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(UserRepository), ex);
+                throw new DbAccessException(ex);
+            }
+        }
+
         #endregion
 
         #region IRepository<User> Members

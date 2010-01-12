@@ -32,6 +32,7 @@ namespace EPM.Controllers
     public class ProjectController : Controller
     {
         private IProjectRepository projectRepository;
+        private IUserRepository userRepository;
 
         public ProjectController()
             : this(new ProjectRepository())
@@ -196,6 +197,30 @@ namespace EPM.Controllers
         {
             Project project = projectRepository.GetOne(id);
             return View(new ProjectFormViewModel(project));
+        }
+
+        //
+        // GET: /Project/User/
+        public ActionResult User(int? id) {
+            userRepository = new UserRepository();
+
+            List<User> users = userRepository.GetAll().ToList();
+            List<User> usersNotAssign = new List<User>();
+            if (id != null)
+            {
+                usersNotAssign = userRepository.GetUserNotInProject(id).ToList();
+            }
+            ViewData["canAdd"] = true;
+            ViewData["usersNotAssign"] = usersNotAssign;
+            return View(users);
+        }
+
+        //
+        // GET /Project/UserAdd/
+        public ActionResult UserAdd() {
+            int id = int.Parse(Request.Form["user"]);
+
+            return Redirect("/Admin/User");
         }
     }
 }
