@@ -607,4 +607,13 @@ ___Search
 #search .search-confirm:hover{
 	background-position:left -23px; 
 }
-	
+
+/****** USER INFO TABLE ********/
+#user-info-table{
+	border-collapse: collapse;
+}
+
+#user-info-table td{
+	padding: 3px 5px;
+	border: 1px solid #213762;
+}

@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<EPM.Controllers.UserIndexViewModel>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<EPM.Helpers.PaginatedList<EPM.Models.User>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	UserAdmin
@@ -7,9 +7,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1 class="content-title"> System / User Administration </h1>	
-    <% ViewData["ShowToolButtons"] = true; %>
-        <div id="ajaxUserList">
-        </div>    
+    <% ViewData["ShowToolButtons"] = true;
+       Html.RenderPartial("UserList");
+    %>
     <% Html.RenderPartial("UserRole"); %>
 
 </asp:Content>

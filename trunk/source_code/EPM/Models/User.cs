@@ -31,6 +31,11 @@ namespace EPM.Models
 			get { return (GetRuleViolations().Count() == 0); }
 		}
 
+        public bool IsAssignedRole(Role role) {
+            Role_AssignedRepository roRepository = new Role_AssignedRepository();
+            return roRepository.IsUserAssigned(id, role.id);
+        }
+
         public IEnumerable<RuleViolation> GetRuleViolations()
         {
 
