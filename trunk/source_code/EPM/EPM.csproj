@@ -87,12 +87,14 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\PhoneValidator.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\IProject_AssignedRepository.cs" />
     <Compile Include="Models\Milestone_AssignedRepository.cs" />
     <Compile Include="Models\MilestoneAssigned.cs" />
     <Compile Include="Models\IMilestone_AssignedRepository.cs" />
     <Compile Include="Models\IRoleRepository.cs" />
     <Compile Include="Models\IRole_AssignedRepository.cs" />
     <Compile Include="Models\ITasklistRepository.cs" />
+    <Compile Include="Models\Project_AssignedRepository.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\DbAccessException.cs" />
     <Compile Include="Models\Epm.designer.cs">
