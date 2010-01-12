@@ -37,5 +37,9 @@ namespace EPM.Models
         User GetUserByName(string name);
 
         bool IsExistName(string name);
+
+        User getUserById(int id);
+
+        IQueryable<User> GetUserNotInProject(int? id);
     }
 }

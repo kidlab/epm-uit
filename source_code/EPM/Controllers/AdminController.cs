@@ -66,7 +66,6 @@ namespace EPM.Controllers
 
         // ERROR
         private string ERR_NAME_REQUIRE = "Name require";
-        private string ERR_NAME_EXISTS = "Name is exist";
         private string ERR_EMAIl_REQUIRE = "Email require";
         private string ERR_PHONE_REQUIRE = "Phone number require";
         private string ERR_PHONE_INVALID = "Phone number invalid";
@@ -99,10 +98,8 @@ namespace EPM.Controllers
                     //users = userRespository.GetAll().ToList();
                     resultUsers = new PaginatedList<User>(userRespository.GetAllUsers(page ?? 0, pageSize),
                             0, 10);
-                    if (resultUsers.Count > 0)
+                          
                         return View(resultUsers);
-                    else
-                        return View();
                 }
             }
             catch (Exception ex)
@@ -181,12 +178,10 @@ namespace EPM.Controllers
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserAdd(FormCollection form){
-            Models.User user        = new User();
-            List<Role> roles        = new List<Role>();
-            Role_Assigned ra        = new Role_Assigned();
-            string password         = "";
-            string repeatPassword   = "";
-            int newRole             = -1;
+            Models.User user = new User();
+            List<Role> roles = new List<Role>();
+            string password = "";
+            string repeatPassword = "";
             List<String> errorMessage = new List<string>();
             errorMessage.Clear();
             try
@@ -206,42 +201,27 @@ namespace EPM.Controllers
                 password = Request.Form["password"];
                 repeatPassword = Request.Form["repeatpassword"];
                 user.password = password;
-
-                if (int.TryParse(Request.Form["role"], out newRole))
-                {
-                    ra.role_id = newRole;
-                }
-
                 //validate
                 if (user.name == null || user.name == "")
-                    errorMessage.Add(ERR_NAME_REQUIRE);
+                    errorMessage.Add("Name require");
                 if (user.email == null || user.email == "")
-                    errorMessage.Add(ERR_EMAIl_REQUIRE);
+                    errorMessage.Add("Email require");
                 if (user.phone == null || user.phone == "")
-                    errorMessage.Add(ERR_PHONE_REQUIRE);
+                    errorMessage.Add("Phone number require");
                 if (user.address == null || user.address == "")
-                    errorMessage.Add(ERR_ADDRESS_REQUIRE);
+                    errorMessage.Add("Address require");
                 if (password == null || password != repeatPassword || password == "")
-                    errorMessage.Add(ERR_PASSWORD_NOT_MATCH);
-                if (userRespository.GetUserByName(user.name) != null)
-                    errorMessage.Add(ERR_NAME_EXISTS);
+                    errorMessage.Add("Password does not match");
 
                 // summary
                 if (errorMessage.Count == 0)
                 {
                     userRespository.Add(user);
                     userRespository.Save();
-
-                    // get user id for role assign
-                    user = userRespository.GetUserByName(user.name);
-                    ra.user_id = user.id;
-                    raRepository.Add(ra);
-                    raRepository.Save(); // save role assign
                     return Redirect("/Admin/UserAdmin");
                 }
                 else {
                     ViewData["errors"] = errorMessage;
-                    ViewData["newRole"] = newRole;
                 }
             }
             catch (Exception ex)
@@ -264,7 +244,7 @@ namespace EPM.Controllers
                 
                 return View(user);
             }
-            return View("NotFound");
+            return View();
         }
 
         //
@@ -272,13 +252,13 @@ namespace EPM.Controllers
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserEdit(int? id,FormCollection form) {
-            Models.User user        = new User();
-            List<Role> roles        = new List<Role>();
-            Role_Assigned ra        = new Role_Assigned();
+            Models.User user = new User();
+            List<Role> roles = new List<Role>();
+            Role_Assigned ra = new Role_Assigned();
             string oldpassword      = "";
             string password         = "";
             string repeatPassword   = "";
-            int newRole             = 0;
+            int newRole = 0;
             List<String> errorMessage = new List<string>();
             errorMessage.Clear();
             try
@@ -319,7 +299,7 @@ namespace EPM.Controllers
                     errorMessage.Add(ERR_OLD_PASSWORD_INVALID);
                 if (oldpassword != "" && (password == null || password != repeatPassword || password == ""))
                     errorMessage.Add(ERR_PASSWORD_NOT_MATCH);
-                if (!int.TryParse(Request.Form["role"], out newRole))
+                if (int.TryParse(Request.Form["role"], out newRole)
                     errorMessage.Add(ERR_ROLE_REQUIRE);
 
                 
@@ -327,61 +307,20 @@ namespace EPM.Controllers
                 if (errorMessage.Count == 0)
                 {
                     userRespository.Save();
+
                     raRepository.Save();
                     return Redirect("/Admin/UserAdmin");
                 }
                 else
                 {
                     ViewData["errors"] = errorMessage;
-                    ViewData["newRole"]    = newRole;
-                    return View(user);
                 }
             }
             catch (Exception ex)
             {
                 Tracer.Log(typeof(AdminController), ex);
             }
-            return View("NotFound");
-        }
-
-        public ActionResult UserDel(int? id)
-        {
-            Models.User user = null;
-            try
-            {
-                if (id != null)
-                {
-                    user = userRespository.getUserById(id.Value);
-                    return View(user);
-                }
-            }
-            catch (Exception ex)
-            {
-                Tracer.Log(typeof(AdminController), ex);
-            }
-            return View("NotFound");
-        }
-
-        //
-        // GET /Admin/UserEdit/id/
-        [ValidateInput(false)]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult UserDel() {
-            Models.User user = null;
-            try
-            {
-                int id = 0;
-                int.TryParse(Request.Form["id"], out id);
-                user = userRespository.getUserById(id);
-                userRespository.Delete(user);
-                userRespository.Save();
-                return Redirect("/Admin/UserAdmin");
-            }
-            catch (Exception ex)
-            {
-                Tracer.Log(typeof(AdminController), ex);
-            }
-            return View("NotFound");
+            return View(user);
         }
 
         #endregion

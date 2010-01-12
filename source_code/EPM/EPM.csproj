@@ -445,6 +445,9 @@
     <Content Include="Views\Project\Edit.aspx" />
     <Content Include="Views\Project\Index.aspx" />
     <Content Include="Views\Project\ProjectForm.ascx" />
+    <Content Include="Views\Project\User.aspx" />
+    <Content Include="Views\Project\UserAssignForm.ascx" />
+    <Content Include="Views\Project\UserList.ascx" />
     <Content Include="Views\Shared\ProjectManageTabs.ascx" />
     <Content Include="Views\Shared\DefaultTabs.ascx" />
     <Content Include="Views\Tasklist\Create.aspx" />

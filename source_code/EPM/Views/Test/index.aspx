@@ -34,7 +34,7 @@
     
     ++ dưới đây là 1 ví dụ
     -->
-    <% EPM_Auth.validAuth(4,3,"view","Milestone";  %>
+    <% EPM_Auth.validAuth(4,3,"view","Milestone");  %>
          
   
  
