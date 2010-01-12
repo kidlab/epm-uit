@@ -158,8 +158,17 @@ namespace EPM.Controllers
 
                 try
                 {
+                    task.start = DateTime.Now;
+
+                    int assignedId = Convert.ToInt32(Request.Form["assign"]);
+                    
                     _taskRepository.Add(task);
                     _taskRepository.Save();
+
+                     User currentUser = HttpContext.Session["user"] as User;
+                    Task_Assigned taskAssigned = new Task_Assigned();
+                    taskAssigned.user_id = currentUser.id;
+
 
                     return RedirectToAction("Index");
                 }
