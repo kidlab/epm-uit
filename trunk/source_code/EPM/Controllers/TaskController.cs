@@ -73,7 +73,7 @@ namespace EPM.Controllers
             {
                 const int pageSize = 10;
 
-                User currentUser = this.Session["user"] as User;
+                User currentUser = HttpContext.Session["user"] as User;
                 if (currentUser != null)
                 {
                     List<Task> allTasks = 
