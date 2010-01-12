@@ -10,11 +10,12 @@ using Common;
 
 namespace EPM.Controllers
 {
-    public class TaskViewModel
+    public class TaskFormViewModel
     {
         public Task Task { get; private set; }
-
-        public TaskViewModel(Task task)
+        public List<User> Users { get; private set; }
+        //public List<User> Users { get; private set; }
+        public TaskFormViewModel(Task task)
         {
             Task = task;
         }
@@ -33,7 +34,7 @@ namespace EPM.Controllers
             }
             catch (Exception exc)
             {
-                Tracer.Log(typeof(TaskViewModel), exc);
+                Tracer.Log(typeof(TaskFormViewModel), exc);
             }
 
             return name;
@@ -44,8 +45,8 @@ namespace EPM.Controllers
     /// TaskController.
     /// </summary>
     /// <remarks>
-    /// Added on 2010-01-08
-    /// by: ManVHT
+    /// Update on 2010-01-10
+    /// by: HaiLD
     /// </remarks>
     public class TaskController : Controller
     {
@@ -66,7 +67,7 @@ namespace EPM.Controllers
 
         public ActionResult Index(int? page)
         {
-            List<TaskViewModel> allTaskVM = new List<TaskViewModel>();
+            List<TaskFormViewModel> allTaskVM = new List<TaskFormViewModel>();
 
             try
             {
@@ -81,17 +82,138 @@ namespace EPM.Controllers
                     // Wrap all Task objects in TaskViewModel object and pass them to View.
                     foreach (Task task in allTasks)
                     {
-                        allTaskVM.Add(new TaskViewModel(task));
+                        allTaskVM.Add(new TaskFormViewModel(task));
                     }
                 }
             }
             catch (Exception exc)
             {
-                Tracer.Log(typeof(ProjectController), exc);
+                Tracer.Log(typeof(TaskController), exc);
             }
 
             return View(allTaskVM);
         }
 
+        /// <summary>
+        ///  Need for login  [Authorize]
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
+        public ActionResult Edit(int id)
+        {
+
+            Task task = _taskRepository.GetOne(id);
+            //Tracer.Log("Task", " ml_id " + id, "F:\\error.log");
+            return View(new TaskFormViewModel(task));
+        }
+
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+
+            Task task = _taskRepository.GetOne(id);
+
+
+            try
+            {
+                UpdateModel(task);
+
+                _taskRepository.Save();
+
+                return RedirectToAction("Index/" + task.tasklist_id);
+            }
+            catch
+            {
+                //ModelState.AddModelErrors(task.GetRuleViolations());
+
+                return View(new TaskFormViewModel(task));
+            }
+        }
+
+        //
+        // GET: /Dinners/Create
+
+        public ActionResult Create()
+        {
+
+            Task task = new Task();
+
+
+            return View(new TaskFormViewModel(task));
+        }
+
+        //
+        // POST: /Dinners/Create
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Create(Task task)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+                    _taskRepository.Add(task);
+                    _taskRepository.Save();
+
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    // ModelState.AddModelErrors(task.GetRuleViolations());
+                }
+            }
+
+            return View(new TaskFormViewModel(task));
+        }
+
+        //
+        // HTTP GET: /Task/Delete/1
+
+
+        public ActionResult Delete(int id)
+        {
+
+            Task task = _taskRepository.GetOne(id);
+
+            if (task == null)
+                return View("NotFound");
+
+            _taskRepository.Delete(task);
+            _taskRepository.Save();
+
+            return RedirectToAction("Task");
+        }
+
+        // 
+        // HTTP POST: /Dinners/Delete/1
+        /*
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Delete(int id, string confirmButton)
+        {
+
+            Task task = taskRepository.GetTask(id);
+
+            if (task == null)
+                return View("NotFound"); 
+                
+            taskRepository.Delete(task);
+            taskRepository.Save();
+
+            return View("Index");
+        }
+        */
+
+        //
+        // GET: /Task/ManageTask/1
+
+        public ActionResult ManageTask(int id)
+        {
+            Task task = _taskRepository.GetOne(id);
+            return View(new TaskFormViewModel(task));
+        }
     }
 }

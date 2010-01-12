@@ -2,7 +2,7 @@
 <div class="table-content">
 	<div class="table-cover">
 	    <% if (ViewData["ShowToolButtons"] != null
-                && (bool)ViewData["ShowToolButtons"] == true)
+                && (bool)ViewData["ShowToolButtons"] == true )
         {// Show toolstrip buttons.%>
         <div class="cover-buttons-list">
 		    <a href="/" class="cover-btn tool-add" id="tool-add">

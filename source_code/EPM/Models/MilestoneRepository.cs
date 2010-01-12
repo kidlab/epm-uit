@@ -14,11 +14,10 @@ using Common;
 namespace EPM.Models
 {
     /// <summary>
-    /// Changed on 2010-01-06
-    /// By: ManVHT.
+    /// Changed on 2010-01-10
+    /// By: HaiLD.
     /// @description: 
-    ///     - Inherit from BaseModel.
-    ///     - Add try{}catch{}
+    ///    - Add GetMilestonesByUserProjectId
     /// </summary>
     public class MilestoneRepository : BaseModel, IMilestoneRepository
     {

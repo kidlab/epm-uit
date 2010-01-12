@@ -1,4 +1,10 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<System.Collections.Generic.List<EPM.Controllers.TaskViewModel>>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<System.Collections.Generic.List<EPM.Controllers.TaskFormViewModel>>" %>
+
+<%--Changed on 2010-01-12
+    by: HaiLD
+    @desc: update link         
+    --%>
+
 <div class="table-content">
 	<div class="table-cover">			
 		My Tasks
@@ -13,7 +19,7 @@
 		</tr>
 		<% for (int id = 0; id < Model.Count; id++) {
                  var taskVM = Model[id];
-                 string lnkEdit = "#";//"Task/Edit/" + task.id;
+                 string lnkEdit = "Task/Edit/" + taskVM.Task.id;//
                  // This makes the table more easily readable.
                  if (id % 2 == 0)
                      this.Writer.Write("<tr>");

@@ -11,10 +11,10 @@ namespace EPM.Controllers
     public class HomeViewModel
     {
         public List<Project> Projects { get; private set; }
-        public List<TaskViewModel> Tasks { get; private set; }
+        public List<TaskFormViewModel> Tasks { get; private set; }
         // List<Message> Messages{get;set;}
 
-        public HomeViewModel(List<Project> projects, List<TaskViewModel> tasks)
+        public HomeViewModel(List<Project> projects, List<TaskFormViewModel> tasks)
         {
             Projects = projects;
             Tasks = tasks;
@@ -68,7 +68,7 @@ namespace EPM.Controllers
             try
             {
                 List<Project> projects = _getProjects(user, 0);
-                List<TaskViewModel> tasks = _getTasks(user, 0);
+                List<TaskFormViewModel> tasks = _getTasks(user, 0);
                 viewModel = new HomeViewModel(projects, tasks);
             }
             catch (DbAccessException exc)
@@ -89,10 +89,10 @@ namespace EPM.Controllers
             return projectRepository.GetProjectsByUser(user.id, page ?? 0, PAGE_SIZE).ToList();
         }
 
-        private List<TaskViewModel> _getTasks(User user, int? page)
+        private List<TaskFormViewModel> _getTasks(User user, int? page)
         {
             ITaskRepository _taskRepository = new TaskRepository();
-            List<TaskViewModel> allTaskVM = new List<TaskViewModel>();
+            List<TaskFormViewModel> allTaskVM = new List<TaskFormViewModel>();
 
             List<Task> allTasks =
                         _taskRepository.GetTasksByUser(user.id, page ?? 0, PAGE_SIZE).ToList();
@@ -100,7 +100,7 @@ namespace EPM.Controllers
             // Wrap all Task objects in TaskViewModel object and pass them to View.
             foreach (Task task in allTasks)
             {
-                allTaskVM.Add(new TaskViewModel(task));
+                allTaskVM.Add(new TaskFormViewModel(task));
             }
 
             return allTaskVM;

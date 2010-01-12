@@ -67,6 +67,7 @@
     <Compile Include="Controllers\MilestoneController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TasklistController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Helpers\EPM_Auth.cs" />
     <Compile Include="Helpers\EPM_Calendar.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\IRoleRepository.cs" />
     <Compile Include="Models\IRole_AssignedRepository.cs" />
+    <Compile Include="Models\ITasklistRepository.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\DbAccessException.cs" />
     <Compile Include="Models\Epm.designer.cs">
@@ -107,6 +109,8 @@
     <Compile Include="Models\Role_AssignRepository.cs" />
     <Compile Include="Models\RuleViolation.cs" />
     <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\Tasklist.cs" />
+    <Compile Include="Models\TasklistRepository.cs" />
     <Compile Include="Models\TaskRepository.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRepository.cs" />
@@ -443,6 +447,11 @@
     <Content Include="Views\Project\ProjectForm.ascx" />
     <Content Include="Views\Shared\ProjectManageTabs.ascx" />
     <Content Include="Views\Shared\DefaultTabs.ascx" />
+    <Content Include="Views\Tasklist\Create.aspx" />
+    <Content Include="Views\Tasklist\Edit.aspx" />
+    <Content Include="Views\Tasklist\Index.aspx" />
+    <Content Include="Views\Tasklist\TasklistForm.ascx" />
+    <Content Include="Views\Tasklist\TasklistList.ascx" />
     <Content Include="Views\Task\Index.aspx" />
     <Content Include="Views\Task\TasksList.ascx" />
     <Content Include="Views\Test\index.aspx" />
