@@ -316,6 +316,190 @@
 				</div>		
 			</div>
 				
+			<div class="table-content">
+					<div class="table-cover">
+						<div class="cover-buttons-list">
+							<a href="/" class="cover-btn tool-add" id="tool-add">
+								<span>Add</span>
+							</a>
+							<a href="/" class="cover-btn tool-edit">
+								<span>Edit</span>
+							</a>
+							<a href="/" class="cover-btn tool-del">
+								<span>Del</span>
+							</a>
+							<a href="/" class="cover-btn tool-check">
+								<span>Check</span>
+							</a>
+						</div>	
+						Tasklist
+					</div>
+<!--				******************** FORM ADD ******************* 	-->
+					<div class="form-ajax" id="form-add" style="display: none;">
+					<h1>Add Task</h1>
+					<div class="add-project-form">
+						<form action="" method="POST">
+						<table cellpadding="1" cellspacing="5" border="0" width="100%">
+							<tr>
+								<td width="10%">
+									Title:
+								</td>
+								<td width="90%">
+									<input class="form-text" id="input-name" type="text" name="name" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Text:
+								</td>
+								<td>
+									<textarea class="form-text" id="input-desc" name="text" style="width: 70%" cols="20" rows="5"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Due:
+								</td>
+								<td>
+									<input class="form-text" id="input-due" type="text" name="due" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Assign:
+								</td>
+								<td>
+									<select class="form-text" id="input-due" name="due" style="width: 70%">
+										<option value="0">All</option>
+										<option value="1">Admin</option>
+									</select>									
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<input type="button" name="submit" value="Save">
+									<input type="button" name="submit" value="Cancel">
+								</td>
+							</tr>
+						</table>
+						</form>
+					</div>
+				</div>
+				<!-- ******************** END FORM ADD ******************* 	-->
+				<div class="table-list-wrapper">
+					<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
+						<tr>
+							<th width="5%"></th>
+							<th width="35%">Names</th>
+							<th width="30%">Done</th>
+							<th width="15%">Day left</th>
+							<th width="10%">Edit</th>
+						</tr>
+						<tr>
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="taskinfo.html">Tasklist</a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>	
+						<tr class="odd">
+							<td>
+								<a class="button btn-check" href="/">
+									<span>check</span>
+								</a>
+							</td>
+							<td> <a href="/">Tasklist 2 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
+							<td>
+								<a class="button btn-edit" href="/">
+									<span>edit</span>
+								</a>								
+								<a class="button btn-del" href="/">
+									<span>del</span>
+								</a>						
+							</td>
+						</tr>				
+					</table>
+					<!-- ******************** HIDDEN TABLE LIST ********** -->
+					<div class="hidden-table-list" id="finish-milestone1" style="display: none">
+						<table class="table-list" width="100%" cellpadding="1" cellspacing="1" >
+							<tr>
+								<th colspan="5"> Finished Taskslist</th>
+							</tr>
+							<tr>
+								<td width="5%">
+									<a class="button btn-check" href="#">
+										<span>check</span>
+									</a>
+								</td>
+								<td width="35%"> <a href="#">Tasklist </a></td>
+								<td width="30%"> 50% </td>
+								<td width="15%"> 50 days</td>
+								<td width="10%">
+									<a class="button btn-edit" href="#">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="#">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>								
+							<tr>
+								<td>
+									<a class="button btn-check" href="/">
+										<span>check</span>
+									</a>
+								</td>
+								<td> <a href="/">Tasklist </a></td>
+								<td> 50% </td>
+								<td> 50 days</td>
+								<td>
+									<a class="button btn-edit" href="/">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="/">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>	
+							<tr class="odd">
+								<td>
+									<a class="button btn-check" href="/">
+										<span>check</span>
+									</a>
+								</td>
+								<td> <a href="/">Tasklist </a></td>
+								<td> 50% </td>
+								<td> 50 days</td>
+								<td>
+									<a class="button btn-edit" href="/">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="/">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>		
+						</table>
+					</div>
+				</div>
+				<div class="table-bottom-tab">
+					<a href="/" id="ft-toggle-1" onclick="toggleSlide(this.id,'finish-milestone1','activated','up')">Finished tasks</a>
+				</div>		
+			</div>	
+				
 				
 			</div>
 			<div id="body-right">
