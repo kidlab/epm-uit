@@ -68,6 +68,7 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Helpers\EPM_Auth.cs" />
     <Compile Include="Helpers\EPM_Calendar.cs" />
     <Compile Include="Helpers\WebUIHelper.cs" />
     <Compile Include="Default.aspx.cs">

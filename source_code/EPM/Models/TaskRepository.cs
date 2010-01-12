@@ -12,7 +12,7 @@ namespace EPM.Models
     /// </summary>
     public class TaskRepository : BaseModel, ITaskRepository
     {
-         #region CONSTRUCTOR
+        #region CONSTRUCTOR
 
         public TaskRepository()
             : base()
@@ -79,6 +79,31 @@ namespace EPM.Models
                     select project;
 
                 return query.SingleOrDefault();
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(TaskRepository), exc);
+                throw new DbAccessException(exc);
+            }
+        }
+
+        public IQueryable<Task> GetTaskByUserProjectId(int userID, int projectID)
+        {
+            try
+            {
+                _refreshDataContext();
+
+                var query =
+                    from task in _db.Tasks
+                    join task_assigned in _db.Task_Assigneds
+                    on task.id equals task_assigned.task_id
+                    join tasklist in _db.Tasklists                    
+                    on task.tasklist_id equals tasklist.id
+                    where (task_assigned.user_id == userID)
+                        && (tasklist.project_id == projectID)
+                    select task;
+
+                return query;
             }
             catch (Exception exc)
             {

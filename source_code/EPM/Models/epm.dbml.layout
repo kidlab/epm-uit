@@ -26,22 +26,10 @@
         <elementListCompartment Id="09878d4a-dba6-4924-a65d-01a9442c5bd2" absoluteBounds="10.39, 1.2100000000000009, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="59c891cb-36cd-4e9c-a2ac-ca702c6f9b0d" absoluteBounds="8, 0.75, 2, 1.2605004882812503">
-      <DataClassMoniker Name="/EpmDataContext/Module_Action" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ee17eecb-1501-43f5-b5b0-6b4a3de6874b" absoluteBounds="8.015, 1.21, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="d6ac8652-2d93-462e-867a-0938adef314f" absoluteBounds="3.125, 0.75, 2, 1.2605004882812505">
       <DataClassMoniker Name="/EpmDataContext/Project_Assigned" />
       <nestedChildShapes>
         <elementListCompartment Id="6c3c5c22-0b03-4e63-bb7a-a48a6b859278" absoluteBounds="3.1400000000000006, 1.21, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0d7e6d14-0dda-44dd-8259-461dc1fcbd52" absoluteBounds="0.75, 5.625, 2, 1.5891951497395844">
-      <DataClassMoniker Name="/EpmDataContext/Role" />
-      <nestedChildShapes>
-        <elementListCompartment Id="09ddb227-ccd4-491f-ae82-6dec3d02e03c" absoluteBounds="0.765, 6.0850000000000009, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="3ff7d135-29fe-489c-a1c3-26e7fa94fa42" absoluteBounds="0.75, 3.75, 2, 1.2605004882812503">
@@ -84,6 +72,18 @@
       <DataClassMoniker Name="/EpmDataContext/Project" />
       <nestedChildShapes>
         <elementListCompartment Id="ad1bbfbd-b2d4-42e1-aef6-b4254015ce0d" absoluteBounds="5.515, 1.21, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a92bf9c6-6ad0-477b-a486-00469fa563a6" absoluteBounds="0.75, 5.5, 2, 1.4248478190104168">
+      <DataClassMoniker Name="/EpmDataContext/Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5575c22f-9a73-4f16-bc3c-b3f8ddd03d4d" absoluteBounds="0.76500000000000012, 5.96, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cafb2418-4ff1-4208-bc7e-ea5d3fed977e" absoluteBounds="7.875, 0.75, 2, 1.4248478190104168">
+      <DataClassMoniker Name="/EpmDataContext/Module_Action" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d299a3d9-3f63-4429-8038-695c4207d0b8" absoluteBounds="7.8900000000000006, 1.21, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
