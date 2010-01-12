@@ -46,10 +46,5 @@ namespace EPM.Models
             Role role = db.Roles.SingleOrDefault(r => r.id == id);
             db.Roles.DeleteOnSubmit(role);
         }
-
-        //save
-        public void Save() {
-            db.SubmitChanges();
-        }
     }
 }

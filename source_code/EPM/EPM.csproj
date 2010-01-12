@@ -86,9 +86,6 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\PhoneValidator.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Epm.cs">
-      <DependentUpon>Epm.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Models\IRoleRepository.cs" />
     <Compile Include="Models\IRole_AssignedRepository.cs" />
     <Compile Include="Models\ITasklistRepository.cs" />
@@ -490,7 +487,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Content\images\epm_logo.svg" />
     <None Include="Models\Epm.dbml.layout">
       <DependentUpon>Epm.dbml</DependentUpon>
