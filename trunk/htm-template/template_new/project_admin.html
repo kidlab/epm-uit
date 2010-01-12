@@ -11,12 +11,12 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.tab').removeClass('active');
-		$('#tab-tracker').addClass('active');
+		$('#tab-project-admin').addClass('active');
 
-		$('#tool-filter').toggle(function(){
-			$('#form-filter').slideDown('slow');
+		$('#tool-add').toggle(function(){
+			$('#form-add').slideDown('slow');
 		}, function(){
-			$('#form-filter').slideUp('slow');
+			$('#form-add').slideUp('slow');
 		});
 	});
 	
@@ -65,11 +65,9 @@
 	<div id="body-wrapper">
 		<div id="body">
 			<ul id="body-tab">
-				<li class="tab" id="tab-project"> <a href="projectinfo.html">Projects </a> </li>
-				<li class="tab" id="tab-milestone"> <a href="milestones.html"> Milestone </a> </li>
-				<li class="tab" id="tab-task"> <a href="tasklist.html"> Taskslist</a> </li>
-				<li class="tab" id="tab-user"> <a href="users.html"> User</a> </li>
-				<li class="tab" id="tab-tracker"> <a href="report.html"> Timetracker</a> </li>						
+				<li class="tab" id="tab-project-admin"> <a href="project_admin.html">Projects Administration</a> </li>
+				<li class="tab" id="tab-user-admin"> <a href="user_administration.html">Users Administration</a> </li>
+				<li class="tab" id="tab-system-admin"> <a href="system_admin.html">System Administration</a> </li>
 			</ul>
 			<div class="clear"></div>
 			<div id="body-left">
@@ -78,31 +76,30 @@
 				<div class="table-content">
 					<div class="table-cover">
 						<div class="cover-buttons-list">
-							<a href="/" class="cover-btn tool-filter" id="tool-filter">
-								<span>Filter</span>
+							<a href="/" class="cover-btn tool-add" id="tool-add">
+								<span>Add</span>
 							</a>
-<!--							<a href="/" class="cover-btn tool-edit">-->
-<!--								<span>Edit</span>-->
-<!--							</a>-->
-<!--							<a href="/" class="cover-btn tool-del">-->
-<!--								<span>Del</span>-->
-<!--							</a>-->
-<!--							<a href="/" class="cover-btn tool-check">-->
-<!--								<span>Check</span>-->
-<!--							</a>-->
+							<a href="/" class="cover-btn tool-edit">
+								<span>Edit</span>
+							</a>
+							<a href="/" class="cover-btn tool-del">
+								<span>Del</span>
+							</a>
+							<a href="/" class="cover-btn tool-check">
+								<span>Check</span>
+							</a>
 						</div>	
 						Projects
 					</div>
-					
-<!--				******************** FORM FILTER ******************* 	-->
-					<div class="form-ajax" id="form-filter" style="display: none;">
-					<h1>Filter Reports</h1>
-					<div class="filter-report-form">
+<!--				******************** FORM ADD ******************* 	-->
+					<div class="form-ajax" id="form-add" style="display: none;">
+					<h1>Add Project</h1>
+					<div class="add-project-form">
 						<form action="" method="POST">
 						<table cellpadding="1" cellspacing="5" border="0" width="100%">
 							<tr>
 								<td width="10%">
-									<label>Start:</label>
+									Name:
 								</td>
 								<td width="90%">
 									<input class="form-test" id="input-name" type="text" name="name" style="width: 70%">
@@ -110,39 +107,39 @@
 							</tr>
 							<tr>
 								<td>
-									<label>End:</label>
+									Describe
 								</td>
 								<td>
-									<input class="form-test" id="input-name" type="text" name="name" style="width: 70%">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label>User:</label>
-								</td>
-								<td>
-									<select class="form-test" id="input-name" type="text" name="name" style="width: 70%">
-										<option value="1">All</option>
-										<option value="1">Admin 1</option>
-										<option value="1">Admin 2</option>
-									</select>
+									<textarea class="form-test" id="input-desc" name="desc" style="width: 100%" cols="20" rows="5"></textarea>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<label>Task:</label>
+									Due:
 								</td>
 								<td>
-									<select class="form-test" id="input-name" type="text" name="name" style="width: 70%">
-										<option value="1">All</option>
-										<option value="1">Task 1</option>
-										<option value="1">Task 2</option>
-									</select>
+									<input class="form-test" id="input-due" type="text" name="due" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Budget
+								</td>
+								<td>
+									<input class="form-test" id="input-budget" type="text" name="budget" style="width: 70%">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									People
+								</td>
+								<td>
+									
 								</td>
 							</tr>
 							<tr>
 								<td colspan="2" align="center">
-									<input type="button" name="submit" value="Filter">
+									<input type="button" name="submit" value="Save">
 									<input type="button" name="submit" value="Cancel">
 								</td>
 							</tr>
@@ -155,11 +152,9 @@
 					<table class="table-list" width="100%" cellpadding="1" cellspacing="1">
 						<tr>
 							<th width="5%"></th>
-							<th width="30%">User</th>
-							<th width="20%">Day</th>
-							<th width="15%">Start</th>
-							<th width="10%">End</th>
-							<th width="10%">Hours</th>
+							<th width="35%">Names</th>
+							<th width="30%">Done</th>
+							<th width="15%">Day left</th>
 							<th width="10%">Edit</th>
 						</tr>
 						<tr>
@@ -168,11 +163,9 @@
 									<span>check</span>
 								</a>
 							</td>
-							<td> <a href="projectinfo.html">Admin </a></td>
-							<td> <a href="taskinfo.html">20/12/2009 </a></td>
-							<td> 0:00 </td>
-							<td> 18:00 </td>
-							<td> 18:00 </td>
+							<td> <a href="projectinfo.html">Project 1 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
 							<td>
 								<a class="button btn-edit" href="editproject.html">
 									<span>edit</span>
@@ -182,17 +175,15 @@
 								</a>						
 							</td>
 						</tr>	
-						<tr>
+						<tr class="odd">
 							<td>
 								<a class="button btn-check" href="/">
 									<span>check</span>
 								</a>
 							</td>
-							<td> <a href="projectinfo.html">Admin </a></td>
-							<td> <a href="taskinfo.html">21/21/2009 </a></td>
-							<td> 8:00 </td>
-							<td> 12:00 </td>
-							<td> 4 </td>
+							<td> <a href="projectinfo.html">Project 1 </a></td>
+							<td> 50% </td>
+							<td> 50 days</td>
 							<td>
 								<a class="button btn-edit" href="editproject.html">
 									<span>edit</span>
@@ -204,7 +195,71 @@
 						</tr>				
 					</table>
 					<!-- ******************** HIDDEN TABLE LIST ********** -->
+					<div class="hidden-table-list" id="finish-project1" style="display: none">
+						<table class="table-list" width="100%" cellpadding="1" cellspacing="1" >
+							<tr>
+								<th colspan="5"> Finish Project</th>
+							</tr>
+							<tr>
+								<td width="5%">
+									<a class="button btn-check" href="#">
+										<span>check</span>
+									</a>
+								</td>
+								<td width="35%"> <a href="projectinfo.html">Project 1 </a></td>
+								<td width="30%"> 50% </td>
+								<td width="15%"> 50 days</td>
+								<td width="10%">
+									<a class="button btn-edit" href="editproject.html">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="#">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>								
+							<tr>
+								<td>
+									<a class="button btn-check" href="/">
+										<span>check</span>
+									</a>
+								</td>
+								<td> <a href="projectinfo.html">Project 1 </a></td>
+								<td> 50% </td>
+								<td> 50 days</td>
+								<td>
+									<a class="button btn-edit" href="editproject.html">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="/">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>	
+							<tr class="odd">
+								<td>
+									<a class="button btn-check" href="/">
+										<span>check</span>
+									</a>
+								</td>
+								<td> <a href="projectinfo.html">Project 1 </a></td>
+								<td> 50% </td>
+								<td> 50 days</td>
+								<td>
+									<a class="button btn-edit" href="editproject.html">
+										<span>edit</span>
+									</a>								
+									<a class="button btn-del" href="/">
+										<span>del</span>
+									</a>						
+								</td>
+							</tr>		
+						</table>
 					</div>
+				</div>
+<!--				<div class="table-bottom-tab">-->
+<!--					<a href="/" id="ft-toggle-1" onclick="toggleSlide(this.id,'finish-project1','activated','up')">Finished tasks</a>-->
+<!--				</div>-->
 			</div>
 				
 				
