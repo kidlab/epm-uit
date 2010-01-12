@@ -481,3 +481,25 @@ input, select, option{
 	text-align: center;
 }
 
+/* --------------- LOGIN -------------------*/
+#login-wrapper{
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 50px;
+	border: 1px solid #8c8c8c;
+	padding: 10px
+}
+
+#login-wrapper input[type=text]{
+	width: 97%;
+	margin-top:3px;
+}
+#login-wrapper input[type=submit], #login-wrapper input[type=button]{
+	margin: 0 auto;
+	padding: 3px 10px;
+	margin-top: 5px;
+}
+#login-wrapper label{
+	font-size: 13px;
+	margin-top: 6px;
+}
