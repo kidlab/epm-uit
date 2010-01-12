@@ -80,13 +80,9 @@ namespace EPM.Controllers
                 
                 const int pageSize = 10;
 
-<<<<<<< .mine
                 User currentUser = HttpContext.Session["user"] as User;
                 ViewData["projectId"] = projectId;
                 ViewData["userId"] = currentUser.id;
-=======
-                User currentUser = HttpContext.Session["user"] as User;
->>>>>>> .r76
                 if (currentUser != null)
                 {
                     List<Tasklist> allTasklists = 
