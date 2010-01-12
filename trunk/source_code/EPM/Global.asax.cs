@@ -35,7 +35,13 @@ namespace EPM
                "Tasklist",
                "Tasklist/{action}/{projectId}/{id}",
                new { controller = "Tasklist", action = "Index", projectId = "", id = "" }
-            );            
+            );
+
+            routes.MapRoute(
+               "ProjectUser",
+               "Project/UserRemove/{projectId}/{id}",
+               new { controller = "Project", action = "UserRemove", projectId = "", id = "" }
+            );         
            
             routes.MapRoute(
                 "Default",                                              // Route name
