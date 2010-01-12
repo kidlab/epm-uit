@@ -26,13 +26,13 @@ namespace EPM.Controllers
             }
             else
             {
-                this.Session["user"] = user;
+                HttpContext.Session["user"] = user;
                 return this.Redirect("/");
             }            
         }
         public ActionResult logout()
         {
-            this.Session["user"] = null;
+            HttpContext.Session["user"] = null;
             return this.Redirect("/Login");
            
         }

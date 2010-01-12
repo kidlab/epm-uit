@@ -44,7 +44,7 @@ namespace EPM.Controllers
              * @description:
              *     - Always store admin in session (test only :D)
              */
-            User user = (User)this.Session["user"];
+            User user = (User)HttpContext.Session["user"];
             if (user == null)
                 return this.Redirect("/Login");
             ViewData["user"] = user;
