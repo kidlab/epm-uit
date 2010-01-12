@@ -1,7 +1,7 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Helpers.PaginatedList<EPM.Models.User>>" %>
 
 <% 
-    if ( Model.Count > 0)
+    if (Model != null && Model.Count > 0)
     {
         var users = Model.ToArray();
 %>
