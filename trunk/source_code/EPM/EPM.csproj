@@ -88,6 +88,7 @@
     <Compile Include="Helpers\PhoneValidator.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\IProject_AssignedRepository.cs" />
+    <Compile Include="Models\ITask_AssignedRepository.cs" />
     <Compile Include="Models\Milestone_AssignedRepository.cs" />
     <Compile Include="Models\MilestoneAssigned.cs" />
     <Compile Include="Models\IMilestone_AssignedRepository.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Models\Tasklist.cs" />
     <Compile Include="Models\TasklistRepository.cs" />
     <Compile Include="Models\TaskRepository.cs" />
+    <Compile Include="Models\Task_AssignedRepository.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

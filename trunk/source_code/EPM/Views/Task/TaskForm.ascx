@@ -75,11 +75,13 @@ by; ManVHT
 						<%
 			               List<EPM.Models.Tasklist> taskLists ;
                            EPM.Models.TasklistRepository taskListRepo = new EPM.Models.TasklistRepository();
-                          
-                           taskLists = taskListRepo.GetTasklistsByProject((int)ViewData["projectId"]).ToList<EPM.Models.Tasklist>();
-                         		    
-                           for (int i = 0; i < taskLists.Count; i++)
+
+                           if (!isOnEditing)
                            {
+                               taskLists = taskListRepo.GetTasklistsByProject((int)ViewData["projectId"]).ToList<EPM.Models.Tasklist>();
+
+                               for (int i = 0; i < taskLists.Count; i++)
+                               {
                           
 					  %>
 						    <option value="<%= taskLists[i].id %>"
@@ -90,7 +92,8 @@ by; ManVHT
                                    %>
 						        ><%= taskLists[i].name%></option>
 						
-					    <% } %>
+					    <% }
+                           }%>
 					</select>
 				</td>
 			</tr>	

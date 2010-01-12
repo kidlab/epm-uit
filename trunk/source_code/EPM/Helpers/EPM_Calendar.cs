@@ -115,7 +115,8 @@ namespace EPM.Helpers
                 allTasks = _taskRepository.GetTaskByUserProjectId(user_id, project_id).ToList();
             }
             //-----------------
-
+            TasklistRepository taskListReport = new TasklistRepository();
+            
             //count up the days, untill we've done all of them in the month
             while (day_num <= days_in_month)
             {
@@ -137,7 +138,7 @@ namespace EPM.Helpers
                 {
                     if (first_day.Date.Equals(milestone.end))
                     {
-                        milestone_str = "<a href='/Milestone/Edit/" + milestone.id + "'><img src='/Content/images/miles.png'></img></a>";
+                        milestone_str = "<a href='/Milestone/Edit/" + milestone.project_id + "/" + milestone.id + "'><img src='/Content/images/miles.png'></img></a>";
                     }
                 }
 

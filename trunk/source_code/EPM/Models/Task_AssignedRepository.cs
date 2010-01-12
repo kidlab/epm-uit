@@ -128,5 +128,53 @@ namespace EPM.Models
         }
 
         #endregion
+
+        #region ITask_AssignedRepository Members
+
+        IQueryable<Task_Assigned> ITask_AssignedRepository.GetTaskAssignedByUser(int userID, int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
+
+        IQueryable<Task_Assigned> ITask_AssignedRepository.GetTaskAssignedByUser(int userID)
+        {
+            throw new NotImplementedException();
+        }
+
+        IQueryable<Task_Assigned> ITask_AssignedRepository.GetTaskByUserProjectId(int userID, int projectID)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region IRepository<Task_Assigned> Members
+
+        IQueryable<Task_Assigned> IRepository<Task_Assigned>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task_Assigned IRepository<Task_Assigned>.GetOne(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository<Task_Assigned>.Add(Task_Assigned obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository<Task_Assigned>.Delete(Task_Assigned obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository<Task_Assigned>.Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

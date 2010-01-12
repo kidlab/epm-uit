@@ -165,10 +165,17 @@ namespace EPM.Controllers
                     _taskRepository.Add(task);
                     _taskRepository.Save();
 
-                     User currentUser = HttpContext.Session["user"] as User;
-                    Task_Assigned taskAssigned = new Task_Assigned();
-                    taskAssigned.user_id = currentUser.id;
+                    Task newTask = new Task();
+                    TaskRepository taskRepo = new TaskRepository();
+                    newTask = taskRepo.GetTaskByTitle(task.title);
+                    Task_AssignedRepository taskAssignedRepo = new Task_AssignedRepository();
 
+                    User currentUser = HttpContext.Session["user"] as User;
+                    Task_Assigned taskAssigned = new Task_Assigned();
+                    taskAssigned.user_id = assignedId;
+                    taskAssigned.task_id = newTask.id;
+                    taskAssignedRepo.Add(taskAssigned);
+                    taskAssignedRepo.Save();
 
                     return RedirectToAction("Index");
                 }
