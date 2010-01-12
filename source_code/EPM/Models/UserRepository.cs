@@ -116,6 +116,38 @@ namespace EPM.Models
                 throw new DbAccessException(ex);
             }
         }
+        public User GetUserByName(string name) {
+            try
+            {
+                var query = from user in _db.Users
+                            where user.name == name
+                            select user;
+                if (query.ToList().Count > 0)
+                    return query.First();
+                else 
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(UserRepository), ex);
+                throw new DbAccessException(ex);
+            }
+        }
+
+        public bool IsExistName(string name) {
+            try
+            {
+                if (GetUserByName(name) == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Tracer.Log(typeof(UserRepository), ex);
+                throw new DbAccessException(ex);
+            }
+        }
 
         #endregion
 

@@ -1,7 +1,20 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Models.User>" %>
 <% 
-    var action = "/Admin/UserAdd/";
-    EPM.Models.User user = new EPM.Models.User();
+    string action               = "/Admin/UserAdd/";
+    EPM.Models.User user        = new EPM.Models.User();
+    List<EPM.Models.Role> roles = null;
+    int newRole                 = -1;
+    // get role
+    if (ViewData["newRole"] != null)
+    {
+        newRole = (int)ViewData["newRole"];
+    }
+
+    if (ViewData["roles"] != null)
+    {
+        roles = (List<EPM.Models.Role>)ViewData["roles"];
+    }
+    
     if (Model != null)
     {
         user = Model;
@@ -95,9 +108,19 @@
 					Role:
 				</td>
 				<td>
-					<input type="radio" value="1" name="role"/> Admin <br />
-					<input type="radio" value="2" name="role"/> User <br />
-					<input type="radio" value="3" name="role"/> Client
+				    <% if (roles != null)
+                       {
+                           foreach (var item in roles)
+                           {
+                               if (newRole != -1 && newRole == item.id)
+                               {
+                                   %>  <input type="radio" checked="checked" value="<%= item.id%>" name="role"/> <%= item.name%> <br />  <%
+                                }
+                               else { 
+                                   %>  <input type="radio" value="<%= item.id%>" name="role"/> <%= item.name%> <br />  <%
+                               }
+                           }
+                       } %>
 				</td>
 			</tr>
 			<tr>

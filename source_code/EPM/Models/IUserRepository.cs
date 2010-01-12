@@ -28,5 +28,14 @@ namespace EPM.Models
         /// <param name="projectId"></param>
         /// <returns></returns>
         IQueryable<User> GetUsersByProject(int projectId);
+
+        /// <summary>
+        /// Gets users by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        User GetUserByName(string name);
+
+        bool IsExistName(string name);
     }
 }

@@ -1,8 +1,13 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Models.User>" %>
 <% 
     EPM.Models.User user = null;
-                    user = Model;
-    var action           = "/Admin/UserEdit/id/" + user.id;
+    user                 = Model;
+    string action        = "/Admin/UserEdit/id/" + user.id;
+    int newRole         = -1;
+    if (ViewData["newRole"] != null)
+    {
+        newRole = (int)ViewData["newRole"];
+    }
     List<EPM.Models.Role> roles = null;
     
     //
@@ -111,14 +116,33 @@
 				    <% 
                         if (roles != null)
                         {
-                            foreach (var item in roles)
+                            if (newRole == -1)
                             {
-                                if (user.IsAssignedRole(item)){ %>
-                                    <input type="radio" checked=checked value="<%= item.id%>" name="role"/> <%= item.name %> <br />
-                                <% } else {
+                                foreach (var item in roles)
+                                {
+                                    if (user.IsAssignedRole(item))
+                                    { %>
+                                    <input type="radio" checked=checked value="<%= item.id%>" name="role"/> <%= item.name%> <br />
+                                <% }
+                                    else
+                                    {
                                 %>
-                                    <input type="radio" value="<%= item.id%>" name="role"/> <%= item.name %> <br />
-                                <%
+                                    <input type="radio" value="<%= item.id%>" name="role"/> <%= item.name%> <br />
+                                <%  }
+                                }
+                            }
+                            else
+                            {
+                                foreach (var item in roles)
+                                {
+                                    if (newRole == item.id)
+                                    { 
+                                    %>  <input type="radio" checked=checked value="<%= item.id%>" name="role"/> <%= item.name%> <br />  <%
+                        }
+                                    else
+                                    { 
+                                    %>  <input type="radio" value="<%= item.id%>" name="role"/> <%= item.name%> <br />  <%
+                        }
                                 }
                             }
                         }
