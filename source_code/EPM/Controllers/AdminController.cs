@@ -299,7 +299,7 @@ namespace EPM.Controllers
                     errorMessage.Add(ERR_OLD_PASSWORD_INVALID);
                 if (oldpassword != "" && (password == null || password != repeatPassword || password == ""))
                     errorMessage.Add(ERR_PASSWORD_NOT_MATCH);
-                if (int.TryParse(Request.Form["role"], out newRole)
+                if (int.TryParse(Request.Form["role"], out newRole))
                     errorMessage.Add(ERR_ROLE_REQUIRE);
 
                 

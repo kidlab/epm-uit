@@ -103,7 +103,7 @@ namespace EPM.Models
                     join project_assigned in _db.Project_Assigneds
                     on project.id equals project_assigned.project_id
                     where project_assigned.user_id == userID
-                    select project;
+                    select project;                
 
                 return query;
             }

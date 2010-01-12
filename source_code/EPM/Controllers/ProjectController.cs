@@ -216,12 +216,13 @@ namespace EPM.Controllers
         public ActionResult User(int? id) {
             userRepository = new UserRepository();
 
-            List<User> users = userRepository.GetAll().ToList();
+            List<User> users = userRepository.GetUsersByProject(id.Value).ToList();
             List<User> usersNotAssign = new List<User>();
             if (id != null)
             {
                 usersNotAssign = userRepository.GetUserNotInProject(id).ToList();
             }
+            ViewData["projectId"] = id;
             ViewData["canAdd"] = true;
             ViewData["usersNotAssign"] = usersNotAssign;
             return View(users);
@@ -229,10 +230,65 @@ namespace EPM.Controllers
 
         //
         // GET /Project/UserAdd/
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserAdd() {
-            int id = int.Parse(Request.Form["user"]);
+            Project_AssignedRepository paRepository = new Project_AssignedRepository();
 
-            return Redirect("/Admin/User");
+            int user_id = int.Parse(Request.Form["user"]);
+            int project_id = int.Parse(Request.Form["project"]);
+            Project_Assigned pa = new Project_Assigned();
+
+            pa.project_id = project_id;
+            pa.user_id = user_id;
+            paRepository.Add(pa);
+            paRepository.Save();
+
+            // remove task
+
+
+
+            return Redirect("/Project/User/" + project_id);
+        }
+
+        //
+        // GET /Project/UserAdd/
+        public ActionResult UserRemove(int? projectId, int? id)
+        {
+            try
+            {
+                UserRepository userRepository = new UserRepository();
+                User user = userRepository.GetOne(id.Value);
+                Project project = projectRepository.GetOne(projectId.Value);
+                ViewData["user"] = user;
+                ViewData["project"] = project;
+            }
+            catch (Exception ex)
+            {
+                return View("~/View/Shared/Error");
+            }
+            return View();
+        }
+
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UserRemove()
+        {
+            try
+            {
+                int id = int.Parse(Request.Form["user"]);
+                int projectId = int.Parse(Request.Form["project"]);
+
+                Project_AssignedRepository paRepository = new Project_AssignedRepository();
+                Project_Assigned pa = paRepository.GetByProjectAndUser(projectId, id);
+                paRepository.Delete(pa);
+                paRepository.Save();
+                return Redirect("/Project/User/" + projectId);
+            }
+            catch (Exception ex)
+            {
+                return View("~/View/Shared/Error");
+            }
         }
     }
 }
