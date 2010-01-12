@@ -129,7 +129,7 @@ namespace EPM.Helpers
                 {
                     if (first_day.Date.Equals(task.end.Date))
                     {
-                        task_str = "<a href='/Task/id/" + task.id + "'><img src='/Content/images/task.png'></img></a>";
+                        task_str = "<a href='/Task/Edit/" + task.id + "'><img src='/Content/images/task.png'></img></a>";
                     }
                 }
                 string milestone_str = "";
@@ -137,7 +137,7 @@ namespace EPM.Helpers
                 {
                     if (first_day.Date.Equals(milestone.end))
                     {
-                        milestone_str = "<a href='/Milestone/view/id/" + milestone.id + "'><img src='/Content/images/miles.png'></img></a>";
+                        milestone_str = "<a href='/Milestone/Edit/" + milestone.id + "'><img src='/Content/images/miles.png'></img></a>";
                     }
                 }
 
