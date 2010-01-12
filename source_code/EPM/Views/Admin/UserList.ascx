@@ -35,9 +35,9 @@
 			    <%
                     foreach (var item in users)
                     {
-                        string linkView = "/Admin/UserView/id/" + item.id;
-                        string linkEdit = "/Admin/UserEdit/id/" + item.id;
-                        string linkDel  = "/Admin/UserDel/id/" + item.id;
+                        string linkView = "/Admin/UserView/" + item.id;
+                        string linkEdit = "/Admin/UserEdit/" + item.id;
+                        string linkDel  = "/Admin/UserDel/" + item.id;
                         %>
                         <div class="gi-wrapper" style="position: relative;">
 					        <a class="grid-item" href="<%= linkView%>">
