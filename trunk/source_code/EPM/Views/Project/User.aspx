@@ -27,7 +27,13 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="BodyTab" runat="server">
-<% Html.RenderPartial("~/Views/Shared/ProjectManageTabs.ascx");%>
+<% int projectId = (int)ViewData["projectId"]; %>
+<ul id="body-tab">
+	<li class="tab" id="tab-project"> <a href="/Project/">Project </a> </li>
+	<li class="tab" id="tab-milestone"> <a href="/Milestone/<%= projectId%>"> Milestone </a> </li>
+	<li class="tab" id="tab-task"> <a href="/Task/<%= projectId%>"> Taskslist</a> </li>
+	<li class="tab" id="tab-user"> <a href="/Project/User/<%= projectId%>"> User</a> </li>
+</ul>
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="ItemTitle" runat="server">

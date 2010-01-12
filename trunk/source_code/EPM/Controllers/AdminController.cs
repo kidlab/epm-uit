@@ -86,7 +86,10 @@ namespace EPM.Controllers
 
         //
         // GET: /Admin/useradmin
-        public ActionResult UserAdmin(int? page) {
+        public ActionResult UserAdmin(int? page)
+        {
+            if (!isLogin()) return this.Redirect("/Login");
+
             IQueryable<User> users = null;
             PaginatedList<Models.User> resultUsers = null;
             try
@@ -112,6 +115,8 @@ namespace EPM.Controllers
         //
         // GET: /Admin/UserView
         public ActionResult UserView(int? id) {
+            if (!isLogin()) return this.Redirect("/Login");
+
             User user = null;
             PaginatedList<Models.Project> projects = null;
             UserProfileViewModel viewModel = null;
@@ -138,6 +143,8 @@ namespace EPM.Controllers
         //
         // GET /Admin/AjaxProjectView
         public ActionResult AjaxProjectsByUserView(int? id) {
+            if (!isLogin()) return this.Redirect("/Login");
+
             PaginatedList<Models.Project> projects = null;
             try
             {
@@ -160,6 +167,8 @@ namespace EPM.Controllers
         // GET /Admin/AjaxUserAdd
         public ActionResult UserAdd()
         {
+            if (!isLogin()) return this.Redirect("/Login");
+
             List<Role> roles = new List<Role>();
             try
             {
@@ -178,6 +187,8 @@ namespace EPM.Controllers
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserAdd(FormCollection form){
+            if (!isLogin()) return this.Redirect("/Login");
+
             Models.User user = new User();
             List<Role> roles = new List<Role>();
             string password = "";
@@ -234,6 +245,8 @@ namespace EPM.Controllers
         //
         // GET /Admin/UserEdit/id/
         public ActionResult UserEdit(int? id) {
+            if (!isLogin()) return this.Redirect("/Login");
+
             User user = new User();
             List<Role> roles = new List<Role>();
             if (id != null && userRespository.getUserById(id.Value) != null) {
@@ -252,6 +265,8 @@ namespace EPM.Controllers
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult UserEdit(int? id,FormCollection form) {
+            if (!isLogin()) return this.Redirect("/Login");
+
             Models.User user = new User();
             List<Role> roles = new List<Role>();
             Role_Assigned ra = new Role_Assigned();
@@ -337,6 +352,12 @@ namespace EPM.Controllers
             }
             int no;
             return int.TryParse(str, out no);
+        }
+
+        private bool isLogin()
+        {
+            User user = (User)this.Session["user"];
+            return user != null;
         }
     }
 }

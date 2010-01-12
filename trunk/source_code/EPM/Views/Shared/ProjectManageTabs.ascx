@@ -4,5 +4,4 @@
 	<li class="tab" id="tab-milestone"> <a href="#"> Milestone </a> </li>
 	<li class="tab" id="tab-task"> <a href="#"> Taskslist</a> </li>
 	<li class="tab" id="tab-user"> <a href="#"> User</a> </li>
-	<li class="tab" id="tab-msg"> <a href="#"> Timetracker</a> </li>
 </ul>
