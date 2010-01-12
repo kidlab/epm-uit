@@ -43,7 +43,7 @@
 									<a id="account-menu" href="#">My account</a>
 								</li>
 								<li>
-									<a id="setting-menu" href="#">Setting</a>
+									<a id="setting-menu" href="/Admin/UserAdmin/">Setting</a>
 								</li>
 								<li class="last">
 									<a id="logout-menu" href="/">Logout</a>

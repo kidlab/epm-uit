@@ -32,9 +32,12 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="BodyTab" runat="server">
-    <ul id="body-tab">
-		<li class="tab" id="tab-user"> <a href="userinfo.html"> User </a> </li>
-		<li class="tab" id="tab-edit"> <a href="edituser.html"> Edit </a> </li>						
+    <%
+        int id = Model.id;
+    %>
+     <ul id="body-tab">
+		<li class="tab" id="tab-user"> <a href="/Admin/UserView/id/<%= id%>"> User </a> </li>
+		<li class="tab" id="tab-edit"> <a href="/Admin/UserEdit/id/<%= id%>"> Edit </a> </li>						
 	</ul>
 </asp:Content>
 

@@ -19,8 +19,7 @@
         $(document).ready(function() {
             $('.tab').removeClass('active');
             $('#tab-user-admin').addClass('active');
-            /// ToanNM: Load user list ajax content
-            $("#ajaxUserList").load('/Admin/AjaxUserList/');
+            $('.table-list tr:odd').addClass('odd');
         });
     </script>
 </asp:Content>

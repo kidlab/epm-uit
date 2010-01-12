@@ -12,20 +12,19 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
-    <script type="text/javascript">
-	    $(document).ready(function(){
-		    $('.tab').removeClass('active');
-		    $('#tab-user').addClass('active');
-		    $('.table-form tr:even > td').addClass('row-odd');
-
-	    });
+     <script type="text/javascript">
+         $(document).ready(function() {
+             $('.tab').removeClass('active');
+             $('#tab-user-admin').addClass('active');
+         });
     </script>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="BodyTab" runat="server">
     <ul id="body-tab">
-		<li class="tab" id="tab-user"> <a href="userinfo.html"> User </a> </li>
-		<li class="tab" id="tab-edit"> <a href="edituser.html"> Edit </a> </li>						
+		<li class="tab" id="tab-project-admin"> <a href="/Admin/UserAdmin">Projects Administration</a> </li>
+		<li class="tab" id="tab-user-admin"> <a href="/Admin/UserAdmin">Users Administration</a> </li>
+		<li class="tab" id="tab-system-admin"> <a href="/Admin/UserAdmin">System Administration</a> </li>
 	</ul>
 </asp:Content>
 
