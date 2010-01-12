@@ -21,14 +21,15 @@
         - Render partial projectz and tasks.
     --%>
     <% 
-        if (Model.Projects != null)
+        
+        if (Model != null && Model.Projects != null)
             Html.RenderPartial("../Project/ProjectList", Model.Projects);
         EPM.Models.User user = (EPM.Models.User)ViewData["user"];
         
         Writer.Write(Html.calendar(1, user.id, -1));
-        Writer.Write("<br /><br />"); 
-            
-        if (Model.Tasks != null)
+        Writer.Write("<br /><br />");
+
+        if (Model != null && Model.Tasks != null)
             Html.RenderPartial("../Task/TasksList", Model.Tasks);
     %>	
 </asp:Content>
