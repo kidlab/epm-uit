@@ -19,6 +19,9 @@
 	    openTasklist("pb-add", "form-add-tasklist");
     </script>
 </asp:Content>
+<asp:Content ID="bodyTab" ContentPlaceHolderID="BodyTab" runat="server">
+    <% Html.RenderPartial("~/Views/Shared/ProjectManageTabs.ascx");%>
+</asp:Content>
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
     My Tasks
 </asp:Content>

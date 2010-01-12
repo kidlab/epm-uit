@@ -206,6 +206,7 @@ namespace EPM.Controllers
             IUserRepository userModel = new UserRepository();
             User user = userModel.GetAdmin(); // May be logging in here ...      
             this.Session["user"] = user;
+            this.Session["project_id"] = id;
             ViewData["user_id"] = user.id;
             ViewData["project_id"] = id;
 
@@ -220,7 +221,8 @@ namespace EPM.Controllers
             if (!isLogin()) 
                 return Redirect("/Login");
 
-            userRepository = new UserRepository();
+            UserRepository userRepository = new UserRepository();
+            if (id == null) id = (int)this.Session["project_id"];
 
             List<User> users = userRepository.GetUsersByProject(id.Value).ToList();
             List<User> usersNotAssign = new List<User>();

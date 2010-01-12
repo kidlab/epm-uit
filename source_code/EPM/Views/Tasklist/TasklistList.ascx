@@ -6,8 +6,6 @@
     --%>
 
 
-<div id="body-left">
-				
 		<h1 class="content-title"> Project / Tasklist </h1>
 		
 		<div class="page-buttons">
@@ -174,5 +172,3 @@
 		</div>		
 	</div>
 		
-		
-</div>

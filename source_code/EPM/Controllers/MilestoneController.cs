@@ -62,13 +62,14 @@ namespace EPM.Controllers
                 */
                 /* Start changes */
                 User currentUser = this.Session["user"] as User;
+                ViewData["project_id"] = projectId.Value;
+
                // Tracer.Log("Milestone", "projectId " + projectId + " ml_id" + id, "F:\\error.log");
                
                 if (currentUser != null)
                     allMilestones = milestoneRepository.GetMilestonesByUserProjectId(currentUser.id,projectId ?? 0, page ?? 0, pageSize).ToList();
                 //var paginatedMilestones = new PaginatedList<Milestone>(allMilestones, page ?? 0, pageSize);
                 /* End changes.*/
-
             }
             catch (Exception exc)
             {
