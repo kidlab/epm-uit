@@ -39,8 +39,8 @@ namespace EPM.Controllers
              */
             IUserRepository userModel = new UserRepository();
             User user = userModel.GetAdmin(); // May be logging in here ...      
-            this.Session["user"] = user;
-
+            //this.Session["user"] = user;
+            HttpContext.Session["user"] = user;
             /** End changes */
 
             /**

@@ -62,7 +62,7 @@ namespace EPM.Controllers
                  *     - User should be stored in session.
                 */
                 /* Start changes */
-                User currentUser = this.Session["user"] as User;
+                User currentUser =  HttpContext.Session["user"] as User;
 
                 if (currentUser != null)
                     allProjects = projectRepository.GetProjectsByUser(currentUser.id, page ?? 0, pageSize).ToList();
