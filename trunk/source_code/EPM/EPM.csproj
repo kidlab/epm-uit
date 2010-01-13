@@ -95,6 +95,7 @@
     <Compile Include="Models\IRoleRepository.cs" />
     <Compile Include="Models\IRole_AssignedRepository.cs" />
     <Compile Include="Models\ITasklistRepository.cs" />
+    <Compile Include="Models\Module_Action.cs" />
     <Compile Include="Models\Project_AssignedRepository.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\DbAccessException.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Models\Tasklist.cs" />
     <Compile Include="Models\TasklistRepository.cs" />
     <Compile Include="Models\TaskRepository.cs" />
+    <Compile Include="Models\Task_Assigned.cs" />
     <Compile Include="Models\Task_AssignedRepository.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRepository.cs" />
