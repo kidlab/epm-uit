@@ -8,46 +8,59 @@ namespace EPM.Models
 {
     public class RoleRepository : BaseModel, IRoleRepository
     {
-        private EpmDataContext db = new EpmDataContext();
-
         //query method
         public IQueryable<Role> GetAll()
         {
-            return db.Roles;
+            return _db.Roles;
         }
         public IQueryable<Role> GetGlobalRoles()
         {
-            return from role in db.Roles
+            return from role in _db.Roles
                    where role.project_id == null
                    select role;
         }
         public IQueryable<Role> GetRolesByProject(int? id)
         {
-            return from role in db.Roles
+            return from role in _db.Roles
                    where role.project_id == id
                    select role;
         }
 
         public Role GetOne(int id)
         {
-            return db.Roles.SingleOrDefault(r => r.id == id);
+            return _db.Roles.SingleOrDefault(r => r.id == id);
         }
 
         // insert/delete method
         public void Add(Role role)
         {
-            db.Roles.InsertOnSubmit(role);
+            try
+            {
+                _db.Roles.InsertOnSubmit(role);
+                Save();
+                foreach (Module_Action ma in role.ModuleActions)
+                {
+                    ma.role_id = role.id;
+                }
+
+                _db.Module_Actions.InsertAllOnSubmit(role.ModuleActions.AsEnumerable());
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(RoleRepository), exc);
+                throw new DbAccessException(exc);
+            }
         }
 
         public void Delete(Role role)
         {
-            db.Roles.DeleteOnSubmit(role);
+            _db.Roles.DeleteOnSubmit(role);
         }
 
         public void DeleteById(int? id)
         {
-            Role role = db.Roles.SingleOrDefault(r => r.id == id);
-            db.Roles.DeleteOnSubmit(role);
+            Role role = _db.Roles.SingleOrDefault(r => r.id == id);
+            _db.Roles.DeleteOnSubmit(role);
         }
 
         public Module GetModuleByName(string moduleName)
