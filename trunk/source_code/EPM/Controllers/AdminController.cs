@@ -352,6 +352,8 @@ namespace EPM.Controllers
             try
             {
                 IRoleRepository roleModel = new RoleRepository();
+                Role role = new Role();
+                role.name = Request.Form["name"];
 
                 List<Module_Action> moduleActions = new List<Module_Action>();
 
@@ -461,7 +463,7 @@ namespace EPM.Controllers
                     moduleActions.Add(ma);
                 }
 
-                strValue = Request.Form["ptask_del"];
+                strValue = Request.Form["task_del"];
                 if (strValue == IS_CHECKED)
                 {
                     Module_Action ma = new Module_Action();
@@ -480,6 +482,12 @@ namespace EPM.Controllers
                 }
 
                 #endregion
+
+                role.ModuleActions = moduleActions;
+
+                roleModel.Add(role);
+
+                roleModel.Save();
             }
             catch (Exception ex)
             {
