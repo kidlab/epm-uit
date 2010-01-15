@@ -84,7 +84,7 @@ namespace EPM.Controllers
                 User currentUser = HttpContext.Session["user"] as User;
                 ViewData["projectId"] = projectId;
                 ViewData["userId"] = currentUser.id;
-                ViewData["project_id"] = projectId;
+                ViewData["project_id"] = HttpContext.Session["project_id"];
                 if (currentUser != null)
                 {
                     List<Tasklist> allTasklists = 
@@ -179,7 +179,7 @@ namespace EPM.Controllers
                 {
                     // ModelState.AddModelErrors(tasklist.GetRuleViolations());
                    
-                    Tracer.Log("Taslist", exc.Message,"F:\\error.log");
+                    //Tracer.Log("Taslist", exc.Message,"F:\\error.log");
                 }
             
 

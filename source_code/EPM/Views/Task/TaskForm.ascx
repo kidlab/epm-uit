@@ -6,7 +6,7 @@ by; ManVHT
 --%>
 
 <%  string contentTitle = "Add TaskList";
-    string actionLink = "#";
+    string actionLink = "/Task/Create/";
     bool isOnEditing = false;
     bool isOnAdd = false;
     int projectId;
@@ -43,7 +43,7 @@ by; ManVHT
 					Title:
 				</td>
 				<td width="90%">
-					<input class="form-test" id="Text1" type="text" name="name" style="width: 70%" 
+					<input class="form-test" id="Text1" type="text" name="title" style="width: 70%" 
 				    value="<% if(isOnEditing) Writer.Write(Model.Task.title); %>" />
 				</td>
 			</tr>

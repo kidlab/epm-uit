@@ -10,7 +10,7 @@
     <% ViewData["ShowToolButtons"] = true;
        Html.RenderPartial("UserList");
     %>
-    <% Html.RenderPartial("UserRole"); %>
+    <% Html.RenderPartial("UserRole", ViewData["roles"]); %>
 
 </asp:Content>
 

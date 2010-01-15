@@ -12,6 +12,7 @@ by; ManVHT
     bool isOnEditing = false;
     bool isOnAdd = false;
     int projectId   ;
+    int project_id = (int)HttpContext.Current.Session["project_id"];
     if (Model != null)
         if (Model.Tasklist.id > 0)
         {
@@ -24,7 +25,7 @@ by; ManVHT
         {
             isOnAdd = true;
            
-            actionLink = "/Tasklist/Create/" + Model.Tasklist.project_id;
+            actionLink = "/Tasklist/Create/" + (int)HttpContext.Current.Session["project_id"];
         }
    
 %>
@@ -34,7 +35,7 @@ by; ManVHT
 	<div class="add-poject-form">
 		<form action="<%= actionLink %>" method="POST">
 		<input type="hidden" name="id" value="<%if(isOnEditing) Writer.Write(Model.Tasklist.id);%>" />
-		<input type="hidden" name="project_id" value="<%  Writer.Write(Model.Tasklist.project_id);%>" />
+		<input type="hidden" name="project_id" value="<%= project_id%>" />
 		<table cellpadding="1" cellspacing="5" border="0" width="100%">
 			<tr>
 				<td width="10%">
@@ -66,7 +67,7 @@ by; ManVHT
 			           List<EPM.Models.Milestone> milestones ;
                        EPM.Models.MilestoneRepository milestoneRepo = new EPM.Models.MilestoneRepository();
 
-                       milestones = milestoneRepo.GetMilestonesByProjectId(Model.Tasklist.project_id).ToList<EPM.Models.Milestone>();
+                       milestones = milestoneRepo.GetMilestonesByProjectId(project_id).ToList<EPM.Models.Milestone>();
 
                        for (int i=0; i < milestones.Count; i++ )
                        {

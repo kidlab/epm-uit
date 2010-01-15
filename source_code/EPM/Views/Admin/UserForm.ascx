@@ -98,7 +98,7 @@
 				</td>
 				<td>					
 					<select name="gender">
-					    <option value="0">Nam</option>
+					    <option value="0" selected="selected">Nam</option>
 					    <option value="1">Nữ</option>
 					</select>
 				</td>

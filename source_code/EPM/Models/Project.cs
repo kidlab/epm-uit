@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace EPM.Models
 {
-    [Bind(Include = "id,name,desc,start,end,status")]
+    [Bind(Include = "id,name,start,end,status,desc,budget")]
     public partial class Project
     {
         public bool IsValid

@@ -102,10 +102,8 @@
     							
 				    <% } %>
 			    </table>
-			 <% } %>
-			 </div>
-			<!-- ******************** HIDDEN TABLE LIST ********** -->
-			<div class="hidden-table-list" id="finish-milestone1" style="display: none">
+			    <!-- ******************** HIDDEN TABLE LIST ********** -->
+			<div class="hidden-table-list" id="hidden-table-<%= idTL %>" style="display: none">
 				<table class="table-list" width="100%" cellpadding="1" cellspacing="1" >
 					<tr>
 						<th colspan="5"> Finished Taskslist</th>
@@ -168,7 +166,12 @@
 			</div>
 		</div>
 		<div class="table-bottom-tab">
-			<a href="/" id="ft-toggle-1" onclick="toggleSlide(this.id,'finish-milestone1','activated','up')">Finished tasks</a>
-		</div>		
+			<a id="A<%= idTL%>" onclick="slide('A<%= idTL%>','hidden-table-<%= idTL%>');">Finished tasks</a>
+		</div>	
+		<div class="clear">
+		<br /><br /><br /><br /></div>
+			 <% } %>
+			 </div>
+				
 	</div>
 		

@@ -137,6 +137,7 @@ namespace EPM.Models
             try
             {
                 _db.Projects.InsertOnSubmit(project);
+                
             }
             catch (Exception exc)
             {

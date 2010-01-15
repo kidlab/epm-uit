@@ -177,6 +177,7 @@ namespace EPM.Models
             {
                 var query = from u in _db.Users
                             where !(from pa in _db.Project_Assigneds
+                                    where pa.project_id == id
                                     select pa.user_id).Contains(u.id)
                             select u;
                 
