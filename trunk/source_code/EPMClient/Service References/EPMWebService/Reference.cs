@@ -9,7 +9,709 @@
 //------------------------------------------------------------------------------
 
 namespace EPMClient.EPMWebService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string emailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string phoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string companyField;
+        
+        private byte genderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string addressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string countryField;
+        
+        private byte adminField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string email {
+            get {
+                return this.emailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.emailField, value) != true)) {
+                    this.emailField = value;
+                    this.RaisePropertyChanged("email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string phone {
+            get {
+                return this.phoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.phoneField, value) != true)) {
+                    this.phoneField = value;
+                    this.RaisePropertyChanged("phone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
+                    this.passwordField = value;
+                    this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string company {
+            get {
+                return this.companyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.companyField, value) != true)) {
+                    this.companyField = value;
+                    this.RaisePropertyChanged("company");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public byte gender {
+            get {
+                return this.genderField;
+            }
+            set {
+                if ((this.genderField.Equals(value) != true)) {
+                    this.genderField = value;
+                    this.RaisePropertyChanged("gender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string address {
+            get {
+                return this.addressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.addressField, value) != true)) {
+                    this.addressField = value;
+                    this.RaisePropertyChanged("address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string country {
+            get {
+                return this.countryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.countryField, value) != true)) {
+                    this.countryField = value;
+                    this.RaisePropertyChanged("country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public byte admin {
+            get {
+                return this.adminField;
+            }
+            set {
+                if ((this.adminField.Equals(value) != true)) {
+                    this.adminField = value;
+                    this.RaisePropertyChanged("admin");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Project", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Project : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        private System.Nullable<System.DateTime> startField;
+        
+        private System.Nullable<System.DateTime> endField;
+        
+        private System.Nullable<byte> statusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descField;
+        
+        private System.Nullable<int> budgetField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<System.DateTime> start {
+            get {
+                return this.startField;
+            }
+            set {
+                if ((this.startField.Equals(value) != true)) {
+                    this.startField = value;
+                    this.RaisePropertyChanged("start");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<System.DateTime> end {
+            get {
+                return this.endField;
+            }
+            set {
+                if ((this.endField.Equals(value) != true)) {
+                    this.endField = value;
+                    this.RaisePropertyChanged("end");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<byte> status {
+            get {
+                return this.statusField;
+            }
+            set {
+                if ((this.statusField.Equals(value) != true)) {
+                    this.statusField = value;
+                    this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string desc {
+            get {
+                return this.descField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descField, value) != true)) {
+                    this.descField = value;
+                    this.RaisePropertyChanged("desc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<int> budget {
+            get {
+                return this.budgetField;
+            }
+            set {
+                if ((this.budgetField.Equals(value) != true)) {
+                    this.budgetField = value;
+                    this.RaisePropertyChanged("budget");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Milestone", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Milestone : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int idField;
+        
+        private int project_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descField;
+        
+        private System.Nullable<System.DateTime> startField;
+        
+        private System.Nullable<System.DateTime> endField;
+        
+        private System.Nullable<byte> statusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int project_id {
+            get {
+                return this.project_idField;
+            }
+            set {
+                if ((this.project_idField.Equals(value) != true)) {
+                    this.project_idField = value;
+                    this.RaisePropertyChanged("project_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string desc {
+            get {
+                return this.descField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descField, value) != true)) {
+                    this.descField = value;
+                    this.RaisePropertyChanged("desc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<System.DateTime> start {
+            get {
+                return this.startField;
+            }
+            set {
+                if ((this.startField.Equals(value) != true)) {
+                    this.startField = value;
+                    this.RaisePropertyChanged("start");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<System.DateTime> end {
+            get {
+                return this.endField;
+            }
+            set {
+                if ((this.endField.Equals(value) != true)) {
+                    this.endField = value;
+                    this.RaisePropertyChanged("end");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<byte> status {
+            get {
+                return this.statusField;
+            }
+            set {
+                if ((this.statusField.Equals(value) != true)) {
+                    this.statusField = value;
+                    this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tasklist", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Tasklist : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int idField;
+        
+        private int project_idField;
+        
+        private int miletone_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int project_id {
+            get {
+                return this.project_idField;
+            }
+            set {
+                if ((this.project_idField.Equals(value) != true)) {
+                    this.project_idField = value;
+                    this.RaisePropertyChanged("project_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int miletone_id {
+            get {
+                return this.miletone_idField;
+            }
+            set {
+                if ((this.miletone_idField.Equals(value) != true)) {
+                    this.miletone_idField = value;
+                    this.RaisePropertyChanged("miletone_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string desc {
+            get {
+                return this.descField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descField, value) != true)) {
+                    this.descField = value;
+                    this.RaisePropertyChanged("desc");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Task", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Task : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int idField;
+        
+        private int tasklist_idField;
+        
+        private System.DateTime startField;
+        
+        private System.DateTime endField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string titleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descField;
+        
+        private byte statusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int tasklist_id {
+            get {
+                return this.tasklist_idField;
+            }
+            set {
+                if ((this.tasklist_idField.Equals(value) != true)) {
+                    this.tasklist_idField = value;
+                    this.RaisePropertyChanged("tasklist_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.DateTime start {
+            get {
+                return this.startField;
+            }
+            set {
+                if ((this.startField.Equals(value) != true)) {
+                    this.startField = value;
+                    this.RaisePropertyChanged("start");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.DateTime end {
+            get {
+                return this.endField;
+            }
+            set {
+                if ((this.endField.Equals(value) != true)) {
+                    this.endField = value;
+                    this.RaisePropertyChanged("end");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string title {
+            get {
+                return this.titleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.titleField, value) != true)) {
+                    this.titleField = value;
+                    this.RaisePropertyChanged("title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string desc {
+            get {
+                return this.descField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descField, value) != true)) {
+                    this.descField = value;
+                    this.RaisePropertyChanged("desc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public byte status {
+            get {
+                return this.statusField;
+            }
+            set {
+                if ((this.statusField.Equals(value) != true)) {
+                    this.statusField = value;
+                    this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="EPMWebService.EPMserviceSoap")]
@@ -18,6 +720,26 @@ namespace EPMClient.EPMWebService {
         // CODEGEN: Generating message contract since element name username from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/login", ReplyAction="*")]
         EPMClient.EPMWebService.loginResponse login(EPMClient.EPMWebService.loginRequest request);
+        
+        // CODEGEN: Generating message contract since element name getProjectsResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getProjects", ReplyAction="*")]
+        EPMClient.EPMWebService.getProjectsResponse getProjects(EPMClient.EPMWebService.getProjectsRequest request);
+        
+        // CODEGEN: Generating message contract since element name getMilestonesResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getMilestones", ReplyAction="*")]
+        EPMClient.EPMWebService.getMilestonesResponse getMilestones(EPMClient.EPMWebService.getMilestonesRequest request);
+        
+        // CODEGEN: Generating message contract since element name getTasklistsResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getTasklists", ReplyAction="*")]
+        EPMClient.EPMWebService.getTasklistsResponse getTasklists(EPMClient.EPMWebService.getTasklistsRequest request);
+        
+        // CODEGEN: Generating message contract since element name getTasksByProjectResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getTasksByProject", ReplyAction="*")]
+        EPMClient.EPMWebService.getTasksByProjectResponse getTasksByProject(EPMClient.EPMWebService.getTasksByProjectRequest request);
+        
+        // CODEGEN: Generating message contract since element name getTasksResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getTasks", ReplyAction="*")]
+        EPMClient.EPMWebService.getTasksResponse getTasks(EPMClient.EPMWebService.getTasksRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -77,14 +799,342 @@ namespace EPMClient.EPMWebService {
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class loginResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public bool loginResult;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public EPMClient.EPMWebService.User loginResult;
         
         public loginResponseBody() {
         }
         
-        public loginResponseBody(bool loginResult) {
+        public loginResponseBody(EPMClient.EPMWebService.User loginResult) {
             this.loginResult = loginResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getProjectsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getProjects", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getProjectsRequestBody Body;
+        
+        public getProjectsRequest() {
+        }
+        
+        public getProjectsRequest(EPMClient.EPMWebService.getProjectsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getProjectsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int userId;
+        
+        public getProjectsRequestBody() {
+        }
+        
+        public getProjectsRequestBody(int userId) {
+            this.userId = userId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getProjectsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getProjectsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getProjectsResponseBody Body;
+        
+        public getProjectsResponse() {
+        }
+        
+        public getProjectsResponse(EPMClient.EPMWebService.getProjectsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getProjectsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public EPMClient.EPMWebService.Project[] getProjectsResult;
+        
+        public getProjectsResponseBody() {
+        }
+        
+        public getProjectsResponseBody(EPMClient.EPMWebService.Project[] getProjectsResult) {
+            this.getProjectsResult = getProjectsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getMilestonesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getMilestones", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getMilestonesRequestBody Body;
+        
+        public getMilestonesRequest() {
+        }
+        
+        public getMilestonesRequest(EPMClient.EPMWebService.getMilestonesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getMilestonesRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int userId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int projectId;
+        
+        public getMilestonesRequestBody() {
+        }
+        
+        public getMilestonesRequestBody(int userId, int projectId) {
+            this.userId = userId;
+            this.projectId = projectId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getMilestonesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getMilestonesResponse", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getMilestonesResponseBody Body;
+        
+        public getMilestonesResponse() {
+        }
+        
+        public getMilestonesResponse(EPMClient.EPMWebService.getMilestonesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getMilestonesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public EPMClient.EPMWebService.Milestone[] getMilestonesResult;
+        
+        public getMilestonesResponseBody() {
+        }
+        
+        public getMilestonesResponseBody(EPMClient.EPMWebService.Milestone[] getMilestonesResult) {
+            this.getMilestonesResult = getMilestonesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getTasklistsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTasklists", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getTasklistsRequestBody Body;
+        
+        public getTasklistsRequest() {
+        }
+        
+        public getTasklistsRequest(EPMClient.EPMWebService.getTasklistsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getTasklistsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int projectId;
+        
+        public getTasklistsRequestBody() {
+        }
+        
+        public getTasklistsRequestBody(int projectId) {
+            this.projectId = projectId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getTasklistsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTasklistsResponse", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getTasklistsResponseBody Body;
+        
+        public getTasklistsResponse() {
+        }
+        
+        public getTasklistsResponse(EPMClient.EPMWebService.getTasklistsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getTasklistsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public EPMClient.EPMWebService.Tasklist[] getTasklistsResult;
+        
+        public getTasklistsResponseBody() {
+        }
+        
+        public getTasklistsResponseBody(EPMClient.EPMWebService.Tasklist[] getTasklistsResult) {
+            this.getTasklistsResult = getTasklistsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getTasksByProjectRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTasksByProject", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getTasksByProjectRequestBody Body;
+        
+        public getTasksByProjectRequest() {
+        }
+        
+        public getTasksByProjectRequest(EPMClient.EPMWebService.getTasksByProjectRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getTasksByProjectRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int userId;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int projectId;
+        
+        public getTasksByProjectRequestBody() {
+        }
+        
+        public getTasksByProjectRequestBody(int userId, int projectId) {
+            this.userId = userId;
+            this.projectId = projectId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getTasksByProjectResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTasksByProjectResponse", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getTasksByProjectResponseBody Body;
+        
+        public getTasksByProjectResponse() {
+        }
+        
+        public getTasksByProjectResponse(EPMClient.EPMWebService.getTasksByProjectResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getTasksByProjectResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public EPMClient.EPMWebService.Task[] getTasksByProjectResult;
+        
+        public getTasksByProjectResponseBody() {
+        }
+        
+        public getTasksByProjectResponseBody(EPMClient.EPMWebService.Task[] getTasksByProjectResult) {
+            this.getTasksByProjectResult = getTasksByProjectResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getTasksRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTasks", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getTasksRequestBody Body;
+        
+        public getTasksRequest() {
+        }
+        
+        public getTasksRequest(EPMClient.EPMWebService.getTasksRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getTasksRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int userId;
+        
+        public getTasksRequestBody() {
+        }
+        
+        public getTasksRequestBody(int userId) {
+            this.userId = userId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getTasksResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTasksResponse", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getTasksResponseBody Body;
+        
+        public getTasksResponse() {
+        }
+        
+        public getTasksResponse(EPMClient.EPMWebService.getTasksResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getTasksResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public EPMClient.EPMWebService.Task[] getTasksResult;
+        
+        public getTasksResponseBody() {
+        }
+        
+        public getTasksResponseBody(EPMClient.EPMWebService.Task[] getTasksResult) {
+            this.getTasksResult = getTasksResult;
         }
     }
     
@@ -120,13 +1170,80 @@ namespace EPMClient.EPMWebService {
             return base.Channel.login(request);
         }
         
-        public bool login(string username, string password) {
+        public EPMClient.EPMWebService.User login(string username, string password) {
             EPMClient.EPMWebService.loginRequest inValue = new EPMClient.EPMWebService.loginRequest();
             inValue.Body = new EPMClient.EPMWebService.loginRequestBody();
             inValue.Body.username = username;
             inValue.Body.password = password;
             EPMClient.EPMWebService.loginResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).login(inValue);
             return retVal.Body.loginResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        EPMClient.EPMWebService.getProjectsResponse EPMClient.EPMWebService.EPMserviceSoap.getProjects(EPMClient.EPMWebService.getProjectsRequest request) {
+            return base.Channel.getProjects(request);
+        }
+        
+        public EPMClient.EPMWebService.Project[] getProjects(int userId) {
+            EPMClient.EPMWebService.getProjectsRequest inValue = new EPMClient.EPMWebService.getProjectsRequest();
+            inValue.Body = new EPMClient.EPMWebService.getProjectsRequestBody();
+            inValue.Body.userId = userId;
+            EPMClient.EPMWebService.getProjectsResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).getProjects(inValue);
+            return retVal.Body.getProjectsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        EPMClient.EPMWebService.getMilestonesResponse EPMClient.EPMWebService.EPMserviceSoap.getMilestones(EPMClient.EPMWebService.getMilestonesRequest request) {
+            return base.Channel.getMilestones(request);
+        }
+        
+        public EPMClient.EPMWebService.Milestone[] getMilestones(int userId, int projectId) {
+            EPMClient.EPMWebService.getMilestonesRequest inValue = new EPMClient.EPMWebService.getMilestonesRequest();
+            inValue.Body = new EPMClient.EPMWebService.getMilestonesRequestBody();
+            inValue.Body.userId = userId;
+            inValue.Body.projectId = projectId;
+            EPMClient.EPMWebService.getMilestonesResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).getMilestones(inValue);
+            return retVal.Body.getMilestonesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        EPMClient.EPMWebService.getTasklistsResponse EPMClient.EPMWebService.EPMserviceSoap.getTasklists(EPMClient.EPMWebService.getTasklistsRequest request) {
+            return base.Channel.getTasklists(request);
+        }
+        
+        public EPMClient.EPMWebService.Tasklist[] getTasklists(int projectId) {
+            EPMClient.EPMWebService.getTasklistsRequest inValue = new EPMClient.EPMWebService.getTasklistsRequest();
+            inValue.Body = new EPMClient.EPMWebService.getTasklistsRequestBody();
+            inValue.Body.projectId = projectId;
+            EPMClient.EPMWebService.getTasklistsResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).getTasklists(inValue);
+            return retVal.Body.getTasklistsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        EPMClient.EPMWebService.getTasksByProjectResponse EPMClient.EPMWebService.EPMserviceSoap.getTasksByProject(EPMClient.EPMWebService.getTasksByProjectRequest request) {
+            return base.Channel.getTasksByProject(request);
+        }
+        
+        public EPMClient.EPMWebService.Task[] getTasksByProject(int userId, int projectId) {
+            EPMClient.EPMWebService.getTasksByProjectRequest inValue = new EPMClient.EPMWebService.getTasksByProjectRequest();
+            inValue.Body = new EPMClient.EPMWebService.getTasksByProjectRequestBody();
+            inValue.Body.userId = userId;
+            inValue.Body.projectId = projectId;
+            EPMClient.EPMWebService.getTasksByProjectResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).getTasksByProject(inValue);
+            return retVal.Body.getTasksByProjectResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        EPMClient.EPMWebService.getTasksResponse EPMClient.EPMWebService.EPMserviceSoap.getTasks(EPMClient.EPMWebService.getTasksRequest request) {
+            return base.Channel.getTasks(request);
+        }
+        
+        public EPMClient.EPMWebService.Task[] getTasks(int userId) {
+            EPMClient.EPMWebService.getTasksRequest inValue = new EPMClient.EPMWebService.getTasksRequest();
+            inValue.Body = new EPMClient.EPMWebService.getTasksRequestBody();
+            inValue.Body.userId = userId;
+            EPMClient.EPMWebService.getTasksResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).getTasks(inValue);
+            return retVal.Body.getTasksResult;
         }
     }
 }

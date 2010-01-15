@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FTree.View.Win32
+namespace EPMClient
 {
-    public partial class ProgressForm : BaseDialogForm
+    public partial class ProgressForm : Form
     {
         private bool isClosed;
 

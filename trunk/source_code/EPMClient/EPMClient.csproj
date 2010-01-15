@@ -55,12 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EPMAgent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EPMAgent.Designer.cs">
       <DependentUpon>EPMAgent.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorMsg.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,12 +72,21 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EPMAgent.resx">
       <DependentUpon>EPMAgent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,11 +113,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ThreadHelper.cs" />
+    <Compile Include="UIUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="epm_client.ico" />
-    <None Include="images\login.png" />
-    <None Include="images\epm_client.png" />
+    <None Include="Service References\EPMWebService\EPMClient.EPMWebService.Milestone.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EPMWebService\EPMClient.EPMWebService.Project.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EPMWebService\EPMClient.EPMWebService.Task.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EPMWebService\EPMClient.EPMWebService.Tasklist.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EPMWebService\EPMClient.EPMWebService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\EPMWebService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -112,19 +140,27 @@
     <None Include="Service References\EPMWebService\configuration.svcinfo" />
     <None Include="Service References\EPMWebService\configuration91.svcinfo" />
     <None Include="Service References\EPMWebService\EPMservice.disco" />
+    <None Include="images\projects.png" />
+    <None Include="images\home.png" />
+    <None Include="images\tasks.png" />
+    <None Include="images\logout.png" />
+    <None Include="images\exit22.png" />
+    <None Include="images\loading.gif" />
+    <None Include="images\login.png" />
+    <None Include="images\epm_client.png" />
     <None Include="Service References\EPMWebService\EPMservice.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\EPMWebService\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{AE5302AD-F71A-407E-B303-71586565C18D}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EPMWebService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

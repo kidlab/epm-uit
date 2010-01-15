@@ -13,7 +13,155 @@
       <s:element name="loginResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="loginResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="loginResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="gender" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="admin" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getProjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProjectsResult" type="tns:ArrayOfProject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="start" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="end" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="budget" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getMilestones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="projectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMilestonesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMilestonesResult" type="tns:ArrayOfMilestone" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMilestone">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Milestone" nillable="true" type="tns:Milestone" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Milestone">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="project_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="start" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="end" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" nillable="true" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getTasklists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTasklistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTasklistsResult" type="tns:ArrayOfTasklist" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTasklist">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tasklist" nillable="true" type="tns:Tasklist" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tasklist">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="project_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="miletone_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getTasksByProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="projectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTasksByProjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTasksByProjectResult" type="tns:ArrayOfTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTask">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Task">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tasklist_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="start" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="end" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getTasks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTasksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTasksResult" type="tns:ArrayOfTask" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -25,10 +173,60 @@
   <wsdl:message name="loginSoapOut">
     <wsdl:part name="parameters" element="tns:loginResponse" />
   </wsdl:message>
+  <wsdl:message name="getProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:getProjects" />
+  </wsdl:message>
+  <wsdl:message name="getProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:getProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMilestonesSoapIn">
+    <wsdl:part name="parameters" element="tns:getMilestones" />
+  </wsdl:message>
+  <wsdl:message name="getMilestonesSoapOut">
+    <wsdl:part name="parameters" element="tns:getMilestonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTasklistsSoapIn">
+    <wsdl:part name="parameters" element="tns:getTasklists" />
+  </wsdl:message>
+  <wsdl:message name="getTasklistsSoapOut">
+    <wsdl:part name="parameters" element="tns:getTasklistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTasksByProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:getTasksByProject" />
+  </wsdl:message>
+  <wsdl:message name="getTasksByProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:getTasksByProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTasksSoapIn">
+    <wsdl:part name="parameters" element="tns:getTasks" />
+  </wsdl:message>
+  <wsdl:message name="getTasksSoapOut">
+    <wsdl:part name="parameters" element="tns:getTasksResponse" />
+  </wsdl:message>
   <wsdl:portType name="EPMserviceSoap">
     <wsdl:operation name="login">
       <wsdl:input message="tns:loginSoapIn" />
       <wsdl:output message="tns:loginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjects">
+      <wsdl:input message="tns:getProjectsSoapIn" />
+      <wsdl:output message="tns:getProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMilestones">
+      <wsdl:input message="tns:getMilestonesSoapIn" />
+      <wsdl:output message="tns:getMilestonesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTasklists">
+      <wsdl:input message="tns:getTasklistsSoapIn" />
+      <wsdl:output message="tns:getTasklistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTasksByProject">
+      <wsdl:input message="tns:getTasksByProjectSoapIn" />
+      <wsdl:output message="tns:getTasksByProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTasks">
+      <wsdl:input message="tns:getTasksSoapIn" />
+      <wsdl:output message="tns:getTasksSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="EPMserviceSoap" type="tns:EPMserviceSoap">
@@ -42,11 +240,101 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getProjects">
+      <soap:operation soapAction="http://tempuri.org/getProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMilestones">
+      <soap:operation soapAction="http://tempuri.org/getMilestones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTasklists">
+      <soap:operation soapAction="http://tempuri.org/getTasklists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTasksByProject">
+      <soap:operation soapAction="http://tempuri.org/getTasksByProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTasks">
+      <soap:operation soapAction="http://tempuri.org/getTasks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="EPMserviceSoap12" type="tns:EPMserviceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="login">
       <soap12:operation soapAction="http://tempuri.org/login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjects">
+      <soap12:operation soapAction="http://tempuri.org/getProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMilestones">
+      <soap12:operation soapAction="http://tempuri.org/getMilestones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTasklists">
+      <soap12:operation soapAction="http://tempuri.org/getTasklists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTasksByProject">
+      <soap12:operation soapAction="http://tempuri.org/getTasksByProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTasks">
+      <soap12:operation soapAction="http://tempuri.org/getTasks" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

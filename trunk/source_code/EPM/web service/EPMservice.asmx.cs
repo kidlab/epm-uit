@@ -63,10 +63,19 @@ namespace EPM.web_service
         }
 
         [WebMethod]
-        public List<Task> getTasks(int userId, int projectId)
+        public List<Task> getTasksByProject(int userId, int projectId)
         {
             ITaskRepository model = new TaskRepository();
             List<Task> data = model.GetTaskByUserProjectId(userId, projectId).ToList();
+
+            return data;
+        }
+
+        [WebMethod]
+        public List<Task> getTasks(int userId)
+        {
+            ITaskRepository model = new TaskRepository();
+            List<Task> data = model.GetTasksByUser(userId).ToList();
 
             return data;
         }
