@@ -6,6 +6,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{AE5302AD-F71A-407E-B303-71586565C18D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPMClient", "EPMClient\EPMClient.csproj", "{38D3B868-660A-4454-B414-D7CBC3788036}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7510E89-02C3-4AC8-80B5-714533CFAB97} = {F7510E89-02C3-4AC8-80B5-714533CFAB97}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

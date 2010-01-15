@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Text;
+using Common;
 
-namespace Common
+namespace EPMClient
 {
     /// <summary>
     /// A helper to run a method in a different thread with the current thread and show a progress form until the method is done.

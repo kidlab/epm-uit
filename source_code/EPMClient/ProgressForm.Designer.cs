@@ -1,4 +1,4 @@
-﻿namespace FTree.View.Win32
+﻿namespace EPMClient
 {
     partial class ProgressForm
     {
@@ -41,7 +41,7 @@
             // 
             // pbxLoading
             // 
-            this.pbxLoading.Image = global::FTree.View.Win32.Properties.Resources.loading;
+            this.pbxLoading.Image = global::EPMClient.Properties.Resources.loading;
             this.pbxLoading.Location = new System.Drawing.Point(12, 12);
             this.pbxLoading.Name = "pbxLoading";
             this.pbxLoading.Size = new System.Drawing.Size(48, 48);
