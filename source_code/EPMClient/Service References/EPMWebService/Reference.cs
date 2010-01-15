@@ -740,6 +740,10 @@ namespace EPMClient.EPMWebService {
         // CODEGEN: Generating message contract since element name getTasksResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getTasks", ReplyAction="*")]
         EPMClient.EPMWebService.getTasksResponse getTasks(EPMClient.EPMWebService.getTasksRequest request);
+        
+        // CODEGEN: Generating message contract since element name getProjectNameResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getProjectName", ReplyAction="*")]
+        EPMClient.EPMWebService.getProjectNameResponse getProjectName(EPMClient.EPMWebService.getProjectNameRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1138,6 +1142,70 @@ namespace EPMClient.EPMWebService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getProjectNameRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getProjectName", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getProjectNameRequestBody Body;
+        
+        public getProjectNameRequest() {
+        }
+        
+        public getProjectNameRequest(EPMClient.EPMWebService.getProjectNameRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getProjectNameRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int taskId;
+        
+        public getProjectNameRequestBody() {
+        }
+        
+        public getProjectNameRequestBody(int taskId) {
+            this.taskId = taskId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class getProjectNameResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getProjectNameResponse", Namespace="http://tempuri.org/", Order=0)]
+        public EPMClient.EPMWebService.getProjectNameResponseBody Body;
+        
+        public getProjectNameResponse() {
+        }
+        
+        public getProjectNameResponse(EPMClient.EPMWebService.getProjectNameResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class getProjectNameResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string getProjectNameResult;
+        
+        public getProjectNameResponseBody() {
+        }
+        
+        public getProjectNameResponseBody(string getProjectNameResult) {
+            this.getProjectNameResult = getProjectNameResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
     public interface EPMserviceSoapChannel : EPMClient.EPMWebService.EPMserviceSoap, System.ServiceModel.IClientChannel {
     }
@@ -1244,6 +1312,19 @@ namespace EPMClient.EPMWebService {
             inValue.Body.userId = userId;
             EPMClient.EPMWebService.getTasksResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).getTasks(inValue);
             return retVal.Body.getTasksResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        EPMClient.EPMWebService.getProjectNameResponse EPMClient.EPMWebService.EPMserviceSoap.getProjectName(EPMClient.EPMWebService.getProjectNameRequest request) {
+            return base.Channel.getProjectName(request);
+        }
+        
+        public string getProjectName(int taskId) {
+            EPMClient.EPMWebService.getProjectNameRequest inValue = new EPMClient.EPMWebService.getProjectNameRequest();
+            inValue.Body = new EPMClient.EPMWebService.getProjectNameRequestBody();
+            inValue.Body.taskId = taskId;
+            EPMClient.EPMWebService.getProjectNameResponse retVal = ((EPMClient.EPMWebService.EPMserviceSoap)(this)).getProjectName(inValue);
+            return retVal.Body.getProjectNameResult;
         }
     }
 }
