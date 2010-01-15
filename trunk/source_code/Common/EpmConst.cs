@@ -27,5 +27,9 @@ namespace Common
         public const string CLOSE_ACTION = "close";
 
         public const string EPM_AGENT = "EPM Agent";
+
+        public const int STATUS_NEW = 0;
+        public const int STATUS_RESOLVED = 1;
+        public const int STATUS_CLOSED = 2;
     }
 }

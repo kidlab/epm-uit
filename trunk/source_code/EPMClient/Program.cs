@@ -18,13 +18,15 @@ namespace EPMClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            if (!_login())
-            {
-                return;
+            
+            while (_login())
+            {                
+                EPMAgent frmMain = new EPMAgent(_user);
+                //Application.Run(frmMain);
+                frmMain.ShowDialog();
+                if (frmMain.IsExit)
+                    return;
             }
-
-            Application.Run(new EPMAgent(_user));
         }
 
         private static bool _login()
