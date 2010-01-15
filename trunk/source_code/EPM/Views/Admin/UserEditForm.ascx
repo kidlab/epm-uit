@@ -2,7 +2,7 @@
 <% 
     EPM.Models.User user = null;
     user                 = Model;
-    string action        = "/Admin/UserEdit/id/" + user.id;
+    string action        = "/Admin/UserEdit/" + user.id;
     int newRole         = -1;
     if (ViewData["newRole"] != null)
     {

@@ -4,7 +4,11 @@
     if (ViewData["project_id"] != null)
     {
         projectId = (int)ViewData["project_id"];
-    } 
+    }
+    else
+    {
+        projectId = 12;
+    }
  %>
 <ul id="body-tab">
 	<li class="tab" id="tab-project"> <a href="/Project/ManageProject/<%= projectId %>">Project </a> </li>

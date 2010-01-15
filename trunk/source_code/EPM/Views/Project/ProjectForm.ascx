@@ -8,13 +8,21 @@ by; ManVHT
 <%  string contentTitle = "Add Project";
     string actionLink = "#";
     bool isOnEditing = false;
-    if (Model != null && Model.Project != null)
-    {
-        // Is on editing mode.{
-        contentTitle = "Edit Project";
-        isOnEditing = true;
-        actionLink = "/Project/Edit";
-    }
+    bool isOnAdd = false;
+    if (Model != null)
+        if (Model.Project != null)
+        {
+            // Is on editing mode.{
+            contentTitle = "Edit Milestone";
+            isOnEditing = true;
+            actionLink = "/Project/Edit";
+        }
+        else
+        {
+            isOnAdd = true;
+
+            actionLink = "/Project/Create/";
+        }
 %>
 <div class="table-content">
 <h1> <%= contentTitle %></h1>
@@ -46,7 +54,8 @@ by; ManVHT
 				Due:
 			</td>
 			<td>
-				<input class="form-test" id="input-due" type="text" name="end" style="width: 70%" />
+				<input class="form-test" id="input-due" type="text" name="end" style="width: 70%"
+				value="<% if(isOnEditing) Writer.Write(Model.Project.end); %>"  />
 			</td>
 		</tr>
 		<tr>
@@ -56,14 +65,6 @@ by; ManVHT
 			<td>
 				<input class="form-test" id="input-budget" type="text" name="budget" style="width: 70%"
 				value="<% if(isOnEditing) Writer.Write(Model.Project.budget); %>" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				People
-			</td>
-			<td>
-				
 			</td>
 		</tr>
 		<tr>

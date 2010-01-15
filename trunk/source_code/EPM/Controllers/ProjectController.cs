@@ -131,25 +131,30 @@ namespace EPM.Controllers
 
         //
         // POST: /Dinners/Create
-        [ValidateInput(false)] 
+        [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Project project)
         {
-
-            if (ModelState.IsValid)
+            try
             {
+                project.start = DateTime.Now;
+                projectRepository.Add(project);
+                projectRepository.Save();
+                User user = HttpContext.Session["user"] as User;
 
-                try
-                {
-                    projectRepository.Add(project);
-                    projectRepository.Save();
+                Project_AssignedRepository model = new Project_AssignedRepository();
+                Project_Assigned pa = new Project_Assigned();
+                pa.project_id = project.id;
+                pa.user_id = user.id;
 
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    // ModelState.AddModelErrors(project.GetRuleViolations());
-                }
+                model.Add(pa);
+                model.Save();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                // ModelState.AddModelErrors(project.GetRuleViolations());
             }
 
             return View(new ProjectFormViewModel(project));
@@ -203,13 +208,15 @@ namespace EPM.Controllers
              * @description:
              *     - Always store admin in session (test only :D)
              */
+            
             IUserRepository userModel = new UserRepository();
             User user = userModel.GetAdmin(); // May be logging in here ...      
             this.Session["user"] = user;
             this.Session["project_id"] = id;
             ViewData["user_id"] = user.id;
             ViewData["project_id"] = id;
-
+            HttpContext.Session["project_id"] = id;
+            ViewData["project_id"] = HttpContext.Session["project_id"];
             Project project = projectRepository.GetOne(id);
             return View(new ProjectFormViewModel(project));
         }

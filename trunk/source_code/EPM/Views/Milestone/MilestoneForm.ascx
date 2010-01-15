@@ -9,6 +9,7 @@ by; ManVHT
     string actionLink = "#";
     bool isOnEditing = false;
     bool isOnAdd = false;
+    int project_id = (int)HttpContext.Current.Session["project_id"];
     if (Model != null)
         if (Model.Milestone.id > 0)
         {
@@ -21,7 +22,7 @@ by; ManVHT
         {
             isOnAdd = true;
 
-            actionLink = "/Milestone/Create/" + Model.Milestone.project_id;
+            actionLink = "/Milestone/Create/" + project_id;
         }
 %>
 <div class="table-content">
@@ -55,20 +56,14 @@ by; ManVHT
 				Due:
 			</td>
 			<td>
-				<input class="form-test" id="input-due" type="text" name="end" style="width: 70%" />
+				<input class="form-test" id="input-due" type="text" name="end" style="width: 70%" 
+				value="<% if(isOnEditing) Writer.Write(Model.Milestone.end); %>" />
 			</td>
 		</tr>
 		
 		<tr>
-			<td>
-				People
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-		<tr>
 			<td colspan="2" align="center">
+			    <input type="hidden" value="<%= project_id%>" />
 				<%--<input type="submit" name="submit" value="Save"/>--%>
 				<button type="submit" value="">Save</button>
 			</td>

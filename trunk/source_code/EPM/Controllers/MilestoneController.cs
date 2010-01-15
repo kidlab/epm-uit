@@ -62,7 +62,8 @@ namespace EPM.Controllers
                 */
                 /* Start changes */
                 User currentUser = this.Session["user"] as User;
-                ViewData["project_id"] = projectId.Value;
+
+                ViewData["project_id"] = HttpContext.Session["project_id"];
 
                // Tracer.Log("Milestone", "projectId " + projectId + " ml_id" + id, "F:\\error.log");
                
@@ -90,6 +91,8 @@ namespace EPM.Controllers
 
             Milestone milestone = milestoneRepository.GetOne(id);
             //Tracer.Log("Milestone", " ml_id " + id, "F:\\error.log");
+
+            ViewData["project_id"] = HttpContext.Session["project_id"];
             return View(new MilestoneFormViewModel(milestone));
         }
 
@@ -123,6 +126,7 @@ namespace EPM.Controllers
         public ActionResult Create(int? projectId)
         {
 
+            ViewData["project_id"] = HttpContext.Session["project_id"];
             Milestone milestone = new Milestone();
             
             return View(new MilestoneFormViewModel(milestone));
@@ -136,6 +140,9 @@ namespace EPM.Controllers
         {
             try
             {
+
+                ViewData["project_id"] = HttpContext.Session["project_id"];
+                milestone.project_id = (int)HttpContext.Session["project_id"];
               
                 Milestone_AssignedRepository milestoneAssignedRepo = new Milestone_AssignedRepository();
                 MilestoneRepository mlRepo = new MilestoneRepository();
@@ -159,15 +166,15 @@ namespace EPM.Controllers
                                
                 milestoneAssignedRepo.Add(milestoneAssign);
                 milestoneAssignedRepo.Save();
-                return RedirectToAction("/Index/" + milestone.project_id);
+                return RedirectToAction("/Index/" + (int)ViewData["project_id"]);
             }
             catch (Exception exc)
             {
-                Tracer.Log("", exc.Message, "F:\\error.log");
+                Tracer.Log("", exc.Message);
             }
-           
 
-            return View(new MilestoneFormViewModel(milestone));
+            return RedirectToAction("/Index/" + (int)ViewData["project_id"]);
+            //return View(new MilestoneFormViewModel(milestone));
         }
 
         //
@@ -212,6 +219,8 @@ namespace EPM.Controllers
 
         public ActionResult ManageMilestone(int id)
         {
+
+            ViewData["project_id"] = HttpContext.Session["project_id"];
             Milestone milestone = milestoneRepository.GetOne(id);
             return View(new MilestoneFormViewModel(milestone));
         }

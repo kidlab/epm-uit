@@ -1,4 +1,4 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<EPM.Helpers.PaginatedList<EPM.Models.Role>>" %>
 
 <%
     string actionLink = "/Admin/RoleAdd/";
@@ -105,39 +105,21 @@
 							<th width="35%"></th>
 							<th width="10%">Edit</th>
 						</tr>
+						<%
+                    foreach (var item in Model)
+                    {%>
 						<tr>
 							<td>
 							</td>
-							<td> <a href="">Admin </a></td>
-							<td> </td>
 							<td>							
-								<a class="button btn-del" href="/">
-									<span>del</span>
-								</a>						
+								<%= item.name %>				
 							</td>
-						</tr>
-						<tr>
-							<td>
-							</td>
-							<td> <a href=">User</a></td>
 							<td> </td>
-							<td>							
-								<a class="button btn-del" href="/">
-									<span>del</span>
-								</a>						
-							</td>
+							<td><a class="button btn-edit" href="/"> <span> edit</span></a>
+									</td>
+							
 						</tr>
-						<tr>
-							<td>
-							</td>
-							<td> <a href="">Client</a></td>
-							<td> </td>
-							<td>							
-								<a class="button btn-del" href="/">
-									<span>del</span>
-								</a>						
-							</td>
-						</tr>
+					<% } %>
 					</table>
 					
 				</div>

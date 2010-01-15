@@ -79,8 +79,7 @@ namespace EPM.Controllers
         // GET: /Admin/
         public ActionResult Index()
         {
-            Redirect("/admin/useradmin");
-            return View();
+            return Redirect("/Admin/UserAdmin");
         }
 
         #region USER_ADMIN
@@ -97,6 +96,11 @@ namespace EPM.Controllers
             {
                 const int pageSize = 20;
                 User currentUser = this.Session["user"] as User;
+
+                RoleRepository roleModel = new RoleRepository();
+                PaginatedList<Role> roles = new PaginatedList<Role>(roleModel.GetAll(), page ?? 0, pageSize);
+
+                ViewData["roles"] = roles;
                 if (currentUser != null)
                 {
                     //users = userRespository.GetAll().ToList();
@@ -213,6 +217,7 @@ namespace EPM.Controllers
                 password = Request.Form["password"];
                 repeatPassword = Request.Form["repeatpassword"];
                 user.password = password;
+                int phone = 0;
                 //validate
                 if (user.name == null || user.name == "")
                     errorMessage.Add("Name require");
@@ -224,6 +229,10 @@ namespace EPM.Controllers
                     errorMessage.Add("Address require");
                 if (password == null || password != repeatPassword || password == "")
                     errorMessage.Add("Password does not match");
+                if (!int.TryParse(user.phone, out phone))
+                {
+                    errorMessage.Add(ERR_PHONE_INVALID);
+                }
 
                 // summary
                 if (errorMessage.Count == 0)
@@ -258,7 +267,7 @@ namespace EPM.Controllers
                 
                 return View(user);
             }
-            return View();
+            return View("NotFound");
         }
 
         //
@@ -298,6 +307,7 @@ namespace EPM.Controllers
                 repeatPassword  = Request.Form["repeatpassword"];
                 user.password   = password;
                 ra              = raRepository.GetAssignGlobal(user.id);
+                int phone = 0;
                 if (int.TryParse(Request.Form["role"], out newRole)) {
                     //newRole = int.Parse(Request.Form["role"]);
                     ra.role_id = newRole;
@@ -317,6 +327,10 @@ namespace EPM.Controllers
                     errorMessage.Add(ERR_PASSWORD_NOT_MATCH);
                 if (int.TryParse(Request.Form["role"], out newRole))
                     errorMessage.Add(ERR_ROLE_REQUIRE);
+                if (!int.TryParse(user.phone, out phone))
+                {
+                    errorMessage.Add(ERR_PHONE_INVALID);
+                }
 
                 
                 // summary
@@ -337,6 +351,35 @@ namespace EPM.Controllers
                 Tracer.Log(typeof(AdminController), ex);
             }
             return View(user);
+        }
+
+        //
+        // GET /Admin/UserEdit/id/
+        public ActionResult UserDel(int? id)
+        {
+            User user = null;
+            if (userRespository.GetOne(id.Value) != null)
+            {
+                user = userRespository.GetOne(id.Value);
+                return View(userRespository.GetOne(id.Value));
+            }
+            else {
+                return View("NotFound");
+            }
+             
+
+        }
+        //
+        // GET /Admin/UserEdit/id/
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UserDel()
+        {
+            int id = int.Parse(Request.Form["id"]);
+            User user = userRespository.GetOne(id);
+            userRespository.Delete(user);
+            userRespository.Save();
+            return this.Redirect("/Admin/UserAdmin/");
         }
 
         #endregion
@@ -488,6 +531,8 @@ namespace EPM.Controllers
                 roleModel.Add(role);
 
                 roleModel.Save();
+
+                return this.Redirect("/Admin/UserAdmin/"); 
             }
             catch (Exception ex)
             {

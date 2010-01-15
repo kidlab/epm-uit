@@ -152,10 +152,6 @@ namespace EPM.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Task task)
         {
-
-            if (ModelState.IsValid)
-            {
-
                 try
                 {
                     task.start = DateTime.Now;
@@ -177,13 +173,12 @@ namespace EPM.Controllers
                     taskAssignedRepo.Add(taskAssigned);
                     taskAssignedRepo.Save();
 
-                    return RedirectToAction("Index");
+                    return Redirect("/TaskList/Index/" + (int)HttpContext.Session["project_id"] );
                 }
                 catch
                 {
                     // ModelState.AddModelErrors(task.GetRuleViolations());
                 }
-            }
 
             return View(new TaskFormViewModel(task));
         }
