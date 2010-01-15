@@ -21,17 +21,17 @@ namespace EPM.web_service
     {
 
         [WebMethod]
-        public bool login(string username, string password)
+        public User login(string username, string password)
         {
             IUserRepository userModel = new UserRepository();
             User user = userModel.getExistUser(username, password);
             if (user == null)
             {
-                return false;
+                return null;
             }
             else
             {
-                return true;
+                return user;
             } 
         }
 
