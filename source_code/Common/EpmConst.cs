@@ -25,5 +25,7 @@ namespace Common
         public const string EDIT_ACTION = "edit";
         public const string DEL_ACTION = "delete";
         public const string CLOSE_ACTION = "close";
+
+        public const string EPM_AGENT = "EPM Agent";
     }
 }
