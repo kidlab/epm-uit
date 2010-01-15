@@ -79,5 +79,26 @@ namespace EPM.web_service
 
             return data;
         }
+
+        [WebMethod]
+        public string getProjectName(int taskId)
+        {
+            string name = String.Empty;
+
+            try
+            {
+                ITaskRepository taskModel = new TaskRepository();
+                Project project = taskModel.GetProject(taskId);
+
+                if (project != null)
+                    name = project.name;
+            }
+            catch (Exception exc)
+            {
+                Tracer.Log(typeof(EPMservice), exc);
+            }
+
+            return name;
+        }
     }
 }

@@ -31,5 +31,6 @@ namespace Common
         public const int STATUS_NEW = 0;
         public const int STATUS_RESOLVED = 1;
         public const int STATUS_CLOSED = 2;
+        public const int STATUS_PROCESSING = 3;
     }
 }

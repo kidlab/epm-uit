@@ -43,7 +43,15 @@
             this.colDone = new System.Windows.Forms.ColumnHeader();
             this.colDayLeft = new System.Windows.Forms.ColumnHeader();
             this.tabProjects = new System.Windows.Forms.TabPage();
+            this.lvProjects1 = new EPMClient.ListViewEx();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.tabTasks = new System.Windows.Forms.TabPage();
+            this.lvTasks1 = new EPMClient.ListViewEx();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.tabImageList = new System.Windows.Forms.ImageList(this.components);
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -54,13 +62,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listViewEx1 = new EPMClient.ListViewEx();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.mainTabControl.SuspendLayout();
             this.tabHome.SuspendLayout();
             this.tabProjects.SuspendLayout();
+            this.tabTasks.SuspendLayout();
             this.notifyContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,7 +132,7 @@
             this.colTaskDayLeft});
             this.lvTasks.ControlPadding = 2;
             this.lvTasks.GridLines = true;
-            this.lvTasks.Location = new System.Drawing.Point(6, 221);
+            this.lvTasks.Location = new System.Drawing.Point(3, 221);
             this.lvTasks.Name = "lvTasks";
             this.lvTasks.Size = new System.Drawing.Size(667, 195);
             this.lvTasks.TabIndex = 2;
@@ -184,7 +189,7 @@
             // 
             // tabProjects
             // 
-            this.tabProjects.Controls.Add(this.listViewEx1);
+            this.tabProjects.Controls.Add(this.lvProjects1);
             this.tabProjects.ImageIndex = 1;
             this.tabProjects.Location = new System.Drawing.Point(4, 55);
             this.tabProjects.Name = "tabProjects";
@@ -194,8 +199,42 @@
             this.tabProjects.Text = "My Projects";
             this.tabProjects.UseVisualStyleBackColor = true;
             // 
+            // lvProjects1
+            // 
+            this.lvProjects1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvProjects1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.lvProjects1.ControlPadding = 2;
+            this.lvProjects1.GridLines = true;
+            this.lvProjects1.Location = new System.Drawing.Point(6, 6);
+            this.lvProjects1.Name = "lvProjects1";
+            this.lvProjects1.Size = new System.Drawing.Size(667, 415);
+            this.lvProjects1.TabIndex = 1;
+            this.lvProjects1.UseCompatibleStateImageBehavior = false;
+            this.lvProjects1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 223;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Done";
+            this.columnHeader2.Width = 151;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Day Left";
+            this.columnHeader3.Width = 128;
+            // 
             // tabTasks
             // 
+            this.tabTasks.Controls.Add(this.lvTasks1);
             this.tabTasks.ImageIndex = 2;
             this.tabTasks.Location = new System.Drawing.Point(4, 55);
             this.tabTasks.Name = "tabTasks";
@@ -203,6 +242,39 @@
             this.tabTasks.TabIndex = 2;
             this.tabTasks.Text = "My Tasks";
             this.tabTasks.UseVisualStyleBackColor = true;
+            // 
+            // lvTasks1
+            // 
+            this.lvTasks1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvTasks1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvTasks1.ControlPadding = 2;
+            this.lvTasks1.GridLines = true;
+            this.lvTasks1.Location = new System.Drawing.Point(6, 6);
+            this.lvTasks1.Name = "lvTasks1";
+            this.lvTasks1.Size = new System.Drawing.Size(667, 415);
+            this.lvTasks1.TabIndex = 3;
+            this.lvTasks1.UseCompatibleStateImageBehavior = false;
+            this.lvTasks1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Task Name";
+            this.columnHeader4.Width = 227;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Project";
+            this.columnHeader5.Width = 148;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Day Left";
+            this.columnHeader6.Width = 129;
             // 
             // tabImageList
             // 
@@ -291,39 +363,6 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // listViewEx1
-            // 
-            this.listViewEx1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewEx1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewEx1.ControlPadding = 2;
-            this.listViewEx1.GridLines = true;
-            this.listViewEx1.Location = new System.Drawing.Point(6, 6);
-            this.listViewEx1.Name = "listViewEx1";
-            this.listViewEx1.Size = new System.Drawing.Size(667, 299);
-            this.listViewEx1.TabIndex = 2;
-            this.listViewEx1.UseCompatibleStateImageBehavior = false;
-            this.listViewEx1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 223;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Done";
-            this.columnHeader2.Width = 151;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Day Left";
-            this.columnHeader3.Width = 128;
-            // 
             // EPMAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,6 +380,7 @@
             this.tabHome.ResumeLayout(false);
             this.tabHome.PerformLayout();
             this.tabProjects.ResumeLayout(false);
+            this.tabTasks.ResumeLayout(false);
             this.notifyContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -373,10 +413,14 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
-        private ListViewEx listViewEx1;
+        private ListViewEx lvProjects1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private ListViewEx lvTasks1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 

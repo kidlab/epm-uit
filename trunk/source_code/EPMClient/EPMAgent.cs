@@ -149,23 +149,29 @@ namespace EPMClient
                 _projects = _epmClient.getProjects(_user.id).ToList();
 
                 lvProjects.Items.Clear();
+                lvProjects1.Items.Clear();
 
                 foreach(Project project in _projects)
                 {
                     ListViewItem item = new ListViewItem(new string[]{
                         project.name,
                         "",
-                        project.start.Value.ToShortDateString()
+                        _getProjectDayLeft(project).ToString()
                     });
                     item.Tag = project.id;
 
                     lvProjects.Items.Add(item);
+                    lvProjects1.Items.Add(item.Clone() as ListViewItem);
 
                     ProgressBarEx pb = new ProgressBarEx(true);
                     pb.Value = _calculateProjectStatus(project);
 
+                    ProgressBarEx pb1 = new ProgressBarEx(true);
+                    pb1.Value = pb.Value;
+
                     // Embed the ProgressBar in the liat view
                     this.lvProjects.AddEmbeddedControl(pb, colDone.Index, item.Index);
+                    this.lvProjects1.AddEmbeddedControl(pb1, colDone.Index, item.Index);
                 }
             }
             catch (Exception exc)
@@ -183,16 +189,19 @@ ErrorMsg.ERR_LOAD_PROJECTS_FAILED);
                 _tasks = _epmClient.getTasks(_user.id).ToList();
 
                 lvTasks.Items.Clear();
+                lvTasks1.Items.Clear();
+
                 foreach (Task task in _tasks)
                 {
                     ListViewItem item = new ListViewItem(new string[]{
                         task.title,
-                        "",
-                        task.end.ToShortDateString()
+                       _epmClient.getProjectName(task.id),
+                       _getTaskDayLeft(task).ToString(),
                     });
                     
                     item.Tag = task.id;
                     lvTasks.Items.Add(item);
+                    lvTasks1.Items.Add(item.Clone() as ListViewItem);
                 }
             }
             catch (Exception exc)
@@ -213,12 +222,20 @@ ErrorMsg.ERR_LOAD_TASKS_FAILED);
 
         #region UTILITY METHODS
 
-        private int _getDayLeft(Project project)
+        private int _getProjectDayLeft(Project project)
         {
             if (project.start == null || project.end == null)
                 return 0;
 
-            return (int)project.start.Value.Subtract(project.end.Value).TotalDays;
+            return (int)project.end.Value.Subtract(DateTime.Now).TotalDays;
+        }
+
+        private int _getTaskDayLeft(Task task)
+        {
+            if (task.start == null || task.end == null)
+                return 0;
+
+            return (int)task.end.Subtract(DateTime.Now).TotalDays;
         }
 
         public int _calculateProjectStatus(Project project)
