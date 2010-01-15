@@ -30,6 +30,7 @@ namespace EPM.Controllers
                 return this.Redirect("/");
             }            
         }
+
         public ActionResult logout()
         {
             HttpContext.Session["user"] = null;

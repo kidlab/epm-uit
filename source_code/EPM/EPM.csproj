@@ -125,6 +125,10 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="web service\EPMservice.asmx.cs">
+      <DependentUpon>EPMservice.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Epm.mdf">
@@ -474,6 +478,7 @@
     <Content Include="Views\Task\TaskForm.ascx" />
     <Content Include="Views\Task\TasksList.ascx" />
     <Content Include="Views\Test\index.aspx" />
+    <Content Include="web service\EPMservice.asmx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site_.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />

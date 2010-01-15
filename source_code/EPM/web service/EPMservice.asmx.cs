@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using EPM.Models;
+using EPM.Helpers;
+using Common;
 
 namespace EPM.web_service
 {
@@ -18,12 +21,40 @@ namespace EPM.web_service
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public bool login(string username, string password)
         {
-            return "Hello World";
+            IUserRepository userModel = new UserRepository();
+            User user = userModel.getExistUser(username, password);
+            if (user == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            } 
         }
 
-        public string HelloWorld1()
+        [WebMethod]
+        public List<Project> getProjects(int userId, int projectId)
+        {
+            return "Hello World1";
+        }
+
+        [WebMethod]
+        public List<Milestone> getMilestones(int userId, int projectId)
+        {
+            return "Hello World1";
+        }
+
+        [WebMethod]
+        public List<> getTasklists(int userId, int projectId)
+        {
+            return "Hello World1";
+        }
+
+        [WebMethod]
+        public List getTasks(int userId, int projectId)
         {
             return "Hello World1";
         }
