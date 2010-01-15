@@ -36,27 +36,39 @@ namespace EPM.web_service
         }
 
         [WebMethod]
-        public List<Project> getProjects(int userId, int projectId)
+        public List<Project> getProjects(int userId)
         {
-            return "Hello World1";
+            IProjectRepository model = new ProjectRepository();
+            List<Project> data = model.GetProjectsByUser(userId).ToList();
+
+            return data;
         }
 
         [WebMethod]
         public List<Milestone> getMilestones(int userId, int projectId)
         {
-            return "Hello World1";
+            IMilestoneRepository model = new MilestoneRepository();
+            List<Milestone> data = model.GetMilestonesByUserProjectId(userId,projectId).ToList();
+
+            return data;
         }
 
         [WebMethod]
-        public List<> getTasklists(int userId, int projectId)
+        public List<Tasklist> getTasklists(int projectId)
         {
-            return "Hello World1";
+            ITasklistRepository model = new TasklistRepository();
+            List<Tasklist> data = model.GetTasklistsByProject(projectId).ToList();
+
+            return data;
         }
 
         [WebMethod]
-        public List getTasks(int userId, int projectId)
+        public List<Task> getTasks(int userId, int projectId)
         {
-            return "Hello World1";
+            ITaskRepository model = new TaskRepository();
+            List<Task> data = model.GetTaskByUserProjectId(userId, projectId).ToList();
+
+            return data;
         }
     }
 }
