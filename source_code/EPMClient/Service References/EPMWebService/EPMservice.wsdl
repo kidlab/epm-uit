@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/epmservice" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://localhost/epmservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/epmservice">
       <s:element name="login">
         <s:complexType>
           <s:sequence>
@@ -256,7 +256,7 @@
   <wsdl:binding name="EPMserviceSoap" type="tns:EPMserviceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="login">
-      <soap:operation soapAction="http://tempuri.org/login" style="document" />
+      <soap:operation soapAction="http://localhost/epmservice/login" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -265,7 +265,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getProjects">
-      <soap:operation soapAction="http://tempuri.org/getProjects" style="document" />
+      <soap:operation soapAction="http://localhost/epmservice/getProjects" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -274,7 +274,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getMilestones">
-      <soap:operation soapAction="http://tempuri.org/getMilestones" style="document" />
+      <soap:operation soapAction="http://localhost/epmservice/getMilestones" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -283,7 +283,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getTasklists">
-      <soap:operation soapAction="http://tempuri.org/getTasklists" style="document" />
+      <soap:operation soapAction="http://localhost/epmservice/getTasklists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -292,7 +292,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getTasksByProject">
-      <soap:operation soapAction="http://tempuri.org/getTasksByProject" style="document" />
+      <soap:operation soapAction="http://localhost/epmservice/getTasksByProject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -301,7 +301,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getTasks">
-      <soap:operation soapAction="http://tempuri.org/getTasks" style="document" />
+      <soap:operation soapAction="http://localhost/epmservice/getTasks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -310,7 +310,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getProjectName">
-      <soap:operation soapAction="http://tempuri.org/getProjectName" style="document" />
+      <soap:operation soapAction="http://localhost/epmservice/getProjectName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -322,7 +322,7 @@
   <wsdl:binding name="EPMserviceSoap12" type="tns:EPMserviceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="login">
-      <soap12:operation soapAction="http://tempuri.org/login" style="document" />
+      <soap12:operation soapAction="http://localhost/epmservice/login" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -331,7 +331,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getProjects">
-      <soap12:operation soapAction="http://tempuri.org/getProjects" style="document" />
+      <soap12:operation soapAction="http://localhost/epmservice/getProjects" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -340,7 +340,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getMilestones">
-      <soap12:operation soapAction="http://tempuri.org/getMilestones" style="document" />
+      <soap12:operation soapAction="http://localhost/epmservice/getMilestones" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -349,7 +349,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getTasklists">
-      <soap12:operation soapAction="http://tempuri.org/getTasklists" style="document" />
+      <soap12:operation soapAction="http://localhost/epmservice/getTasklists" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -358,7 +358,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getTasksByProject">
-      <soap12:operation soapAction="http://tempuri.org/getTasksByProject" style="document" />
+      <soap12:operation soapAction="http://localhost/epmservice/getTasksByProject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -367,7 +367,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getTasks">
-      <soap12:operation soapAction="http://tempuri.org/getTasks" style="document" />
+      <soap12:operation soapAction="http://localhost/epmservice/getTasks" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -376,7 +376,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getProjectName">
-      <soap12:operation soapAction="http://tempuri.org/getProjectName" style="document" />
+      <soap12:operation soapAction="http://localhost/epmservice/getProjectName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
